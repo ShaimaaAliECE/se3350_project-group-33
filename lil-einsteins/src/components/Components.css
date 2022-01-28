@@ -1,0 +1,20 @@
+.color-nav {
+    background-color: rgb(255, 0, 0);
+    color: rgb(255, 0, 0);
+  }
+
+.color-foot {
+    background-color: rgb(255, 0, 0);
+    color: rgb(255, 0, 0);
+    position: fixed;
+    bottom: 0;
+  }
+
+.footer-child{
+    color: rgb(black);
+    width: 50%;
+    float: left;
+    padding: 10px;
+}
+  
+  
