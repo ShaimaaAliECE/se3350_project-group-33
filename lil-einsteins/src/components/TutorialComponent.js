@@ -1,11 +1,9 @@
 import react from "react";
 import React, { useState } from 'react';
-import {Container} from "react-bootstrap";
 import "./Components.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {Container} from "react-bootstrap";
 
-
-import NumberContainer from "./components/NumberContainer";
 
 function Tutorial () {
 
@@ -24,16 +22,104 @@ function Tutorial () {
     
         return(
             <div className="container">
-            <div className="tutorialText"> 
-                <h4>{tutorialText}</h4>
-            </div>
-            
-            <button className="prevBtn" onClick={}>
-                Prev
-            </button>
-            <button className="nextBtn" onClick={}>
-                Next
-            </button>
+                
+                <div className="tutorialText"> 
+                    <h4>{tutorialText}</h4>
+                </div>
+
+                <div className="tutoialDisplay">
+
+                    <ul className="numberList">
+                        <li>
+                            <div>
+                                <Container style={{
+                                width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                                {Math.floor(Math.random() * 10)+1}
+                                </Container>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <Container style={{
+                                width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                                {Math.floor(Math.random() * 10)+1}
+                                </Container>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <Container style={{
+                                width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                                {Math.floor(Math.random() * 10)+1}
+                                </Container>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <Container style={{
+                                width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                                {Math.floor(Math.random() * 10)+1}
+                                </Container>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <Container style={{
+                                width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                                {Math.floor(Math.random() * 10)+1}
+                                </Container>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <Container style={{
+                                width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                                {Math.floor(Math.random() * 10)+1}
+                                </Container>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <Container style={{
+                                width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                                {Math.floor(Math.random() * 10)+1}
+                                </Container>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <Container style={{
+                                width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                                {Math.floor(Math.random() * 10)+1}
+                                </Container>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <Container style={{
+                                width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                                {Math.floor(Math.random() * 10)+1}
+                                </Container>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <Container style={{
+                                width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                                {Math.floor(Math.random() * 10)+1}
+                                </Container>
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>   
+                
+                <button className="prevBtn" >
+                    Prev
+                </button>
+                <button className="nextBtn" >
+                    Next
+                </button>
     
             </div>
         );
