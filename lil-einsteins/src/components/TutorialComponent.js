@@ -24,6 +24,9 @@ function Tutorial () {
     
         return(
             <div className="container">
+            <div className="tutorialText"> 
+                <h4>{tutorialText}</h4>
+            </div>
             
             <button className="prevBtn" onClick={}>
                 Prev
