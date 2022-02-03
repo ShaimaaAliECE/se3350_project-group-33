@@ -18,7 +18,7 @@ function Tutorial () {
 
     const[tutorialText, setTutorialText] = useState("This algorithm works by dividing the full list of values into two equally sized sublists.")
     const[step, setStep] = useState(1);
-    const[showAnimation, setShowAnimation] = useState(false)
+    const[showAnimation, setShowAnimation] = useState([])
 
     //Layers Enabled
     const[layer2,  setLayer2] = useState(true);
@@ -28,7 +28,7 @@ function Tutorial () {
     
 
     useEffect(() => {
-
+        
     });
 
     
@@ -134,12 +134,39 @@ function Tutorial () {
                     timeout={400}
                     classNames = "numberContainer"
                     unmountOnExit /*when the element disappears, it’s actually going to leave the DOM*/
-                    onExited= {()=> setShowAnimation(false)}
                     >
-                        <Container style={{
+                        <ul>
+                            <li>
+                            <Container style={{
                             width: 50, height: 50, backgroundColor: 'powderblue'}}>
                             {Math.floor(Math.random() * 10)+1}
-                        </Container>
+                            </Container>
+                            </li>
+                            <li>
+                            <Container style={{
+                            width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                            {Math.floor(Math.random() * 10)+1}
+                            </Container>
+                            </li>
+                            <li>
+                            <Container style={{
+                            width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                            {Math.floor(Math.random() * 10)+1}
+                            </Container>
+                            </li>
+                            <li>
+                            <Container style={{
+                            width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                            {Math.floor(Math.random() * 10)+1}
+                            </Container>
+                            </li>
+                            <li>
+                            <Container style={{
+                            width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                            {Math.floor(Math.random() * 10)+1}
+                            </Container>
+                            </li>
+                        </ul>
 
                     </CSSTransition>
                     </div>
@@ -152,10 +179,38 @@ function Tutorial () {
                     classNames = "numberContainer"
                     unmountOnExit
                     >
-                        <Container style={{
+                        <ul>
+                            <li>
+                            <Container style={{
                             width: 50, height: 50, backgroundColor: 'powderblue'}}>
                             {Math.floor(Math.random() * 10)+1}
-                        </Container>
+                            </Container>
+                            </li>
+                            <li>
+                            <Container style={{
+                            width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                            {Math.floor(Math.random() * 10)+1}
+                            </Container>
+                            </li>
+                            <li>
+                            <Container style={{
+                            width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                            {Math.floor(Math.random() * 10)+1}
+                            </Container>
+                            </li>
+                            <li>
+                            <Container style={{
+                            width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                            {Math.floor(Math.random() * 10)+1}
+                            </Container>
+                            </li>
+                            <li>
+                            <Container style={{
+                            width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                            {Math.floor(Math.random() * 10)+1}
+                            </Container>
+                            </li>
+                        </ul>
 
                     </CSSTransition>
                     </div>
@@ -169,10 +224,26 @@ function Tutorial () {
                     unmountOnExit
                     >
 
-                    <Container style={{
-                        width: 50, height: 50, backgroundColor: 'powderblue'}}>
-                        {Math.floor(Math.random() * 10)+1}
-                    </Container>
+                        <ul>
+                            <li>
+                            <Container style={{
+                            width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                            {Math.floor(Math.random() * 10)+1}
+                            </Container>
+                            </li>
+                            <li>
+                            <Container style={{
+                            width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                            {Math.floor(Math.random() * 10)+1}
+                            </Container>
+                            </li>
+                            <li>
+                            <Container style={{
+                            width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                            {Math.floor(Math.random() * 10)+1}
+                            </Container>
+                            </li>
+                        </ul>
 
                     </CSSTransition>
                     </div>
@@ -185,19 +256,29 @@ function Tutorial () {
                     classNames = "numberContainer"
                     unmountOnExit
                     >
-                        <Container style={{
+                        <ul>
+                            <li>
+                            <Container style={{
                             width: 50, height: 50, backgroundColor: 'powderblue'}}>
                             {Math.floor(Math.random() * 10)+1}
-                        </Container>
+                            </Container>
+                            </li>
+                            <li>
+                            <Container style={{
+                            width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                            {Math.floor(Math.random() * 10)+1}
+                            </Container>
+                            </li>
+                        </ul>
                     </CSSTransition>
                     </div>
                 </div>  
 
                 <br></br>
-                <button className="prevBtn" OnClick ={() => setLayer3(true)}>
+                <button className="prevBtn" onClick ={() => setLayer2(false)}>
                     Prev
                 </button>
-                <button className="nextBtn" OnClick={() => setLayer2(true)}>
+                <button className="nextBtn" onClick={() => setLayer2(true)}>
                     Next
                 </button>
     

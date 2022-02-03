@@ -17,6 +17,16 @@
     padding: 10px;
 }
 
+/*Tutorial CSS*/
+.prevBtn , .nextBtn {
+  background-color: red;
+  color: black;
+}
+
+
+/*---------------------/
+
+
 /*Transition CSS*/
 .numberContainer-enter{
   opacity: 0;
