@@ -8,14 +8,6 @@ import {Container} from "react-bootstrap";
 
 function Tutorial () {
 
-    // state = {
-    //     layer1 : {tutorialText: null},
-    //     layer2 : {tutorialText: "This algorithm works by dividing the full list of values into two equally sized sublists."},
-    //     layer3 : {tutorialText: null},
-    //     layer4 : {tutorialText: null},
-    //     layer5 : {tutorialText: null},
-    // };
-
     const[tutorialText, setTutorialText] = useState("You’ve selected the merge sort algorithm.")
     const[step, setStep] = useState(0);
     const[showNextAnimation, setShowNextAnimation] = useState(false)
@@ -30,28 +22,51 @@ function Tutorial () {
 
     useEffect(() => {
         switch(step){
-
-            case 0:
+            default:
                 setTutorialText("You’ve selected the merge sort algorithm.");
                 setLayer2(false);
                 setLayer3(false);
                 setLayer4(false);
                 setLayer5(false);
+                setStep(0);
                 break;
 
             case 1:
                 setTutorialText("This algorithm works by dividing the full list of values into two equally sized sublists.");
                 setLayer2(true);
                 break;
-                // 
+                
             case 2:
                 setTutorialText("Then the left sublist is further divided until it only contains one value.")
                 setLayer3(true);
                 setLayer4(true);
                 setLayer5(true);
                 break;
-            // default:
-            //     setLayer2(false);
+            
+            case 3:
+                setTutorialText("Do this with all the solo values on the left side.")
+                break;
+
+            case 4:
+                setTutorialText("Then merge the arrays of size 2. This is done by checking which of the two arrays has the smaller first value. The smallest value is added to the new array.")
+                break;
+
+            case 5:
+                setTutorialText("This process is repeated until the new array contains all the values from the two smaller ones.")
+                break;
+
+            case 6:
+                setTutorialText("Then merge the arrays of size 2. This is done by checking which of the two arrays has the smaller first value. The smallest value is added to the new array.")
+                break;
+
+            case 7:
+                setTutorialText("Once the entire left side is done, you can begin the process over again to sort the right side.")
+                break;
+
+            case 8:
+                setTutorialText("Once the left and right side are sorted, perform one final combination of the two arrays to form the final sorted array. ")
+                break;
+            
         }
     });
 
@@ -60,7 +75,7 @@ function Tutorial () {
             <div className="container">
 
                 <div className="tutorialText"> 
-                    <h4>{tutorialText}</h4>
+                    <h5>{tutorialText}</h5>
                 </div>
 
                 <div><p>{step}</p></div>
@@ -299,14 +314,11 @@ function Tutorial () {
                 </div>  
 
                 <br></br>
-                <button className="prevBtn" onClick ={() => setLayer2(false)}>
+                <button className="prevBtn" onClick ={() => setStep(step - 1)}>
                     Prev
                 </button>
-                <button className="nextBtn" onClick={() => setLayer2(true)}>
+                <button className="nextBtn" onClick ={() => setStep(step + 1)}>
                     Next
-                </button>
-                <button className="prevBtn" onClick ={() => setStep(step + 1)}>
-                    Test
                 </button>
                 <button className="prevBtn" onClick ={() => setStep(0)}>
                     Reset
