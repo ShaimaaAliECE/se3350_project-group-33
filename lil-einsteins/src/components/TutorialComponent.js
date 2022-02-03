@@ -19,7 +19,7 @@ function Tutorial () {
     const[layer5,  setLayer5] = useState(false);
     
 
-
+    //Animations for each steps
     useEffect(() => {
         switch(step){
             default:
@@ -35,35 +35,39 @@ function Tutorial () {
                 setTutorialText("This algorithm works by dividing the full list of values into two equally sized sublists.");
                 setLayer2(true);
                 break;
-                
+
             case 2:
                 setTutorialText("Then the left sublist is further divided until it only contains one value.")
                 setLayer3(true);
                 setLayer4(true);
                 setLayer5(true);
                 break;
-            
+
             case 3:
+                setTutorialText("Then you compare the two leftmost values and add the smaller one into a new array of size 2 followed by the larger one.")
+            break;
+            
+            case 4:
                 setTutorialText("Do this with all the solo values on the left side.")
                 break;
 
-            case 4:
-                setTutorialText("Then merge the arrays of size 2. This is done by checking which of the two arrays has the smaller first value. The smallest value is added to the new array.")
-                break;
-
             case 5:
-                setTutorialText("This process is repeated until the new array contains all the values from the two smaller ones.")
+                setTutorialText("Then merge the arrays of size 2. This is done by checking which of the two arrays has the smaller first value. The smallest value is added to the new array.")
                 break;
 
             case 6:
-                setTutorialText("Then merge the arrays of size 2. This is done by checking which of the two arrays has the smaller first value. The smallest value is added to the new array.")
+                setTutorialText("This process is repeated until the new array contains all the values from the two smaller ones.")
                 break;
 
             case 7:
-                setTutorialText("Once the entire left side is done, you can begin the process over again to sort the right side.")
+                setTutorialText("Then merge the arrays of size 2. This is done by checking which of the two arrays has the smaller first value. The smallest value is added to the new array.")
                 break;
 
             case 8:
+                setTutorialText("Once the entire left side is done, you can begin the process over again to sort the right side.")
+                break;
+
+            case 9:
                 setTutorialText("Once the left and right side are sorted, perform one final combination of the two arrays to form the final sorted array. ")
                 break;
             
@@ -211,7 +215,7 @@ function Tutorial () {
                     </div>
                     <br></br>
 
-                    <div className="layer3">
+                    <div className="layer3" >
                     <CSSTransition
                     in={layer3}
                     timeout={400}
@@ -272,7 +276,7 @@ function Tutorial () {
                             </li>
                             <li>
                             <Container style={{
-                            width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                            width: 50, height: 50, backgroundColor: 'powderblue', bor}}>
                             {Math.floor(Math.random() * 10)+1}
                             </Container>
                             </li>
