@@ -12,7 +12,11 @@ export default function DraggableNumber(props) {
 	return (
 		<div>
 			{" "}
-			<Draggable key={props.id} draggableId={props.id} index={props.id}>
+			<Draggable
+				key={props.id.toString()}
+				draggableId={props.id.toString()}
+				index={props.id.toString()}
+			>
 				{(provided) => (
 					<li
 						{...provided.draggableProps}
@@ -27,7 +31,7 @@ export default function DraggableNumber(props) {
 									backgroundColor: "powderblue"
 								}}
 							>
-								{number}
+								<h3>{number}</h3>
 							</Container>
 						</div>
 					</li>

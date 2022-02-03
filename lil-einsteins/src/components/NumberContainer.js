@@ -9,8 +9,12 @@ import {DragDropContext, Droppable, Draggable} from "react-beautiful-dnd";
 export default function NumberContainer() {
 	const numberHolders = [];
 
-	for (var i = 0; i < 3; i++) {
-		numberHolders.push(<DraggableNumber id={i}></DraggableNumber>);
+	for (let index = 0; index < 7; index++) {
+		numberHolders.push(
+			<li>
+				<DraggableNumber id={index}></DraggableNumber>
+			</li>
+		);
 	}
 
 	return (
