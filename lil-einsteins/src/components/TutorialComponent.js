@@ -45,6 +45,7 @@ function Tutorial () {
 
             case 3:
                 setTutorialText("Then you compare the two leftmost values and add the smaller one into a new array of size 2 followed by the larger one.")
+                setLayer5(false);
             break;
             
             case 4:
@@ -90,7 +91,7 @@ function Tutorial () {
                             <li>
                                 <div>
                                     <Container style={{
-                                    width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                                    width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid'}}>
                                     {Math.floor(Math.random() * 10)+1}
                                     </Container>
                                 </div>
@@ -98,7 +99,7 @@ function Tutorial () {
                             <li>
                                 <div>
                                     <Container style={{
-                                    width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                                    width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid'}}>
                                     {Math.floor(Math.random() * 10)+1}
                                     </Container>
                                 </div>
@@ -106,7 +107,7 @@ function Tutorial () {
                             <li>
                                 <div>
                                     <Container style={{
-                                    width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                                    width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid'}}>
                                     {Math.floor(Math.random() * 10)+1}
                                     </Container>
                                 </div>
@@ -114,7 +115,7 @@ function Tutorial () {
                             <li>
                                 <div>
                                     <Container style={{
-                                    width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                                    width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid'}}>
                                     {Math.floor(Math.random() * 10)+1}
                                     </Container>
                                 </div>
@@ -122,7 +123,7 @@ function Tutorial () {
                             <li>
                                 <div>
                                     <Container style={{
-                                    width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                                    width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid'}}>
                                     {Math.floor(Math.random() * 10)+1}
                                     </Container>
                                 </div>
@@ -130,7 +131,7 @@ function Tutorial () {
                             <li>
                                 <div>
                                     <Container style={{
-                                    width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                                    width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid'}}>
                                     {Math.floor(Math.random() * 10)+1}
                                     </Container>
                                 </div>
@@ -138,7 +139,7 @@ function Tutorial () {
                             <li>
                                 <div>
                                     <Container style={{
-                                    width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                                    width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid'}}>
                                     {Math.floor(Math.random() * 10)+1}
                                     </Container>
                                 </div>
@@ -146,7 +147,7 @@ function Tutorial () {
                             <li>
                                 <div>
                                     <Container style={{
-                                    width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                                    width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid'}}>
                                     {Math.floor(Math.random() * 10)+1}
                                     </Container>
                                 </div>
@@ -154,7 +155,7 @@ function Tutorial () {
                             <li>
                                 <div>
                                     <Container style={{
-                                    width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                                    width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid'}}>
                                     {Math.floor(Math.random() * 10)+1}
                                     </Container>
                                 </div>
@@ -162,7 +163,7 @@ function Tutorial () {
                             <li>
                                 <div>
                                     <Container style={{
-                                    width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                                    width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid'}}>
                                     {Math.floor(Math.random() * 10)+1}
                                     </Container>
                                 </div>
@@ -181,36 +182,35 @@ function Tutorial () {
                         <ul>
                             <li>
                             <Container style={{
-                            width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                            width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid',border: '1px solid'}}>
                             {Math.floor(Math.random() * 10)+1}
                             </Container>
                             </li>
                             <li>
                             <Container style={{
-                            width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                            width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid'}}>
                             {Math.floor(Math.random() * 10)+1}
                             </Container>
                             </li>
                             <li>
                             <Container style={{
-                            width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                            width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid'}}>
                             {Math.floor(Math.random() * 10)+1}
                             </Container>
                             </li>
                             <li>
                             <Container style={{
-                            width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                            width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid'}}>
                             {Math.floor(Math.random() * 10)+1}
                             </Container>
                             </li>
                             <li>
                             <Container style={{
-                            width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                            width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid'}}>
                             {Math.floor(Math.random() * 10)+1}
                             </Container>
                             </li>
                         </ul>
-
                     </CSSTransition>
                     </div>
                     <br></br>
@@ -225,31 +225,36 @@ function Tutorial () {
                         <ul>
                             <li>
                             <Container style={{
-                            width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                            width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid'}}>
                             {Math.floor(Math.random() * 10)+1}
                             </Container>
                             </li>
                             <li>
                             <Container style={{
-                            width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                            width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid'}}>
                             {Math.floor(Math.random() * 10)+1}
                             </Container>
                             </li>
                             <li>
                             <Container style={{
-                            width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                            width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid'}}>
                             {Math.floor(Math.random() * 10)+1}
                             </Container>
                             </li>
                             <li>
                             <Container style={{
-                            width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                            width: 50, height: 50}}>
+                            </Container>
+                            </li>
+                            <li>
+                            <Container style={{
+                            width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid'}}>
                             {Math.floor(Math.random() * 10)+1}
                             </Container>
                             </li>
                             <li>
                             <Container style={{
-                            width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                            width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid'}}>
                             {Math.floor(Math.random() * 10)+1}
                             </Container>
                             </li>
@@ -270,19 +275,24 @@ function Tutorial () {
                         <ul>
                             <li>
                             <Container style={{
-                            width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                            width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid', border: '1px solid'}}>
                             {Math.floor(Math.random() * 10)+1}
                             </Container>
                             </li>
                             <li>
                             <Container style={{
-                            width: 50, height: 50, backgroundColor: 'powderblue', bor}}>
+                            width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid', border: '1px solid'}}>
                             {Math.floor(Math.random() * 10)+1}
                             </Container>
                             </li>
                             <li>
                             <Container style={{
-                            width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                            width: 50, height: 50}}>
+                            </Container>
+                            </li>
+                            <li>
+                            <Container style={{
+                            width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid', border: '1px solid'}}>
                             {Math.floor(Math.random() * 10)+1}
                             </Container>
                             </li>
@@ -302,13 +312,18 @@ function Tutorial () {
                         <ul>
                             <li>
                             <Container style={{
-                            width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                            width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid'}}>
                             {Math.floor(Math.random() * 10)+1}
                             </Container>
                             </li>
                             <li>
                             <Container style={{
-                            width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                            width: 50, height: 50}}>
+                            </Container>
+                            </li>
+                            <li>
+                            <Container style={{
+                            width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid'}}>
                             {Math.floor(Math.random() * 10)+1}
                             </Container>
                             </li>
