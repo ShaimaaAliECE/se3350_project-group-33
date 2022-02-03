@@ -1,7 +1,8 @@
-import react from "react";
+import react, { useEffect } from "react";
 import React, { useState } from 'react';
 import "./Components.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {CSSTransition} from "react-transition-group";
 import {Container} from "react-bootstrap";
 
 
@@ -15,109 +16,188 @@ function Tutorial () {
     //     layer5 : {tutorialText: null},
     // };
 
-    const[layer,  setLayer] = useState(1);
-    const[tutorialText, setTutorialText] = useState("This algorithm works by dividing the full list of values into two equally sized sublists.") 
+    const[tutorialText, setTutorialText] = useState("This algorithm works by dividing the full list of values into two equally sized sublists.")
+    const[step, setStep] = useState(1);
+    const[showAnimation, setShowAnimation] = useState(false)
 
+    //Layers Enabled
+    const[layer2,  setLayer2] = useState(true);
+    const[layer3,  setLayer3] = useState(true);
+    const[layer4,  setLayer4] = useState(true);
+    const[layer5,  setLayer5] = useState(true);
+    
+
+    useEffect(() => {
+
+    });
 
     
         return(
             <div className="container">
-                
+
                 <div className="tutorialText"> 
                     <h4>{tutorialText}</h4>
                 </div>
 
+                <div><p>{step}</p></div>
+
                 <div className="tutoialDisplay">
+                    <div className="layer1">
+                        <ul className="numberList">
+                            <li>
+                                <div>
+                                    <Container style={{
+                                    width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                                    {Math.floor(Math.random() * 10)+1}
+                                    </Container>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <Container style={{
+                                    width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                                    {Math.floor(Math.random() * 10)+1}
+                                    </Container>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <Container style={{
+                                    width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                                    {Math.floor(Math.random() * 10)+1}
+                                    </Container>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <Container style={{
+                                    width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                                    {Math.floor(Math.random() * 10)+1}
+                                    </Container>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <Container style={{
+                                    width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                                    {Math.floor(Math.random() * 10)+1}
+                                    </Container>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <Container style={{
+                                    width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                                    {Math.floor(Math.random() * 10)+1}
+                                    </Container>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <Container style={{
+                                    width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                                    {Math.floor(Math.random() * 10)+1}
+                                    </Container>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <Container style={{
+                                    width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                                    {Math.floor(Math.random() * 10)+1}
+                                    </Container>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <Container style={{
+                                    width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                                    {Math.floor(Math.random() * 10)+1}
+                                    </Container>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <Container style={{
+                                    width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                                    {Math.floor(Math.random() * 10)+1}
+                                    </Container>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <br></br>
 
-                    <ul className="numberList">
-                        <li>
-                            <div>
-                                <Container style={{
-                                width: 50, height: 50, backgroundColor: 'powderblue'}}>
-                                {Math.floor(Math.random() * 10)+1}
-                                </Container>
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <Container style={{
-                                width: 50, height: 50, backgroundColor: 'powderblue'}}>
-                                {Math.floor(Math.random() * 10)+1}
-                                </Container>
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <Container style={{
-                                width: 50, height: 50, backgroundColor: 'powderblue'}}>
-                                {Math.floor(Math.random() * 10)+1}
-                                </Container>
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <Container style={{
-                                width: 50, height: 50, backgroundColor: 'powderblue'}}>
-                                {Math.floor(Math.random() * 10)+1}
-                                </Container>
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <Container style={{
-                                width: 50, height: 50, backgroundColor: 'powderblue'}}>
-                                {Math.floor(Math.random() * 10)+1}
-                                </Container>
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <Container style={{
-                                width: 50, height: 50, backgroundColor: 'powderblue'}}>
-                                {Math.floor(Math.random() * 10)+1}
-                                </Container>
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <Container style={{
-                                width: 50, height: 50, backgroundColor: 'powderblue'}}>
-                                {Math.floor(Math.random() * 10)+1}
-                                </Container>
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <Container style={{
-                                width: 50, height: 50, backgroundColor: 'powderblue'}}>
-                                {Math.floor(Math.random() * 10)+1}
-                                </Container>
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <Container style={{
-                                width: 50, height: 50, backgroundColor: 'powderblue'}}>
-                                {Math.floor(Math.random() * 10)+1}
-                                </Container>
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <Container style={{
-                                width: 50, height: 50, backgroundColor: 'powderblue'}}>
-                                {Math.floor(Math.random() * 10)+1}
-                                </Container>
-                            </div>
-                        </li>
-                    </ul>
+                    <div className="layer2">
+                    <CSSTransition
+                    in={layer2}
+                    timeout={400}
+                    classNames = "numberContainer"
+                    unmountOnExit /*when the element disappears, it’s actually going to leave the DOM*/
+                    onExited= {()=> setShowAnimation(false)}
+                    >
+                        <Container style={{
+                            width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                            {Math.floor(Math.random() * 10)+1}
+                        </Container>
 
-                </div>   
-                
-                <button className="prevBtn" >
+                    </CSSTransition>
+                    </div>
+                    <br></br>
+
+                    <div className="layer3">
+                    <CSSTransition
+                    in={layer3}
+                    timeout={400}
+                    classNames = "numberContainer"
+                    unmountOnExit
+                    >
+                        <Container style={{
+                            width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                            {Math.floor(Math.random() * 10)+1}
+                        </Container>
+
+                    </CSSTransition>
+                    </div>
+                    <br></br>
+
+                    <div className="layer4">
+                    <CSSTransition
+                    in={layer4}
+                    timeout={400}
+                    classNames = "numberContainer"
+                    unmountOnExit
+                    >
+
+                    <Container style={{
+                        width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                        {Math.floor(Math.random() * 10)+1}
+                    </Container>
+
+                    </CSSTransition>
+                    </div>
+                    <br></br>
+
+                    <div className="layer5">
+                    <CSSTransition
+                    in={layer5}
+                    timeout={400}
+                    classNames = "numberContainer"
+                    unmountOnExit
+                    >
+                        <Container style={{
+                            width: 50, height: 50, backgroundColor: 'powderblue'}}>
+                            {Math.floor(Math.random() * 10)+1}
+                        </Container>
+                    </CSSTransition>
+                    </div>
+                </div>  
+
+                <br></br>
+                <button className="prevBtn" OnClick ={() => setLayer3(true)}>
                     Prev
                 </button>
-                <button className="nextBtn" >
+                <button className="nextBtn" OnClick={() => setLayer2(true)}>
                     Next
                 </button>
     

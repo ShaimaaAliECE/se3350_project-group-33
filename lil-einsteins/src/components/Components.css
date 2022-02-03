@@ -16,5 +16,27 @@
     float: left;
     padding: 10px;
 }
+
+/*Transition CSS*/
+.numberContainer-enter{
+  opacity: 0;
+  transform: scale(0.9);
+}
+/* This is where we can add the transition*/
+.numberContainer-enter-active{
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+}
+/* This fires as soon as the this.state.showList is false */
+.numberContainer-exit{
+  opacity: 1;
+}
+/* fires as element leaves the DOM*/
+.numberContainer-exit-active{
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 300ms, transform 300ms;
+}
   
   
