@@ -13,10 +13,35 @@ function Tutorial () {
     const[showNextAnimation, setShowNextAnimation] = useState(false)
 
     //Layers Enabled
-    const[layer2,  setLayer2] = useState(false);
-    const[layer3,  setLayer3] = useState(false);
-    const[layer4,  setLayer4] = useState(false);
-    const[layer5,  setLayer5] = useState(false);
+    const[layer2,  setLayer2] = useState({show :false , content : null});
+    const[layer3,  setLayer3] = useState({show :false , content : null});
+    const[layer4,  setLayer4] = useState({show :false , content : null});
+    const[layer5,  setLayer5] = useState({show :false , content : null});
+
+    //layer Content
+    function layer5Content(){
+
+        return(                        
+        <ul>
+            <li>
+            <Container style={{
+            width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid'}}>
+            {Math.floor(Math.random() * 10)+1}
+            </Container>
+            </li>
+            <li>
+            <Container style={{
+            width: 50, height: 50}}>
+            </Container>
+            </li>
+            <li>
+            <Container style={{
+            width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid'}}>
+            {Math.floor(Math.random() * 10)+1}
+            </Container>
+            </li>
+        </ul>)
+    } 
     
 
     //Animations for each steps
@@ -66,6 +91,10 @@ function Tutorial () {
 
             case 8:
                 setTutorialText("Once the entire left side is done, you can begin the process over again to sort the right side.")
+                setLayer2(true);
+                setLayer3(true);
+                setLayer4(true);
+                setLayer5(true);
                 break;
 
             case 9:

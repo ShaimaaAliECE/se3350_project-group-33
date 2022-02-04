@@ -11,8 +11,8 @@ function App() {
 		<div>
 			<NavbarComponent />
 			<br></br>
-			{/* <TutorialComponent/> */}
-			<NumberContainer />
+			<TutorialComponent/>
+			{/* <NumberContainer /> */}
 			<Footer />
 		</div>
 	);
