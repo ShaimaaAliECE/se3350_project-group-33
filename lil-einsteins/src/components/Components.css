@@ -26,8 +26,6 @@
 .layer2, .layer3, .layer4, .layer5{
   display: inline-block;
 }
-/*---------------------/
-
 
 /*Transition CSS*/
 .numberContainer-enter{
@@ -50,5 +48,10 @@
   transform: scale(0.9);
   transition: opacity 300ms, transform 300ms;
 }
+
+/*---------------------*/
+
+
+
   
   

@@ -5,44 +5,41 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {CSSTransition} from "react-transition-group";
 import {Container} from "react-bootstrap";
 
+import TutNumComponent from "./TutNumComponent";
+
 
 function Tutorial () {
 
     const[tutorialText, setTutorialText] = useState("You’ve selected the merge sort algorithm.")
     const[step, setStep] = useState(0);
-    const[showNextAnimation, setShowNextAnimation] = useState(false)
 
     //Layers Enabled
-    const[layer2,  setLayer2] = useState({show :false , content : null});
-    const[layer3,  setLayer3] = useState({show :false , content : null});
-    const[layer4,  setLayer4] = useState({show :false , content : null});
-    const[layer5,  setLayer5] = useState({show :false , content : null});
+    const[layer2,  setLayer2] = useState({show :false});
+    const layer2Content = createTutArray(5);
 
-    //layer Content
-    function layer5Content(){
+    const[layer3,  setLayer3] = useState({show :false});
+    const layer3Content = createTutArray(3);
 
-        return(                        
-        <ul>
-            <li>
-            <Container style={{
-            width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid'}}>
-            {Math.floor(Math.random() * 10)+1}
-            </Container>
-            </li>
-            <li>
-            <Container style={{
-            width: 50, height: 50}}>
-            </Container>
-            </li>
-            <li>
-            <Container style={{
-            width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid'}}>
-            {Math.floor(Math.random() * 10)+1}
-            </Container>
-            </li>
-        </ul>)
-    } 
-    
+    const[layer4,  setLayer4] = useState({show :false});
+    const[layer4Content, setLayer4Content] = useState([]);
+
+    const[layer5,  setLayer5] = useState({show :false});
+    const[layer5Content, setLayer5Content] = useState([]);
+
+    //Create tutorial array display as list components
+    function createTutArray(num){
+        const arrayContent = [];
+
+        for (let index = 0; index < num; index++){
+            arrayContent.push(
+                <li>
+                <TutNumComponent></TutNumComponent>
+                </li>
+            )
+        }
+        return(arrayContent);
+    }
+
 
     //Animations for each steps
     useEffect(() => {
@@ -117,86 +114,7 @@ function Tutorial () {
                 <div className="tutoialDisplay">
                     <div className="layer1">
                         <ul className="numberList">
-                            <li>
-                                <div>
-                                    <Container style={{
-                                    width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid'}}>
-                                    {Math.floor(Math.random() * 10)+1}
-                                    </Container>
-                                </div>
-                            </li>
-                            <li>
-                                <div>
-                                    <Container style={{
-                                    width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid'}}>
-                                    {Math.floor(Math.random() * 10)+1}
-                                    </Container>
-                                </div>
-                            </li>
-                            <li>
-                                <div>
-                                    <Container style={{
-                                    width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid'}}>
-                                    {Math.floor(Math.random() * 10)+1}
-                                    </Container>
-                                </div>
-                            </li>
-                            <li>
-                                <div>
-                                    <Container style={{
-                                    width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid'}}>
-                                    {Math.floor(Math.random() * 10)+1}
-                                    </Container>
-                                </div>
-                            </li>
-                            <li>
-                                <div>
-                                    <Container style={{
-                                    width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid'}}>
-                                    {Math.floor(Math.random() * 10)+1}
-                                    </Container>
-                                </div>
-                            </li>
-                            <li>
-                                <div>
-                                    <Container style={{
-                                    width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid'}}>
-                                    {Math.floor(Math.random() * 10)+1}
-                                    </Container>
-                                </div>
-                            </li>
-                            <li>
-                                <div>
-                                    <Container style={{
-                                    width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid'}}>
-                                    {Math.floor(Math.random() * 10)+1}
-                                    </Container>
-                                </div>
-                            </li>
-                            <li>
-                                <div>
-                                    <Container style={{
-                                    width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid'}}>
-                                    {Math.floor(Math.random() * 10)+1}
-                                    </Container>
-                                </div>
-                            </li>
-                            <li>
-                                <div>
-                                    <Container style={{
-                                    width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid'}}>
-                                    {Math.floor(Math.random() * 10)+1}
-                                    </Container>
-                                </div>
-                            </li>
-                            <li>
-                                <div>
-                                    <Container style={{
-                                    width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid'}}>
-                                    {Math.floor(Math.random() * 10)+1}
-                                    </Container>
-                                </div>
-                            </li>
+                            {createTutArray(10)}
                         </ul>
                     </div>
                     <br></br>
@@ -209,36 +127,7 @@ function Tutorial () {
                     unmountOnExit /*when the element disappears, it’s actually going to leave the DOM*/
                     >
                         <ul>
-                            <li>
-                            <Container style={{
-                            width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid',border: '1px solid'}}>
-                            {Math.floor(Math.random() * 10)+1}
-                            </Container>
-                            </li>
-                            <li>
-                            <Container style={{
-                            width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid'}}>
-                            {Math.floor(Math.random() * 10)+1}
-                            </Container>
-                            </li>
-                            <li>
-                            <Container style={{
-                            width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid'}}>
-                            {Math.floor(Math.random() * 10)+1}
-                            </Container>
-                            </li>
-                            <li>
-                            <Container style={{
-                            width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid'}}>
-                            {Math.floor(Math.random() * 10)+1}
-                            </Container>
-                            </li>
-                            <li>
-                            <Container style={{
-                            width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid'}}>
-                            {Math.floor(Math.random() * 10)+1}
-                            </Container>
-                            </li>
+                            {createTutArray(5)}
                         </ul>
                     </CSSTransition>
                     </div>
@@ -252,43 +141,8 @@ function Tutorial () {
                     unmountOnExit/*when the element disappears, it’s actually going to leave the DOM*/
                     >
                         <ul>
-                            <li>
-                            <Container style={{
-                            width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid'}}>
-                            {Math.floor(Math.random() * 10)+1}
-                            </Container>
-                            </li>
-                            <li>
-                            <Container style={{
-                            width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid'}}>
-                            {Math.floor(Math.random() * 10)+1}
-                            </Container>
-                            </li>
-                            <li>
-                            <Container style={{
-                            width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid'}}>
-                            {Math.floor(Math.random() * 10)+1}
-                            </Container>
-                            </li>
-                            <li>
-                            <Container style={{
-                            width: 50, height: 50}}>
-                            </Container>
-                            </li>
-                            <li>
-                            <Container style={{
-                            width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid'}}>
-                            {Math.floor(Math.random() * 10)+1}
-                            </Container>
-                            </li>
-                            <li>
-                            <Container style={{
-                            width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid'}}>
-                            {Math.floor(Math.random() * 10)+1}
-                            </Container>
-                            </li>
+                            {layer3Content}
                         </ul>
-
                     </CSSTransition>
                     </div>
                     <br></br>
@@ -303,16 +157,10 @@ function Tutorial () {
 
                         <ul>
                             <li>
-                            <Container style={{
-                            width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid', border: '1px solid'}}>
-                            {Math.floor(Math.random() * 10)+1}
-                            </Container>
+                            <TutNumComponent></TutNumComponent>
                             </li>
                             <li>
-                            <Container style={{
-                            width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid', border: '1px solid'}}>
-                            {Math.floor(Math.random() * 10)+1}
-                            </Container>
+                            <TutNumComponent></TutNumComponent>
                             </li>
                             <li>
                             <Container style={{
@@ -320,10 +168,7 @@ function Tutorial () {
                             </Container>
                             </li>
                             <li>
-                            <Container style={{
-                            width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid', border: '1px solid'}}>
-                            {Math.floor(Math.random() * 10)+1}
-                            </Container>
+                            <TutNumComponent></TutNumComponent>
                             </li>
                         </ul>
 
@@ -340,10 +185,7 @@ function Tutorial () {
                     >
                         <ul>
                             <li>
-                            <Container style={{
-                            width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid'}}>
-                            {Math.floor(Math.random() * 10)+1}
-                            </Container>
+                            <TutNumComponent></TutNumComponent>
                             </li>
                             <li>
                             <Container style={{
@@ -351,10 +193,7 @@ function Tutorial () {
                             </Container>
                             </li>
                             <li>
-                            <Container style={{
-                            width: 50, height: 50, backgroundColor: 'powderblue', border: '1px solid'}}>
-                            {Math.floor(Math.random() * 10)+1}
-                            </Container>
+                            <TutNumComponent></TutNumComponent>
                             </li>
                         </ul>
                     </CSSTransition>
