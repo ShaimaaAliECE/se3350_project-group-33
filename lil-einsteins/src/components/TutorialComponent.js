@@ -14,20 +14,23 @@ function Tutorial () {
     const[step, setStep] = useState(0);
 
     //Layers
-    const[layer1,  setLayer1] = useState({show :false}); //Display Layers
-    const[ layer1Content , setLayer1Content] = useState([]); //Visual Content
+    //const[layer1,  setLayer1] = useState({show :true}); //Display Layers
+    const[ layer1Content , setLayer1Content] = useState(createTutArray("s6",10)); //Visual Content
 
     const[layer2,  setLayer2] = useState({show :false}); //Display Layers
     const[ layer2Content , setLayer2Content] = useState([]); //Visual Content
 
     const[layer3,  setLayer3] = useState({show :false}); //Display Layers
     const[ layer3Content , setLayer3Content] = useState([]); //Visual Content
+    const[ layer3Timeout, setLayer3Timeout] = useState(400);
 
     const[layer4,  setLayer4] = useState({show :false}); //Display Layers
     const[ layer4Content , setLayer4Content] = useState([]); //Visual Content
+    const[ layer4Timeout, setLayer4Timeout] = useState(400);
 
     const[layer5,  setLayer5] = useState({show :false}); //Display Layers
     const[ layer5Content , setLayer5Content] = useState([]); //Visual Content
+    const[ layer5Timeout, setLayer5Timeout] = useState(400);
 
 
     //Create visual array display as list components
@@ -79,7 +82,6 @@ function Tutorial () {
         switch(step){
             default:
                 setTutorialText("You’ve selected the merge sort algorithm.");
-                setLayer1Content(createTutArray(10));
                 setLayer2(false);
                 setLayer3(false);
                 setLayer4(false);
@@ -90,50 +92,66 @@ function Tutorial () {
             case 1:
                 setTutorialText("This algorithm works by dividing the full list of values into two equally sized sublists.");
                 setLayer2(true);
-                setLayer2Content(createTutArray(5,"s",5));
+                setLayer2Content(createTutArray("s4",5,"s4",5));
+                setLayer3(false);
+                setLayer4(false);
+                setLayer5(false);
                 break;
 
             case 2:
                 setTutorialText("Then the left sublist is further divided until it only contains one value.")
                 setLayer3(true);
-                setLayer3Content(createTutArray(3,"s",2));
+                setLayer3Content(createTutArray("s2",3,"s2",2));
+
                 setLayer4(true);
-                setLayer4Content(createTutArray(2,"s",1));
-                setLayer5(true);
+                setLayer4Content(createTutArray("s",2,"s",1,"s2"));
+                
+                setLayer5(true)
                 setLayer5Content(createTutArray(1,"s",1));
                 break;
 
             case 3:
-                setTutorialText("Then you compare the two leftmost values and add the smaller one into a new array of size 2 followed by the larger one.")
-                setLayer5(false);
+                setTutorialText("Then you compare the two leftmost values and add the smaller value into a new array of size 2 followed by the larger value.")
+                setLayer5Timeout(400);
+                setLayer5Content(createTutArray(1,"s",));
             break;
             
             case 4:
-                setTutorialText("Do this with all the solo values on the left side.")
+                setTutorialText("Do this with all the remaining solo values on the left side.")
+                setLayer4(true);
+                setLayer4Content(createTutArray("s",2,"s",1,"s2",1,"s",1));
+                setLayer5(false);
                 break;
 
             case 5:
-                setTutorialText("Then merge the arrays of size 2. This is done by checking which of the two arrays has the smaller first value. The smallest value is added to the new array.")
+                setTutorialText("Then merge the array of size 2. This is done by checking which of the two arrays has the smaller first value. The smallest value is added to the new array.")
+                setLayer3(true);
+                setLayer4(false);
+                setLayer5(false);
                 break;
 
             case 6:
                 setTutorialText("This process is repeated until the new array contains all the values from the two smaller ones.")
+                setLayer3(false);
                 break;
 
             case 7:
-                setTutorialText("Then merge the arrays of size 2. This is done by checking which of the two arrays has the smaller first value. The smallest value is added to the new array.")
+                setTutorialText("Once the entire left side is done, you can begin the process over again to sort the right side.")
+                setLayer3(true);
+                setLayer3Content(createTutArray("s12",3,"s2",2));
+                setLayer4(true);
+                setLayer4Content(createTutArray("s11",2,"s",1));
+                setLayer5(true)
+                setLayer5Content(createTutArray("s10",1,"s",1));
                 break;
 
             case 8:
-                setTutorialText("Once the entire left side is done, you can begin the process over again to sort the right side.")
-                setLayer2(true);
-                setLayer3(true);
-                setLayer4(true);
-                setLayer5(true);
-                break;
-
-            case 9:
                 setTutorialText("Once the left and right side are sorted, perform one final combination of the two arrays to form the final sorted array. ")
+                setLayer5(false);
+                setLayer4(false);
+                setLayer3(false);
+                setLayer2(false);
+
                 break;
             
         }
@@ -150,7 +168,7 @@ function Tutorial () {
                 <div className="tutoialDisplay">
                     <div className="layer1">
                         <ul className="numberList">
-                            {layer1Content}
+                            {createTutArray(25)}
                         </ul>
                     </div>
                     <br></br>
@@ -161,6 +179,7 @@ function Tutorial () {
                     timeout={400}
                     classNames = "numberContainer"
                     unmountOnExit /*when the element disappears, it’s actually going to leave the DOM*/
+                    appear
                     >
                         <ul>
                             {layer2Content}
@@ -172,9 +191,10 @@ function Tutorial () {
                     <div className="layer3" >
                     <CSSTransition
                     in={layer3}
-                    timeout={400}
+                    timeout={layer3Timeout}
                     classNames = "numberContainer"
                     unmountOnExit/*when the element disappears, it’s actually going to leave the DOM*/
+                    appear
                     >
                         <ul>
                             {layer3Content}
@@ -186,15 +206,14 @@ function Tutorial () {
                     <div className="layer4">
                     <CSSTransition
                     in={layer4}
-                    timeout={400}
+                    timeout={layer4Timeout}
                     classNames = "numberContainer"
                     unmountOnExit/*when the element disappears, it’s actually going to leave the DOM*/
+                    appear
                     >
-
                         <ul>
                             {layer4Content}
                         </ul>
-
                     </CSSTransition>
                     </div>
                     <br></br>
@@ -202,9 +221,10 @@ function Tutorial () {
                     <div className="layer5">
                     <CSSTransition
                     in={layer5}
-                    timeout={400}
+                    timeout={layer5Timeout}
                     classNames = "numberContainer"
                     unmountOnExit/*when the element disappears, it’s actually going to leave the DOM*/
+                    appear
                     >
                         <ul>
                             {layer5Content}
