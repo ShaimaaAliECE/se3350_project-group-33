@@ -13,39 +13,73 @@ function Tutorial () {
     const[tutorialText, setTutorialText] = useState("You’ve selected the merge sort algorithm.")
     const[step, setStep] = useState(0);
 
-    //Layers Enabled
-    const[layer2,  setLayer2] = useState({show :false});
-    const layer2Content = createTutArray(5);
+    //Layers
+    const[layer1,  setLayer1] = useState({show :false}); //Display Layers
+    const[ layer1Content , setLayer1Content] = useState([]); //Visual Content
 
-    const[layer3,  setLayer3] = useState({show :false});
-    const layer3Content = createTutArray(3);
+    const[layer2,  setLayer2] = useState({show :false}); //Display Layers
+    const[ layer2Content , setLayer2Content] = useState([]); //Visual Content
 
-    const[layer4,  setLayer4] = useState({show :false});
-    const[layer4Content, setLayer4Content] = useState([]);
+    const[layer3,  setLayer3] = useState({show :false}); //Display Layers
+    const[ layer3Content , setLayer3Content] = useState([]); //Visual Content
 
-    const[layer5,  setLayer5] = useState({show :false});
-    const[layer5Content, setLayer5Content] = useState([]);
+    const[layer4,  setLayer4] = useState({show :false}); //Display Layers
+    const[ layer4Content , setLayer4Content] = useState([]); //Visual Content
 
-    //Create tutorial array display as list components
-    function createTutArray(num){
+    const[layer5,  setLayer5] = useState({show :false}); //Display Layers
+    const[ layer5Content , setLayer5Content] = useState([]); //Visual Content
+
+
+    //Create visual array display as list components
+    //I typically go (1,"s",1) ; "s" as spacer
+    function createTutArray(){
         const arrayContent = [];
 
-        for (let index = 0; index < num; index++){
-            arrayContent.push(
-                <li>
-                <TutNumComponent></TutNumComponent>
+        // add array size if provided number
+        for (var i = 0; i < arguments.length; i++){
+            if (typeof(arguments[i]) === 'number'){
+                for (let index = 0; index < arguments[i]; index++){
+                    arrayContent.push(
+                        <li>
+                        <TutNumComponent></TutNumComponent>
+                        </li>
+                    )
+                }
+            }
+            //add number of spaces provided "s#" so "s3"
+            else if(arguments[i].length > 1 && typeof(arguments[i]) === 'string'  ){
+                const tempArguement = parseInt(arguments[i].slice(1,arguments[1].length));
+                for (let index = 0; index < tempArguement; index++){
+                    arrayContent.push(
+                    <li>
+                        <Container style={{
+                            width: 50, height: 50}}>
+                        </Container>
+                    </li>
+                    )
+                }
+            }
+            //add single space if a number isnt received "s"
+            else{
+                arrayContent.push(
+                    <li>
+                    <Container style={{
+                        width: 50, height: 50}}>
+                    </Container>
                 </li>
-            )
+                )
+            }
         }
+
         return(arrayContent);
     }
-
 
     //Animations for each steps
     useEffect(() => {
         switch(step){
             default:
                 setTutorialText("You’ve selected the merge sort algorithm.");
+                setLayer1Content(createTutArray(10));
                 setLayer2(false);
                 setLayer3(false);
                 setLayer4(false);
@@ -56,13 +90,17 @@ function Tutorial () {
             case 1:
                 setTutorialText("This algorithm works by dividing the full list of values into two equally sized sublists.");
                 setLayer2(true);
+                setLayer2Content(createTutArray(5,"s",5));
                 break;
 
             case 2:
                 setTutorialText("Then the left sublist is further divided until it only contains one value.")
                 setLayer3(true);
+                setLayer3Content(createTutArray(3,"s",2));
                 setLayer4(true);
+                setLayer4Content(createTutArray(2,"s",1));
                 setLayer5(true);
+                setLayer5Content(createTutArray(1,"s",1));
                 break;
 
             case 3:
@@ -106,15 +144,13 @@ function Tutorial () {
             <div className="container">
 
                 <div className="tutorialText"> 
-                    <h5>{tutorialText}</h5>
+                    <h5>{step}) {tutorialText}</h5>
                 </div>
-
-                <div><p>{step}</p></div>
-
+                <br></br>
                 <div className="tutoialDisplay">
                     <div className="layer1">
                         <ul className="numberList">
-                            {createTutArray(10)}
+                            {layer1Content}
                         </ul>
                     </div>
                     <br></br>
@@ -127,7 +163,7 @@ function Tutorial () {
                     unmountOnExit /*when the element disappears, it’s actually going to leave the DOM*/
                     >
                         <ul>
-                            {createTutArray(5)}
+                            {layer2Content}
                         </ul>
                     </CSSTransition>
                     </div>
@@ -156,20 +192,7 @@ function Tutorial () {
                     >
 
                         <ul>
-                            <li>
-                            <TutNumComponent></TutNumComponent>
-                            </li>
-                            <li>
-                            <TutNumComponent></TutNumComponent>
-                            </li>
-                            <li>
-                            <Container style={{
-                            width: 50, height: 50}}>
-                            </Container>
-                            </li>
-                            <li>
-                            <TutNumComponent></TutNumComponent>
-                            </li>
+                            {layer4Content}
                         </ul>
 
                     </CSSTransition>
@@ -184,17 +207,7 @@ function Tutorial () {
                     unmountOnExit/*when the element disappears, it’s actually going to leave the DOM*/
                     >
                         <ul>
-                            <li>
-                            <TutNumComponent></TutNumComponent>
-                            </li>
-                            <li>
-                            <Container style={{
-                            width: 50, height: 50}}>
-                            </Container>
-                            </li>
-                            <li>
-                            <TutNumComponent></TutNumComponent>
-                            </li>
+                            {layer5Content}
                         </ul>
                     </CSSTransition>
                     </div>
