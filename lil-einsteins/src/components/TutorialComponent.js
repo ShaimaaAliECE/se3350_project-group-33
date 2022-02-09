@@ -140,8 +140,8 @@ function Tutorial () {
                 setLayer3(true);
                 setLayer3Content(createTutArray("s12",3,"s2",2));
                 setLayer4(true);
-                setLayer4Content(createTutArray("s11",2,"s",1));
-                setLayer5(true)
+                setLayer4Content(createTutArray("s11",2,"s",1,"s2",1,"s",1)); 
+                setLayer5(true);
                 setLayer5Content(createTutArray("s10",1,"s",1));
                 break;
 
