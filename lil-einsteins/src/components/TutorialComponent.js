@@ -94,6 +94,7 @@ function Tutorial () {
             case 2:
                 setTutorialText("Then the left sublist is further divided until it only contains one value.")
                 setLayer2(true);
+                setLayer2Content(TutorialArrayComponent(tutorialNumbers,"A","s4",5,"s4",5));
 
                 setLayer3(true);
                 setLayer3Content(TutorialArrayComponent(tutorialNumbers,"A","s2",3,"s2",2));
@@ -179,7 +180,7 @@ function Tutorial () {
             <div className="container">
 
                 <div className="tutorialText"> 
-                    <h5>{step}) {tutorialText}</h5>
+                    <h5>{tutorialText}</h5>
                 </div>
                 <br></br>
                 <div className="tutoialDisplay">
