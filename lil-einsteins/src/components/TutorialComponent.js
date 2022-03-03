@@ -13,6 +13,21 @@ function Tutorial () {
 
     const[tutorialText, setTutorialText] = useState("You’ve selected the merge sort algorithm.")
     const[step, setStep] = useState(0);
+    
+    
+    // THOUGHT PROCESS
+    //Store random 10 numbers and pass it to tutiral arrauy builder
+    //recognize array im builder
+
+    //boxes dissappear in right order
+
+    //
+
+
+
+
+
+    //
 
     //Layers
     //const[layer1,  setLayer1] = useState({show :true}); //Display Layers
@@ -83,7 +98,7 @@ function Tutorial () {
                 setLayer3(true);
                 setLayer4(true);
                 setLayer4Content(TutorialArrayComponent("A",2,"s",1,"s3",1,"s",1));
-                setLayer5(false);
+                setLayer5(true);
                 break;
 
             case 5:

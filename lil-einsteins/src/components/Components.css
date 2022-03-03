@@ -111,6 +111,7 @@
   transition: width 0.5s 0.5s, height 0.5s 0.5s, opacity 400ms;
 }
 
+
 .numberDisppear-exit-done{
   opacity: 0;
   transform: scale(0.9);

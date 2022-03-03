@@ -14,29 +14,49 @@ function TutorialArrayComponent(){
     const arrayContent = [];
     const tempClassCheck =  [];
     var idCounter = 0;
+    var delayTime =  400;
+    
 
     //component variable
     var tempClassname = "numberDisappear";
     var displayNum =  true;
 
 
-    //Make box dissappear or apear based on input
+    //Make box dissappear or apear based on input (A D)
     if(arguments[0]==="A"){
         tempClassname = "numberAppear";
+        delayTime =  400;
     }
     else{
-        if(arguments[0]==="D"){
+        if(arguments[0].includes("D")){
             tempClassname = "numberDisappear";
             displayNum = false;
+            delayTime = 400;
         }
     }
 
-    var delayTime =  400;
+        //Store id order of animations in array
+        for (var i = 0; i < arguments.length; i++){
+            if(typeof(arguments[i]) === 'string' && arguments[i]>1 && arguments[i].includes("D")){
+                tempClassCheck.push(parseInt(arguments[i].slice(1,arguments[1].length)));
+            }
+        }
+
+
+    
     for (var i = 0; i < arguments.length; i++){
 
+
+        
     // add array size if provided number
         if (typeof(arguments[i]) === 'number'){
             for (let index = 0; index < arguments[i]; index++){
+
+
+                //Check for id box in anamation array
+                if(tempClassCheck.includes(idCounter)){
+                    delayTime = 400 * tempClassCheck.indexOf(idCounter);
+                }
 
                 arrayContent.push(
                     <CSSTransition
@@ -60,14 +80,17 @@ function TutorialArrayComponent(){
                                 border: '1px solid'
                             }}
                         >
-                        1
+                        {tempClassCheck[i]}
                         </Container>  
                         </li>
                     </CSSTransition>
                 )
-                
-            
-                idCounter++;
+
+                //Delay timeout if found in animation array
+
+                delayTime+=200; 
+               idCounter++;
+
             }
         }
         //add number of spaces provided "s#" so "s3"
