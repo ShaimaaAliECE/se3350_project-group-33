@@ -30,23 +30,12 @@
 /*Transition CSS*/
 .numberContainer-enter{
   opacity: 0;
-  transform: scale(0.9);
 }
 /* This is where we can add the transition*/
 .numberContainer-enter-active{
   opacity: 1;
   transform: translateX(0);
-  transition: opacity 400ms, transform 400ms;
-}
-/* This fires as soon as the this.state.showList is false */
-.numberContainer-exit{
-  opacity: 1;
-}
-/* fires as element leaves the DOM*/
-.numberContainer-exit-active{
-  opacity: 0;
-  transform: scale(0.9);
-  transition: opacity 400ms, transform 400ms;
+  transition: opacity 400ms;
 }
 
 .numberContainer-enter-done{
@@ -55,8 +44,78 @@
   transition: opacity 400ms, transform 400ms;
 }
 
-/*---------------------*/
+/* This fires as soon as the this.state.showList is false */
+.numberContainer-exit-done{
+  opacity: 0;
+}
+/* fires as element leaves the DOM*/
+.numberContainer-exit-active{
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 400ms, transform 400ms;
+}
 
+
+.numberlist-enter{
+  opacity: 0;
+}
+.numberList-enter-active{
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 400ms, transform 400ms;
+}
+/* This fires as soon as the this.state.showList is false */
+.numberList-exit-done{
+  opacity: 0;
+}
+/* fires as element leaves the DOM*/
+.numberList-exit-active{
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 400ms, transform 400ms;
+}
+
+.numberList-enter-done{
+  opacity: 1;
+  /* transform: scale(0.9); */
+  /* transition: opacity 400ms, transform 400ms; */
+}
+
+/*---------------------*/
+.numberAppear-enter,.numberAppear-appear {
+  opacity: 0;
+}
+
+.numberAppear-enter-done{
+  opacity: 1;
+  transform: scale(0.9);
+  transition: width 0.5s 0.5s, height 0.5s 0.5s, opacity 400ms;
+}
+
+.numberAppear-enter-active{
+  opacity: 1;
+  /* transform: translateX(0); */
+  transform: scale(0.9);
+  transition: opacity 400ms, transform 400ms;
+}
+
+
+
+.numberDisppear-exit{
+  opacity: 1;
+}
+
+.numberDisppear-exit-active{
+  opacity: 0;
+  transform: scale(0.9);
+  transition: width 0.5s 0.5s, height 0.5s 0.5s, opacity 400ms;
+}
+
+.numberDisppear-exit-done{
+  opacity: 0;
+  transform: scale(0.9);
+  transition: width 0.5s 0.5s, height 0.5s 0.5s, opacity 400ms;
+}
 
 
   
