@@ -35,13 +35,38 @@ function TutorialArrayComponent(){
     var idCounter = 0;
     var delayTime =  400;
 
+    //get total size of displayed array
+    //get total displayed blocks
     var totalArrayCounter = 0;
+    var totalDisplayCounter = 0;
     for (let i = 0; i < arguments.length; i++){
         if(typeof(arguments[i]) === 'number'){
+            totalDisplayCounter += arguments[i];
             totalArrayCounter += arguments[i];
+
+        }
+        else if(typeof(arguments[i]) === 'string' && arguments[i].length > 1 && i != 0){
+
+            const tempArguement = parseInt(arguments[i].slice(1,arguments[i].length));
+            
+            totalDisplayCounter += tempArguement;
+        }
+        else{
+            if (arguments[i]== "s"){
+                totalDisplayCounter++;
+            }
         }
     }
 
+    //check for right side
+    // var sideCheck = 0; //determine if its on the left or right
+    // if(totalArrayCounter >5 && totalDisplayCounter > 11){
+    //     //sideCheck = 5;
+    //     arguments[0] = arguments[0].splice(5,10);
+    // }
+    // else{
+    //     sideCheck = 0;
+    // }
 
     //TEST VARIABLE
     var tester = totalArrayCounter;
@@ -106,8 +131,6 @@ function TutorialArrayComponent(){
         else if (typeof(arguments[i]) === 'number'){
             for (let index = 0; index < arguments[i]; index++){
 
-                //Check side
-                if(arguments)
 
                 //Check for id box in anamation array
                 // if(tempClassCheck.includes(idCounter)){
@@ -137,7 +160,6 @@ function TutorialArrayComponent(){
                 //Delay timeout if found in animation array
                 delayTime+=200; 
                idCounter++;
-
             }
         }
         

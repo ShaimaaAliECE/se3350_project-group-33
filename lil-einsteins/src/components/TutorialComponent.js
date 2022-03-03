@@ -149,6 +149,10 @@ function Tutorial () {
                 setTutorialText("Once the entire left side is done, you can begin the process over again to sort the right side.")
                 setLayer2(true);
                 setLayer3(true);
+
+                // var tempTutorialNumbers = tutorialNumbers.splice(5,10);
+                // setTutorialNumbers(tempTutorialNumbers);
+
                 setLayer3Content(TutorialArrayComponent(tutorialNumbers,"A","s12",3,"s2",2));
                 setLayer4(true);
                 setLayer4Content(TutorialArrayComponent(tutorialNumbers,"A","s11",2,"s",1,"s2",1,"s",1)); 
