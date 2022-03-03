@@ -274,7 +274,7 @@ const App = () => {
             </div>
 
             <div className=' bg-blue-200 p-2 rounded-xl mb-4'>
-              We'll start merging the now :)
+              We'll start merging them now :)
             </div>
           </div>
         }
