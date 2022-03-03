@@ -11,7 +11,8 @@ export default function TutNumComponent(){
     const [number, setNumber] = useState(Math.floor(Math.random() * 10) + 1);
     const [numberContainer, setNumberContainer] =  useState ({show:true});
     const renderline =  (user, key) => (<li key={key}><b>{key}</b>:{user}</li>); 
-
+    
+    //setNumber(tempNumber)
     return(
  
             
@@ -24,7 +25,7 @@ export default function TutNumComponent(){
                         border: '1px solid'
                     }}
                 >
-                    {number}
+                {number}
                 </Container>           
             
         

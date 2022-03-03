@@ -89,17 +89,21 @@ function Tutorial () {
             case 5:
                 setTutorialText("Then merge the array of size 2. This is done by checking which of the two arrays has the smaller first value. The smallest value is added to the new array.")
                 setLayer2(true);
-                setLayer3Content(TutorialArrayComponent("A","s2",3,"s2",2));
 
                 setLayer3(true);
-                setLayer4(false);
+                setLayer3Content(TutorialArrayComponent("A","s2",3,"s2",2));
+
+                setLayer4(true);
+                setLayer4Content(TutorialArrayComponent("D",2,"s",1,"s3",1,"s",1));
+
                 setLayer5(false);
                 break;
 
             case 6:
                 setTutorialText("This process is repeated until the new array contains all the values from the two smaller ones.")
                 setLayer2(true);
-                setLayer3(false);
+                setLayer3(true);
+                setLayer3Content(TutorialArrayComponent("D","s2",3,"s2",2));
                 setLayer4(false);
                 setLayer5(false);
                 break;
