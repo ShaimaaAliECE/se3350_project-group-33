@@ -124,7 +124,7 @@ function Tutorial () {
                 <div className="tutoialDisplay">
                     <div className="layer1">
                         <ul className="numberList">
-                            {TutorialArrayComponent(25)}
+                            {layer1Content}
                         </ul>
                     </div>
                     <br></br>
@@ -133,7 +133,7 @@ function Tutorial () {
                     <CSSTransition
                     in={layer2}
                     timeout={400}
-                    classNames = "numberContainer"
+                    classNames = "numberList"
                     //unmountOnExit /*when the element disappears, it’s actually going to leave the DOM*/
                     appear
                     >
@@ -148,7 +148,7 @@ function Tutorial () {
                     <CSSTransition
                     in={layer3}
                     timeout={layer3Timeout}
-                    classNames = "numberContainer"
+                    classNames = "numberList"
                     //unmountOnExit/*when the element disappears, it’s actually going to leave the DOM*/
                     appear
                     >
@@ -163,7 +163,7 @@ function Tutorial () {
                     <CSSTransition
                     in={layer4}
                     timeout={layer4Timeout}
-                    classNames = "numberContainer"
+                    classNames = "numberList"
                     //unmountOnExit/*when the element disappears, it’s actually going to leave the DOM*/
                     appear
                     >
@@ -178,7 +178,7 @@ function Tutorial () {
                     <CSSTransition
                     in={layer5}
                     timeout={layer5Timeout}
-                    classNames = "numberContainer"
+                    classNames = "numberList"
                     //unmountOnExit/*when the element disappears, it’s actually going to leave the DOM*/
                     appear
                     >
