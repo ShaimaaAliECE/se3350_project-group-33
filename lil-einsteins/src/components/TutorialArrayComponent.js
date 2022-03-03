@@ -59,14 +59,13 @@ function TutorialArrayComponent(){
     }
 
     //check for right side
-    // var sideCheck = 0; //determine if its on the left or right
-    // if(totalArrayCounter >5 && totalDisplayCounter > 11){
-    //     //sideCheck = 5;
-    //     arguments[0] = arguments[0].splice(5,10);
-    // }
-    // else{
-    //     sideCheck = 0;
-    // }
+    var sideCheck = 0; //determine if its on the left or right
+    if(totalArrayCounter <=5 && totalDisplayCounter > 11){
+        sideCheck = 5;
+    }
+    else{
+        sideCheck = 0;
+    }
 
     //TEST VARIABLE
     var tester = totalArrayCounter;
@@ -136,6 +135,7 @@ function TutorialArrayComponent(){
                 // if(tempClassCheck.includes(idCounter)){
                 //     delayTime = 400 * tempClassCheck.indexOf(idCounter);
                 // }
+                tester =  sideCheck;
 
                 arrayContent.push(
                     <CSSTransition
@@ -151,7 +151,7 @@ function TutorialArrayComponent(){
                     enter = {true}
                     >   
                         <li>
-                        {renderNumComponent(arguments[0][idCounter])}
+                        {renderNumComponent(arguments[0][sideCheck])}
                         {/* {renderNumComponent(tester)} */}
                         </li>
                     </CSSTransition>
@@ -160,6 +160,7 @@ function TutorialArrayComponent(){
                 //Delay timeout if found in animation array
                 delayTime+=200; 
                idCounter++;
+               sideCheck++;
             }
         }
         

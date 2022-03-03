@@ -150,9 +150,6 @@ function Tutorial () {
                 setLayer2(true);
                 setLayer3(true);
 
-                // var tempTutorialNumbers = tutorialNumbers.splice(5,10);
-                // setTutorialNumbers(tempTutorialNumbers);
-
                 setLayer3Content(TutorialArrayComponent(tutorialNumbers,"A","s12",3,"s2",2));
                 setLayer4(true);
                 setLayer4Content(TutorialArrayComponent(tutorialNumbers,"A","s11",2,"s",1,"s2",1,"s",1)); 
@@ -183,8 +180,6 @@ function Tutorial () {
 
                 <div className="tutorialText"> 
                     <h5>{step}) {tutorialText}</h5>
-                    <h5>TEST: {tester}</h5>
-                    <h5>TEST1: {tester1}</h5>
                 </div>
                 <br></br>
                 <div className="tutoialDisplay">
