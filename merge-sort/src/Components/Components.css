@@ -1,0 +1,57 @@
+.color-nav {
+    background-color: rgb(255, 0, 0);
+    color: rgb(255, 0, 0);
+  }
+
+.color-foot {
+    background-color: rgb(255, 0, 0);
+    color: rgb(255, 0, 0);
+    position: fixed;
+    bottom: 0;
+  }
+
+.footer-child{
+    color: rgb(black);
+    width: 50%;
+    float: left;
+    padding: 10px;
+}
+
+/*Tutorial CSS*/
+.prevBtn , .nextBtn {
+  background-color: red;
+  color: black;
+}
+
+.layer2, .layer3, .layer4, .layer5{
+  display: inline-block;
+}
+
+/*Transition CSS*/
+.numberContainer-enter{
+  opacity: 0;
+  transform: scale(0.9);
+}
+/* This is where we can add the transition*/
+.numberContainer-enter-active{
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 400ms, transform 400ms;
+}
+/* This fires as soon as the this.state.showList is false */
+.numberContainer-exit{
+  opacity: 1;
+}
+/* fires as element leaves the DOM*/
+.numberContainer-exit-active{
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 400ms, transform 400ms;
+}
+
+/*---------------------*/
+
+
+
+  
+  
