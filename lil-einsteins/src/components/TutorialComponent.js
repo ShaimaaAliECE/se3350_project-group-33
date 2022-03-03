@@ -13,25 +13,46 @@ function Tutorial () {
 
     const[tutorialText, setTutorialText] = useState("You’ve selected the merge sort algorithm.")
     const[step, setStep] = useState(0);
+
+
+    //Populate tutorial Numbers
+    var tempTutorialNumbers = [];
+    for(var i = 0; i < 10; i++){
+        const tempNumber = Math.floor(Math.random() * 10) + 1
+        tempTutorialNumbers.push(tempNumber);
+    }
+
+    const[tutorialNumbers, setTutorialNumbers] = useState(tempTutorialNumbers);
     
-    
+
+        //TEST VARIABLE
+        var tester = "";
+        var tester1 = "";
+        //
+
+    //Set up tutorial numbers
+    //var tutorialNumbers = [];
+
+    //TEST
+    for(var i = 0; i < tempTutorialNumbers.length; i++){
+        tester1 +=  "," + tutorialNumbers[i].toString();
+    }
+    tester = tempTutorialNumbers.length
+
+    // setTutorialNumbers(tempTutorialNumbers);
+
     // THOUGHT PROCESS
     //Store random 10 numbers and pass it to tutiral arrauy builder
     //recognize array im builder
-
     //boxes dissappear in right order
-
     //
-
-
-
 
 
     //
 
     //Layers
     //const[layer1,  setLayer1] = useState({show :true}); //Display Layers
-    const[ layer1Content , setLayer1Content] = useState(TutorialArrayComponent("A","s6",10)); //Visual Content
+    const[ layer1Content , setLayer1Content] = useState(TutorialArrayComponent(tutorialNumbers,"A","s6",10)); //Visual Content
 
     const[layer2,  setLayer2] = useState({show :false}); //Display Layers
     const[ layer2Content , setLayer2Content] = useState([]); //Visual Content
@@ -50,6 +71,7 @@ function Tutorial () {
 
     //Animations for each steps
     useEffect(() => {
+
         switch(step){
             default:
                 setTutorialText("You’ve selected the merge sort algorithm.");
@@ -63,7 +85,7 @@ function Tutorial () {
             case 1:
                 setTutorialText("This algorithm works by dividing the full list of values into two equally sized sublists.");
                 setLayer2(true);
-                setLayer2Content(TutorialArrayComponent("A","s4",5,"s4",5));
+                setLayer2Content(TutorialArrayComponent(tutorialNumbers,"A","s4",5,"s4",5));
                 setLayer3(false);
                 setLayer4(false);
                 setLayer5(false);
@@ -74,13 +96,13 @@ function Tutorial () {
                 setLayer2(true);
 
                 setLayer3(true);
-                setLayer3Content(TutorialArrayComponent("A","s2",3,"s2",2));
+                setLayer3Content(TutorialArrayComponent(tutorialNumbers,"A","s2",3,"s2",2));
 
                 setLayer4(true);
-                setLayer4Content(TutorialArrayComponent("A",2,"s",1));
+                setLayer4Content(TutorialArrayComponent(tutorialNumbers,"A",2,"s",1));
                 
                 setLayer5(true)
-                setLayer5Content(TutorialArrayComponent("A",1,"s",1));
+                setLayer5Content(TutorialArrayComponent(tutorialNumbers,"A",1,"s",1));
                 break;
 
             case 3:
@@ -97,7 +119,7 @@ function Tutorial () {
                 setLayer2(true);
                 setLayer3(true);
                 setLayer4(true);
-                setLayer4Content(TutorialArrayComponent("A",2,"s",1,"s3",1,"s",1));
+                setLayer4Content(TutorialArrayComponent(tutorialNumbers,"A",2,"s",1,"s3",1,"s",1));
                 setLayer5(true);
                 break;
 
@@ -106,7 +128,7 @@ function Tutorial () {
                 setLayer2(true);
 
                 setLayer3(true);
-                setLayer3Content(TutorialArrayComponent("A","s2",3,"s2",2));
+                setLayer3Content(TutorialArrayComponent(tutorialNumbers,"A","s2",3,"s2",2));
 
                 setLayer4(true);
                 setLayer4Content(TutorialArrayComponent("D",2,"s",1,"s3",1,"s",1));
@@ -127,11 +149,11 @@ function Tutorial () {
                 setTutorialText("Once the entire left side is done, you can begin the process over again to sort the right side.")
                 setLayer2(true);
                 setLayer3(true);
-                setLayer3Content(TutorialArrayComponent("A","s12",3,"s2",2));
+                setLayer3Content(TutorialArrayComponent(tutorialNumbers,"A","s12",3,"s2",2));
                 setLayer4(true);
-                setLayer4Content(TutorialArrayComponent("A","s11",2,"s",1,"s2",1,"s",1)); 
+                setLayer4Content(TutorialArrayComponent(tutorialNumbers,"A","s11",2,"s",1,"s2",1,"s",1)); 
                 setLayer5(true);
-                setLayer5Content(TutorialArrayComponent("A","s10",1,"s",1));
+                setLayer5Content(TutorialArrayComponent(tutorialNumbers,"A","s10",1,"s",1));
                 break;
 
             case 8:
@@ -157,6 +179,8 @@ function Tutorial () {
 
                 <div className="tutorialText"> 
                     <h5>{step}) {tutorialText}</h5>
+                    <h5>TEST: {tester}</h5>
+                    <h5>TEST1: {tester1}</h5>
                 </div>
                 <br></br>
                 <div className="tutoialDisplay">
