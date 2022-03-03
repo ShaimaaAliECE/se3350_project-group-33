@@ -6,6 +6,7 @@ import {CSSTransition} from "react-transition-group";
 import {Container} from "react-bootstrap";
 
 import TutNumComponent from "./TutNumComponent";
+import TutorialArrayComponent from "./TutorialArrayComponent";
 
 
 function Tutorial () {
@@ -15,7 +16,7 @@ function Tutorial () {
 
     //Layers
     //const[layer1,  setLayer1] = useState({show :true}); //Display Layers
-    const[ layer1Content , setLayer1Content] = useState(createTutArray("s6",10)); //Visual Content
+    const[ layer1Content , setLayer1Content] = useState(TutorialArrayComponent("s6",10)); //Visual Content
 
     const[layer2,  setLayer2] = useState({show :false}); //Display Layers
     const[ layer2Content , setLayer2Content] = useState([]); //Visual Content
@@ -32,51 +33,6 @@ function Tutorial () {
     const[ layer5Content , setLayer5Content] = useState([]); //Visual Content
     const[ layer5Timeout, setLayer5Timeout] = useState(400);
 
-
-    //Create visual array display as list components
-    //I typically go (1,"s",1) ; "s" as spacer
-    function createTutArray(){
-        const arrayContent = [];
-
-        // add array size if provided number
-        for (var i = 0; i < arguments.length; i++){
-            if (typeof(arguments[i]) === 'number'){
-                for (let index = 0; index < arguments[i]; index++){
-                    arrayContent.push(
-                        <li>
-                        <TutNumComponent></TutNumComponent>
-                        </li>
-                    )
-                }
-            }
-            //add number of spaces provided "s#" so "s3"
-            else if(arguments[i].length > 1 && typeof(arguments[i]) === 'string'  ){
-                const tempArguement = parseInt(arguments[i].slice(1,arguments[1].length));
-                for (let index = 0; index < tempArguement; index++){
-                    arrayContent.push(
-                    <li>
-                        <Container style={{
-                            width: 50, height: 50}}>
-                        </Container>
-                    </li>
-                    )
-                }
-            }
-            //add single space if a number isnt received "s"
-            else{
-                arrayContent.push(
-                    <li>
-                    <Container style={{
-                        width: 50, height: 50}}>
-                    </Container>
-                </li>
-                )
-            }
-        }
-
-        return(arrayContent);
-    }
-
     //Animations for each steps
     useEffect(() => {
         switch(step){
@@ -92,7 +48,7 @@ function Tutorial () {
             case 1:
                 setTutorialText("This algorithm works by dividing the full list of values into two equally sized sublists.");
                 setLayer2(true);
-                setLayer2Content(createTutArray("s4",5,"s4",5));
+                setLayer2Content(TutorialArrayComponent("s4",5,"s4",5));
                 setLayer3(false);
                 setLayer4(false);
                 setLayer5(false);
@@ -101,25 +57,25 @@ function Tutorial () {
             case 2:
                 setTutorialText("Then the left sublist is further divided until it only contains one value.")
                 setLayer3(true);
-                setLayer3Content(createTutArray("s2",3,"s2",2));
+                setLayer3Content(TutorialArrayComponent("s2",3,"s2",2));
 
                 setLayer4(true);
-                setLayer4Content(createTutArray("s",2,"s",1,"s2"));
+                setLayer4Content(TutorialArrayComponent("s",2,"s",1,"s2"));
                 
                 setLayer5(true)
-                setLayer5Content(createTutArray(1,"s",1));
+                setLayer5Content(TutorialArrayComponent(1,"s",1));
                 break;
 
             case 3:
                 setTutorialText("Then you compare the two leftmost values and add the smaller value into a new array of size 2 followed by the larger value.")
                 setLayer5Timeout(400);
-                setLayer5Content(createTutArray(1,"s",));
+                setLayer5Content(TutorialArrayComponent(1,"s",));
             break;
             
             case 4:
                 setTutorialText("Do this with all the remaining solo values on the left side.")
                 setLayer4(true);
-                setLayer4Content(createTutArray("s",2,"s",1,"s2",1,"s",1));
+                setLayer4Content(TutorialArrayComponent("s",2,"s",1,"s2",1,"s",1));
                 setLayer5(false);
                 break;
 
@@ -138,11 +94,11 @@ function Tutorial () {
             case 7:
                 setTutorialText("Once the entire left side is done, you can begin the process over again to sort the right side.")
                 setLayer3(true);
-                setLayer3Content(createTutArray("s12",3,"s2",2));
+                setLayer3Content(TutorialArrayComponent("s12",3,"s2",2));
                 setLayer4(true);
-                setLayer4Content(createTutArray("s11",2,"s",1,"s2",1,"s",1)); 
+                setLayer4Content(TutorialArrayComponent("s11",2,"s",1,"s2",1,"s",1)); 
                 setLayer5(true);
-                setLayer5Content(createTutArray("s10",1,"s",1));
+                setLayer5Content(TutorialArrayComponent("s10",1,"s",1));
                 break;
 
             case 8:
@@ -168,7 +124,7 @@ function Tutorial () {
                 <div className="tutoialDisplay">
                     <div className="layer1">
                         <ul className="numberList">
-                            {createTutArray(25)}
+                            {TutorialArrayComponent(25)}
                         </ul>
                     </div>
                     <br></br>
@@ -178,7 +134,7 @@ function Tutorial () {
                     in={layer2}
                     timeout={400}
                     classNames = "numberContainer"
-                    unmountOnExit /*when the element disappears, it’s actually going to leave the DOM*/
+                    //unmountOnExit /*when the element disappears, it’s actually going to leave the DOM*/
                     appear
                     >
                         <ul>
@@ -193,7 +149,7 @@ function Tutorial () {
                     in={layer3}
                     timeout={layer3Timeout}
                     classNames = "numberContainer"
-                    unmountOnExit/*when the element disappears, it’s actually going to leave the DOM*/
+                    //unmountOnExit/*when the element disappears, it’s actually going to leave the DOM*/
                     appear
                     >
                         <ul>
@@ -208,7 +164,7 @@ function Tutorial () {
                     in={layer4}
                     timeout={layer4Timeout}
                     classNames = "numberContainer"
-                    unmountOnExit/*when the element disappears, it’s actually going to leave the DOM*/
+                    //unmountOnExit/*when the element disappears, it’s actually going to leave the DOM*/
                     appear
                     >
                         <ul>
@@ -223,7 +179,7 @@ function Tutorial () {
                     in={layer5}
                     timeout={layer5Timeout}
                     classNames = "numberContainer"
-                    unmountOnExit/*when the element disappears, it’s actually going to leave the DOM*/
+                    //unmountOnExit/*when the element disappears, it’s actually going to leave the DOM*/
                     appear
                     >
                         <ul>
