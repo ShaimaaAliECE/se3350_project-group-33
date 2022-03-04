@@ -59,15 +59,12 @@ function Tutorial () {
 
     const[layer3,  setLayer3] = useState({show :false}); //Display Layers
     const[ layer3Content , setLayer3Content] = useState([]); //Visual Content
-    const[ layer3Timeout, setLayer3Timeout] = useState(400);
 
     const[layer4,  setLayer4] = useState({show :false}); //Display Layers
     const[ layer4Content , setLayer4Content] = useState([]); //Visual Content
-    const[ layer4Timeout, setLayer4Timeout] = useState(400);
 
     const[layer5,  setLayer5] = useState({show :false}); //Display Layers
     const[ layer5Content , setLayer5Content] = useState([]); //Visual Content
-    const[ layer5Timeout, setLayer5Timeout] = useState(400);
 
     //Animations for each steps
     useEffect(() => {

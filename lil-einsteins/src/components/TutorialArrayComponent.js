@@ -68,7 +68,10 @@ function TutorialArrayComponent(){
     }
 
     //TEST VARIABLE
-    var tester = totalArrayCounter;
+    var tester ="";
+
+    //if this number is the highest make it stay longer
+
 
     //add tutorial numbers to use as reference
     // if (arguments[0].constructor === Array){
@@ -89,12 +92,22 @@ function TutorialArrayComponent(){
         }
     }
 
-        //Store id order of animations in array
-        for (var i = 0; i < arguments.length; i++){
-            if(typeof(arguments[i]) === 'string' && arguments[i]>1 && arguments[i].includes("D")){
-                tempClassCheck.push(parseInt(arguments[i].slice(1,arguments[1].length)));
-            }
+    //Store id order of animations in array
+    var tempMin = 10;
+    for (var i = 0; i < arguments[0].length; i++){
+       
+        if (arguments[0][i] > tempMin ){
+            tempMin = arguments[0][i];
         }
+        
+        tempClassCheck.push(arguments[0][i]);
+        
+        tester += arguments[0][i].toString();
+
+        // if(typeof(arguments[i]) === 'string' && arguments[i]>1 && arguments[i].includes("D")){
+        //     tempClassCheck.push(parseInt(arguments[i].slice(1,arguments[1].length)));
+        // }
+    }
 
 
     
@@ -116,13 +129,7 @@ function TutorialArrayComponent(){
         //Build with single s
         else if (arguments[i]== "s"){
                 arrayContent.push(
-                //     <li>
-                //     <Container style={{
-                //         width: 50, height: 50}}>
-                //     </Container>
-                // </li>
                 renderSpace("space")
-
                 )
         }
 
@@ -135,7 +142,6 @@ function TutorialArrayComponent(){
                 // if(tempClassCheck.includes(idCounter)){
                 //     delayTime = 400 * tempClassCheck.indexOf(idCounter);
                 // }
-                tester =  sideCheck;
 
                 arrayContent.push(
                     <CSSTransition
@@ -166,15 +172,6 @@ function TutorialArrayComponent(){
         
         //add single space if a number isnt received "s"
         else{
-
-                //tester += "f";
-                // arrayContent.push(
-                //     <li>
-                //     <Container style={{
-                //         width: 50, height: 50}}>
-                //     </Container>
-                // </li>
-                // )
 
         }
     }
