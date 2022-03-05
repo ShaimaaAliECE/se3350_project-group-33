@@ -7,12 +7,11 @@ import infoIcon from "./images/icons8-info.png";
 import nextIcon from "./images/icons8-next.png";
 import randomizeNewArray from "./Components/GenerateNumbers";
 import {ItemTypes} from "./Components/ItemTypes";
-import NavbarComponent from "./Components/NavbarComponent";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const numbers = randomizeNewArray();
 
-const App = () => {
+const Level2 = () => {
 	const boxDetails = [
 		{name: `${numbers[5]}`, type: ItemTypes.BOX},
 		{name: `${numbers[0]}`, type: ItemTypes.BOX},
@@ -42,7 +41,6 @@ const App = () => {
 
 	return (
 		<div>
-			<NavbarComponent />
 			<DndProvider backend={HTML5Backend}>
 				<div className="fixed bottom-0 bg-red-600 py-6  left-0 right-0 flex gap-1 justify-center">
 					{boxes.map(({name, type}, index) => (
@@ -816,4 +814,4 @@ const App = () => {
 	);
 };
 
-export default App;
+export default Level2;
