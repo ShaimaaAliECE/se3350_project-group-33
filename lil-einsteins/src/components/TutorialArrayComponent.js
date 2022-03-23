@@ -29,6 +29,7 @@ function TutorialArrayComponent(){
     )
     
 
+
     //CSS variables
     var tempClassname = "numberDisappear";
     var displayNum =  true;
@@ -59,8 +60,13 @@ function TutorialArrayComponent(){
     }
 
     //check for right side
+    function isRight(){
+
+
+        return true;
+    }  
     var sideCheck = 0; //determine if its on the left or right
-    if(totalArrayCounter <=5 && totalDisplayCounter > 11){
+    if(totalArrayCounter <= arguments[0].length/2 && totalDisplayCounter > 11){
         sideCheck = 5;
     }
     else{

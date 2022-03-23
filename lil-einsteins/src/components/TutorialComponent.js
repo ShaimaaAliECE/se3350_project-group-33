@@ -6,6 +6,7 @@ import {CSSTransition} from "react-transition-group";
 import {Container} from "react-bootstrap";
 
 import TutNumComponent from "./TutNumComponent";
+import TutorialArray from "./TutorialArray";
 import TutorialArrayComponent from "./TutorialArrayComponent";
 
 
@@ -34,10 +35,7 @@ function Tutorial () {
     //var tutorialNumbers = [];
 
     //TEST
-    for(var i = 0; i < tempTutorialNumbers.length; i++){
-        tester1 +=  "," + tutorialNumbers[i].toString();
-    }
-    tester = tempTutorialNumbers.length
+
 
     // setTutorialNumbers(tempTutorialNumbers);
 
@@ -47,7 +45,12 @@ function Tutorial () {
     //boxes dissappear in right order
     //
 
+    TutorialArray(tutorialNumbers);
 
+    for(var i = 0; i < tempTutorialNumbers.length; i++){
+        tester1 +=  "," + tutorialNumbers[i].toString();
+    }
+    tester = tempTutorialNumbers.length
     //
 
     //Layers
@@ -65,6 +68,8 @@ function Tutorial () {
 
     const[layer5,  setLayer5] = useState({show :false}); //Display Layers
     const[ layer5Content , setLayer5Content] = useState([]); //Visual Content
+
+
 
     //Animations for each steps
     useEffect(() => {
@@ -171,7 +176,6 @@ function Tutorial () {
             
         }
     });
-
     
         return(
             <div className="container">
@@ -181,73 +185,10 @@ function Tutorial () {
                 </div>
                 <br></br>
                 <div className="tutoialDisplay">
-                    <div className="layer1">
-                        <ul className="numberList">
-                            {layer1Content}
-                        </ul>
-                    </div>
-                    <br></br>
-
-                    <div className="layer2">
-                    <CSSTransition
-                    in={layer2}
-                    //timeout={400}
-                    classNames = "numberList"
-                    unmountOnExit /*when the element disappears, it’s actually going to leave the DOM*/
-                    >
-                        <ul>
-                            {layer2Content}
-                        </ul>
-                    </CSSTransition>
-                    </div>
-                    <br></br>
-
-                    <div className="layer3" >
-                    <CSSTransition
-                    in={layer3}
-                    //timeout={layer3Timeout}
-                    classNames = "numberList"
-                    unmountOnExit/*when the element disappears, it’s actually going to leave the DOM*/
-                    //appear
-                    >
-                        <ul>
-                            {layer3Content}
-                        </ul>
-                    </CSSTransition>
-                    </div>
-                    <br></br>
-
-                    <div className="layer4">
-                    <CSSTransition
-                    in={layer4}
-                    //timeout={layer4Timeout}
-                    classNames = "numberList"
-                    unmountOnExit/*when the element disappears, it’s actually going to leave the DOM*/
-                    //appear
-                    >
-                        <ul>
-                            {layer4Content}
-                        </ul>
-                    </CSSTransition>
-                    </div>
-                    <br></br>
-
-                    <div className="layer5">
-                    <CSSTransition
-                    in={layer5}
-                    //timeout={layer5Timeout}
-                    classNames = "numberList"
-                    unmountOnExit/*when the element disappears, it’s actually going to leave the DOM*/
-                    //appear
-                    >
-                        <ul>
-                            {layer5Content}
-                        </ul>
-                    </CSSTransition>
-                    </div>
+                <TutorialArray />                
                 </div>  
-
                 <br></br>
+
                 <button className="prevBtn" onClick ={() => setStep(step - 1)}>
                     Prev
                 </button>
