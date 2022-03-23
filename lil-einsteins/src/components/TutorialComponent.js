@@ -152,7 +152,7 @@ function Tutorial () {
                 setLayer4(true);
                 setLayer4Content(TutorialArrayComponent(tutorialNumbers,"A","s11",2,"s",1,"s2",1,"s",1)); 
                 setLayer5(true);
-                setLayer5Content(TutorialArrayComponent(tutorialNumbers,"A","s10",1,"s",1));
+                setLayer5Content(TutorialArrayComponent(tutorialNumbers,"A","s11",1,"s",1));
                 break;
 
             case 8:
@@ -177,7 +177,7 @@ function Tutorial () {
             <div className="container">
 
                 <div className="tutorialText"> 
-                    <h5>{tutorialText}</h5>
+                    <h5>{step}){tutorialText}</h5>
                 </div>
                 <br></br>
                 <div className="tutoialDisplay">

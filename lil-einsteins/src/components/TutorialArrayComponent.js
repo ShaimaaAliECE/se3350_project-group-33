@@ -13,6 +13,7 @@ import TutNumComponent from "./TutNumComponent";
 function TutorialArrayComponent(){
     const arrayContent = [];
     const tempClassCheck =  [];
+    
     const renderSpace =  (idCounter) => (<li id = {idCounter}> <Container style={{width: 50, height: 50}}></Container></li>); 
     const renderNumComponent = (numberContnent) =>(
     <Container
@@ -59,9 +60,20 @@ function TutorialArrayComponent(){
     }
 
     //check for right side
+    function hasRight(){
+        
+        if(totalArrayCounter <=arguments[0].length/2 && totalDisplayCounter > 11){
+            return true
+        }
+        else{
+            return false;
+        }
+
+    }
+
     var sideCheck = 0; //determine if its on the left or right
-    if(totalArrayCounter <=5 && totalDisplayCounter > 11){
-        sideCheck = 5;
+    if(totalArrayCounter <=arguments[0].length/2 && totalDisplayCounter > 11){
+        sideCheck = arguments[0].length/2;
     }
     else{
         sideCheck = 0;
@@ -70,14 +82,7 @@ function TutorialArrayComponent(){
     //TEST VARIABLE
     var tester ="";
 
-    //if this number is the highest make it stay longer
 
-
-    //add tutorial numbers to use as reference
-    // if (arguments[0].constructor === Array){
-    //     //tutorialNumbers = arguments[0];
-    //     tester =  "true";
-    // }
 
     //Make box dissappear or apear based on input (A D)
     if(arguments[1]==="A"){
