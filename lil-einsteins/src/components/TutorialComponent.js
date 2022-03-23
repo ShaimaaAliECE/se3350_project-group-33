@@ -9,7 +9,6 @@ import TutNumComponent from "./TutNumComponent";
 import TutorialArray from "./TutorialArray";
 import TutorialArrayComponent from "./TutorialArrayComponent";
 
-
 function Tutorial () {
 
     const[tutorialText, setTutorialText] = useState("You’ve selected the merge sort algorithm.")
@@ -37,7 +36,7 @@ function Tutorial () {
     //
 
 
-    let animation =  [{layer:"", block:[]}]; 
+    let animation =  [{layer:"", block:[]}];
 
     //Layers
     const[layer1,  setLayer1] = useState({show :true}); //Display Layers
@@ -73,16 +72,15 @@ function Tutorial () {
             case 1:
                 setTutorialText("This algorithm works by dividing the full list of values into two equally sized sublists.");
                 setLayer2(true);
-                setLayer2Content(TutorialArrayComponent(tutorialNumbers,"A","s4",5,"s4",5));
                 setLayer3(false);
                 setLayer4(false);
-                setLayer5(false);           
+                setLayer5(false);  
                 break;
 
             case 2:
                 setTutorialText("Then the left sublist is further divided until it only contains one value.")
                 setLayer2(true);
-                //setLayer2Content(TutorialArrayComponent(tutorialNumbers,"A","s4",5,"s4",5));
+                setLayer2Content(TutorialArrayComponent(tutorialNumbers,"A","s4",5,"s4",5));
 
                 setLayer3(true);
                 //setLayer3Content(TutorialArrayComponent(tutorialNumbers,"A","s2",3,"s2",2));
@@ -99,7 +97,7 @@ function Tutorial () {
                 setLayer2(true);
                 setLayer3(true);
                 setLayer4(true);
-                //setLayer5Content(TutorialArrayComponent("D",1,"s",1));
+                //setLayer5Content(TutorialArrayComponent(tutorialNumbers,"D",1,"s",1));
                 setLayer5(true)
                 break;
             

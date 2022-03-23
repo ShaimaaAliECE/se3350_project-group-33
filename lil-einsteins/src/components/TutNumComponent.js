@@ -7,15 +7,26 @@ import "../App.css";
 import {CSSTransition} from "react-transition-group";
 
 
-export default function TutNumComponent(){
-    const [number, setNumber] = useState(Math.floor(Math.random() * 10) + 1);
-    const [numberContainer, setNumberContainer] =  useState ({show:true});
-    const renderline =  (user, key) => (<li key={key}><b>{key}</b>:{user}</li>); 
-    
+export default function TutNumComponent(props){
+    const [number, setNumber] = useState(props.inumber);
+    const [showNumber, setShowNumber] =  useState ({show:true});
+    const [tempClassname, setTempClassname] = useState (props.itempClassname);
+    const [idCounter, setIdCounter] = useState (props.iidCounter);
     //setNumber(tempNumber)
     return(
- 
-            
+        <CSSTransition
+
+        in={showNumber}
+        timeout={400}
+        
+        classNames = {tempClassname}
+        id = {idCounter}
+        //transitionDelay = {delayTime}
+        unmountOnExit /*when the element disappears, it’s actually going to leave the DOM*/
+        appear
+        enter = {true}
+        >
+           <li>
                 <Container
                     style={{
                         className: "test",
@@ -27,8 +38,8 @@ export default function TutNumComponent(){
                 >
                 {number}
                 </Container>           
-            
-        
+            </li> 
+        </CSSTransition> 
     );
 
 }

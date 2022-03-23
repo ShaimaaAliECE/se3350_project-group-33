@@ -7,33 +7,31 @@ import { CSSTransition } from "react-transition-group";
 import TutorialArrayComponent from "./TutorialArrayComponent";
 
 
-
-
-function TutorialArray() {
+function TutorialArray(props) {
 
   var tempTutorialNumbers = [];
   for(var i = 0; i < 10; i++){
       const tempNumber = Math.floor(Math.random() * 10) + 1
       tempTutorialNumbers.push(tempNumber);
   }
+  const [arrayContent, setArrayContent] = useState(props.arrayContent);
+  const [tutorialNumbers, setTutorialNumbers] = useState(props.tempTutorialNumbers);
 
-  const [tutorialNumbers, setTutorialNumbers] = useState(tempTutorialNumbers);
-
-  const [layer1Content, setLayer1Content] = useState(
-    TutorialArrayComponent(tutorialNumbers,"A","s6", 10,"s7")
-  ); //Visual Content
-  const [layer2Content, setLayer2Content] = useState(
-    TutorialArrayComponent(tutorialNumbers,"A","s3", 5, "s6", 5)
-  ); //Visual Content
-  const [layer3Content, setLayer3Content] = useState(
-    TutorialArrayComponent(tutorialNumbers,"A","s2",3,"s",2,"s5",3,"s",2 )
-  ); //Visual Content
-  const [layer4Content, setLayer4Content] = useState(
-    TutorialArrayComponent(tutorialNumbers,"A","s",2,"s",1,"s",1,"s",1,"s3",2,"s",1,"s",1,"s",1)
-  ); //Visual Content
-  const [layer5Content, setLayer5Content] = useState(
-    TutorialArrayComponent(tutorialNumbers,"A",1,"s", 1, "s8",1,"s",1)
-  ); //Visual Content
+  // const [layer1Content, setLayer1Content] = useState(
+  //   TutorialArrayComponent(tutorialNumbers,"A","s6", 10,"s7")
+  // ); //Visual Content
+  // const [layer2Content, setLayer2Content] = useState(
+  //   TutorialArrayComponent(tutorialNumbers,"A","s3", 5, "s6", 5)
+  // ); //Visual Content
+  // const [layer3Content, setLayer3Content] = useState(
+  //   TutorialArrayComponent(tutorialNumbers,"A","s2",3,"s",2,"s5",3,"s",2 )
+  // ); //Visual Content
+  // const [layer4Content, setLayer4Content] = useState(
+  //   TutorialArrayComponent(tutorialNumbers,"A","s",2,"s",1,"s",1,"s",1,"s3",2,"s",1,"s",1,"s",1)
+  // ); //Visual Content
+  // const [layer5Content, setLayer5Content] = useState(
+  //   TutorialArrayComponent(tutorialNumbers,"A",1,"s", 1, "s8",1,"s",1)
+  // ); //Visual Content
 
   let animation =  [{layer:"", block:[]}] ; 
 
@@ -51,49 +49,30 @@ function TutorialArray() {
                     break;
             
                     case "L1":
-                    setLayer1Content(15);
+                    //setLayer1Content(15);
                     break;
             
                     case "L2":
-                    setLayer2Content();
+                    //setLayer2Content();
                     break;
             
                     case "L3":
-                    setLayer3Content();
+                    //setLayer3Content();
                     break;
             
                     case "L4":
-                    setLayer4Content();
+                    //setLayer4Content();
                     break;
             
                     case "L5":
-                    setLayer5Content();
+                    //setLayer5Content();
                     break;
                 }
             }
       }
 
-    useEffect(() => {
-
-    });
-
-  return (
-    <div className="container">
-      <br></br>
-      <div className="layer1">{layer1Content}</div>
-      <br></br>
-      <div className="layer2">{layer2Content}</div>
-      <br></br>
-      <div className="layer3">{layer3Content}</div>
-      <br></br>
-      <div className="layer4">{layer4Content}</div>
-      <br></br>
-      <div className="layer5">{layer5Content}</div>
-      <br></br>
-    </div>
-  );
+  return (arrayContent)
 }
 
 export default TutorialArray;
-
 

@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Container} from "react-bootstrap";
 import "./Components.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -10,30 +10,15 @@ import TutNumComponent from "./TutNumComponent";
 //Create visual array display as list components
 //First String is Appear or dissapear transistion
 //I typically go (1,"s",1) ; "s" as spacer
-function TutorialArrayComponent(){
+function TutorialArrayComponent(itutorialNumbers,){
     const arrayContent = [];
     const tempClassCheck =  [];
     
     const renderSpace =  (idCounter) => (<li id = {idCounter}> <Container style={{width: 50, height: 50}}></Container></li>); 
-    const renderNumComponent = (numberContnent) =>(
-    <Container
-        style={{
-            width: 50,
-            height: 50,
-            backgroundColor: "powderblue",
-            border: '1px solid'
-        }}
-    >
-    {/* {arguments[0][idCounter]} */}
-    {numberContnent}
-    </Container>  
-    )
-    
-
 
     //CSS variables
     var tempClassname = "numberDisappear";
-    var displayNum =  true;
+    var showNum =  true;
     var idCounter = 0;
     var delayTime =  400;
 
@@ -67,11 +52,16 @@ function TutorialArrayComponent(){
         return true;
     }  
     var sideCheck = 0; //determine if its on the left or right
-    if(totalArrayCounter <= arguments[0].length/2 && totalDisplayCounter > 11){
+    if(totalArrayCounter <= itutorialNumbers.length/2 && totalDisplayCounter > 11){
         sideCheck = 5;
     }
     else{
         sideCheck = 0;
+    }
+
+
+
+    function onlyRight(){
     }
 
     //TEST VARIABLE
@@ -85,9 +75,9 @@ function TutorialArrayComponent(){
         delayTime =  400;
     }
     else{
-        if(arguments[0].includes("D")){
+        if(arguments[1].includes("D")){
             tempClassname = "numberDisappear";
-            displayNum = false;
+            showNum = false;
             delayTime = 400;
         }
     }
@@ -144,23 +134,26 @@ function TutorialArrayComponent(){
                 // }
 
                 arrayContent.push(
-                    <CSSTransition
+                    // <CSSTransition
 
-                    in={displayNum}
-                    timeout={delayTime}
+                    // in={displayNum}
+                    // timeout={delayTime}
                     
-                    classNames = {tempClassname}
-                    id = {idCounter}
-                    //transitionDelay = {delayTime}
-                    unmountOnExit /*when the element disappears, it’s actually going to leave the DOM*/
-                    appear
-                    enter = {true}
-                    >   
-                        <li>
-                        {renderNumComponent(arguments[0][sideCheck])}
-                        {/* {renderNumComponent(tester)} */}
-                        </li>
-                    </CSSTransition>
+                    // classNames = {tempClassname}
+                    // id = {idCounter}
+                    // //transitionDelay = {delayTime}
+                    // unmountOnExit /*when the element disappears, it’s actually going to leave the DOM*/
+                    // appear
+                    // enter = {true}
+                    // >   
+                    //     <li>
+                    //     {renderNumComponent(arguments[0][sideCheck])}
+                    //     {/* {renderNumComponent(tester)} */}
+                    //     </li>
+                    // </CSSTransition>
+
+                    //TutNumComponent(itutorialNumbers[sideCheck],tempClassname,idCounter)
+                    <TutNumComponent inumber = {itutorialNumbers[sideCheck]} itempClassname = {tempClassname} iidCounter = {idCounter} ishowNum = {showNum} />
                 )
 
                 //Delay timeout if found in animation array
