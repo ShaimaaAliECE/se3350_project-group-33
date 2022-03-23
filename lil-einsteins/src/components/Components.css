@@ -56,26 +56,26 @@
 }
 
 
-.numberlist-enter{
+.layer-enter{
   opacity: 0;
 }
-.numberList-enter-active{
+.layer-enter-active{
   opacity: 1;
   transform: translateX(0);
   transition: opacity 400ms, transform 400ms;
 }
 /* This fires as soon as the this.state.showList is false */
-.numberList-exit-done{
+.layer-exit-done{
   opacity: 0;
 }
 /* fires as element leaves the DOM*/
-.numberList-exit-active{
+.layer-exit-active{
   opacity: 0;
   transform: scale(0.9);
   transition: opacity 400ms, transform 400ms;
 }
 
-.numberList-enter-done{
+.layer-enter-done{
   opacity: 1;
   /* transform: scale(0.9); */
   /* transition: opacity 400ms, transform 400ms; */
