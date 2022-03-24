@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Container} from "react-bootstrap";
 import "./Components.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -12,6 +12,12 @@ export default function TutNumComponent(props){
     const [showNumber, setShowNumber] =  useState ({show:true});
     const [tempClassname, setTempClassname] = useState (props.itempClassname);
     const [idCounter, setIdCounter] = useState (props.iidCounter);
+    
+    useEffect(() => {
+        setTempClassname(props.itempClassname);
+        setIdCounter(props.iidCounter);
+    });
+    
     //setNumber(tempNumber)
     return(
         <CSSTransition

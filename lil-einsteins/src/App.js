@@ -12,7 +12,7 @@ function App() {
 			<NavbarComponent />
 			<br></br>
 			<TutorialComponent/>
-			{/* <TutorialArray /> */}
+			{/* <TutorialArray itutorialNumbers = {[1,2,3,4,5,6,7,8,9,10]} ibuildArray =  {["s3", 5, "s6", 5]} itempClassName = {"numberAppear"}/> */}
 			<Footer />
 		</div>
 	);

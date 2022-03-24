@@ -10,9 +10,11 @@ import TutNumComponent from "./TutNumComponent";
 //Create visual array display as list components
 //First String is Appear or dissapear transistion
 //I typically go (1,"s",1) ; "s" as spacer
-function TutorialArrayComponent(itutorialNumbers,){
+function TutorialArrayComponent(props){
     const arrayContent = [];
     const tempClassCheck =  [];
+
+    //const [tutorialNumbers , setTutorialNumbers] = useState(props.itutorialNumbers)
     
     const renderSpace =  (idCounter) => (<li id = {idCounter}> <Container style={{width: 50, height: 50}}></Container></li>); 
 
@@ -52,7 +54,7 @@ function TutorialArrayComponent(itutorialNumbers,){
         return true;
     }  
     var sideCheck = 0; //determine if its on the left or right
-    if(totalArrayCounter <= itutorialNumbers.length/2 && totalDisplayCounter > 11){
+    if(totalArrayCounter <= props.itutorialNumbers.length/2 && totalDisplayCounter > 11){
         sideCheck = 5;
     }
     else{
@@ -153,7 +155,7 @@ function TutorialArrayComponent(itutorialNumbers,){
                     // </CSSTransition>
 
                     //TutNumComponent(itutorialNumbers[sideCheck],tempClassname,idCounter)
-                    <TutNumComponent inumber = {itutorialNumbers[sideCheck]} itempClassname = {tempClassname} iidCounter = {idCounter} ishowNum = {showNum} />
+                    <TutNumComponent inumber = {props.itutorialNumbers[sideCheck]} itempClassname = {tempClassname} iidCounter = {idCounter} ishowNum = {showNum} />
                 )
 
                 //Delay timeout if found in animation array
