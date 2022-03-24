@@ -7,6 +7,8 @@ import Tutorial from "./Tutorial.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import NavbarComponent from "./Components/NavbarComponent";
 
+//required change for push
+
 import {BrowserRouter as Router, Routes, Route, Link} from "react-router-dom";
 
 function RouteTutorial() {
