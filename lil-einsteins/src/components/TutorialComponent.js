@@ -73,6 +73,7 @@ function Tutorial () {
 
             case 1:
                 setTutorialText("This algorithm works by dividing the full list of values into two equally sized sublists.");
+                setLayer1Content(<TutorialArray itutorialNumbers = {tutorialNumbers} ibuildArray =  {["s6", 10,"s7"]} itempClassName = {"numberDisappear"}/>);
                 setLayer2(true);
                 setLayer2Content(<TutorialArray itutorialNumbers = {tutorialNumbers} ibuildArray =  {["s3", 5, "s6", 5]} itempClassName = {"numberAppear"}/>);
                 setLayer3(false);
@@ -83,7 +84,7 @@ function Tutorial () {
             case 2:
                 setTutorialText("Then the left sublist is further divided until it only contains one value.")
                 setLayer2(true);
-                setLayer2Content(<TutorialArray itutorialNumbers = {tutorialNumbers} ibuildArray =  {["s3", 5, "s6", 5]} itempClassName = {"numberDissppear"}/>);
+                setLayer2Content(<TutorialArray itutorialNumbers = {tutorialNumbers} ibuildArray =  {["s3", 5, "s6", 5]} itempClassName = {"numberAppear"}/>);
 
                 setLayer3(true);
                 setLayer3Content(<TutorialArray itutorialNumbers = {tutorialNumbers} ibuildArray =  {["s2",3,"s",2]} itempClassName = {"numberAppear"}/>);
@@ -103,7 +104,7 @@ function Tutorial () {
                 setLayer3(true);
                 setLayer4(true);
                 //setLayer5Content(TutorialArrayComponent(tutorialNumbers,"D",1,"s",1));
-                setLayer5Content(<TutorialArray itutorialNumbers = {tutorialNumbers} ibuildArray =  {[1,"s",1]} itempClassName = {"numberDisppear"}/>)
+                setLayer5Content(<TutorialArray itutorialNumbers = {tutorialNumbers} ibuildArray =  {[1,"s",1]} itempClassName = {"numberDisappear-exit-active"}/>)
                 setLayer5(true)
                 break;
             
@@ -113,7 +114,7 @@ function Tutorial () {
                 setLayer3(true);
                 setLayer4(true);
                 setLayer4Content(<TutorialArray itutorialNumbers = {tutorialNumbers} ibuildArray =  {["s",2,"s",1,"s",1,"s",1]} itempClassName = {"numberAppear"}/>);
-                setLayer5(true);
+                setLayer5(false);
                 break;
 
             case 5:
@@ -125,7 +126,7 @@ function Tutorial () {
 
                 //setLayer3Content(TutorialArrayComponent(tutorialNumbers,"A","s2",3,"s2",2));
                 setLayer4(true);
-                setLayer4Content(<TutorialArray itutorialNumbers = {tutorialNumbers} ibuildArray =  {["s",2,"s",1,"s",1,"s",1]} itempClassName = {"numberDisppear"}/>);
+                setLayer4Content(<TutorialArray itutorialNumbers = {tutorialNumbers} ibuildArray =  {["s",2,"s",1,"s",1,"s",1]} itempClassName = {"numberDisappear"}/>);
                 //setLayer4Content(TutorialArrayComponent("D",2,"s",1,"s3",1,"s",1));
 
                 setLayer5(false);

@@ -128,7 +128,7 @@ function TutorialArray(props) {
       
       for(let i  =  0; i < buildType; i++){
         arrayContent.push(
-          <TutNumComponent inumber = {tutorialNumbers[sideCheck]} itempClassname = {tempClassName} iidCounter = {idCounter } ishowNum = {showNum} />
+          <TutNumComponent inumber = {tutorialNumbers[sideCheck]} itempClassName = {tempClassName} iidCounter = {idCounter} ishowNum = {showNum} />
         );
 
         idCounter++;

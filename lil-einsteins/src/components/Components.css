@@ -101,13 +101,13 @@
 
 
 
-.numberDisppear-exit{
+.numberDisappear-exit{
   opacity: 1;
   transform: scale(0.9);
   transition: width 0.5s 0.5s, height 0.5s 0.5s, opacity 400ms;
 }
 
-.numberDisppear-exit-active{
+.numberDisappear-exit-active{
   opacity: 0;
   transform: scale(0.9);
   transition: width 0.5s 0.5s, height 0.5s 0.5s, opacity 400ms;

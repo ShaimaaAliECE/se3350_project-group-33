@@ -8,16 +8,17 @@ import {CSSTransition} from "react-transition-group";
 
 
 export default function TutNumComponent(props){
+
     const [number, setNumber] = useState(props.inumber);
     const [showNumber, setShowNumber] =  useState ({show:true});
-    const [tempClassname, setTempClassname] = useState (props.itempClassname);
+    const [tempClassName, setTempClassname] = useState (props.itempClassName);
     const [idCounter, setIdCounter] = useState (props.iidCounter);
     
     useEffect(() => {
-        setTempClassname(props.itempClassname);
+        setTempClassname(props.itempClassName);
         setIdCounter(props.iidCounter);
-    });
-    
+    }, [props.iidCounter]);
+
     //setNumber(tempNumber)
     return(
         <CSSTransition
@@ -25,8 +26,8 @@ export default function TutNumComponent(props){
         in={showNumber}
         timeout={400}
         
-        classNames = {tempClassname}
-        id = {idCounter}
+        classNames = {tempClassName}
+        id = {tempClassName}
         //transitionDelay = {delayTime}
         unmountOnExit /*when the element disappears, it’s actually going to leave the DOM*/
         appear
@@ -35,7 +36,7 @@ export default function TutNumComponent(props){
            <li>
                 <Container
                     style={{
-                        className: "test",
+                        className: {tempClassName},
                         width: 50,
                         height: 50,
                         backgroundColor: "powderblue",
@@ -47,5 +48,6 @@ export default function TutNumComponent(props){
             </li> 
         </CSSTransition> 
     );
+
 
 }
