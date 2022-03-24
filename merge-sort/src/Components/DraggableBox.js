@@ -1,5 +1,6 @@
 import { useDrag } from 'react-dnd';
 import { ItemTypes } from './ItemTypes';
+
 const style = {
     backgroundColor: '#CBD5E1',
     cursor: 'move',

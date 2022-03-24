@@ -2,6 +2,12 @@ import { useState, useCallback, memo } from 'react';
 import { ItemTypes } from './ItemTypes';
 import update from 'immutability-helper';
 import { useDrop } from 'react-dnd';
+import dingSound from './sounds/Correct.mp3'
+import hmmSound from './sounds/Wrong.mp3'
+
+var audio1 = new Audio(dingSound);
+var audio2 = new Audio(hmmSound);
+
 const style = {
     height: '6rem',
     width: '6rem',
@@ -24,6 +30,12 @@ export const Container = memo(function Container({ shouldAccept }) {
     }
     const handleDrop = useCallback((index, item) => {
         const { name } = item;
+        if(item.name==`${shouldAccept}`){
+            audio1.play();
+        }
+        else if(item.name!=`${shouldAccept}`){
+            audio2.play();
+        }
         setDroppedBoxNames(update(droppedBoxNames, name ? { $push: [name] } : { $push: [] }));
         setDustbins(update(dustbins, {
             [index]: {
@@ -33,8 +45,7 @@ export const Container = memo(function Container({ shouldAccept }) {
             },
         }));
     }, [droppedBoxNames, dustbins]);
-
-    const onDrop = (item) => handleDrop(0, item)
+     const onDrop = (item) => handleDrop(0, item);
 
     const [{ isOver, canDrop }, drop] = useDrop({
         accept: dustbins[0].accepts,
@@ -58,10 +69,10 @@ export const Container = memo(function Container({ shouldAccept }) {
             <div style={{ overflow: 'hidden', clear: 'both' }}>
                 {dustbins.map(({ accepts, lastDroppedItem }, index) => (
                     <div key={index} ref={drop} className='flex justify-center items-center' role="Dustbin" style={{ ...style, backgroundColor }}>
-                        {
-                            lastDroppedItem && lastDroppedItem?.name == shouldAccept && `${shouldAccept}`}
-                    </div>
+                        {lastDroppedItem && lastDroppedItem?.name == shouldAccept && `${shouldAccept}`} 
+                    </div>      
                 ))}
             </div>
-        </div>);
+        </div>
+        );
 });
