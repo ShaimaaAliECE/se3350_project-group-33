@@ -114,6 +114,12 @@ function TutorialArray(props) {
     sideCheck = 0;
   }
 
+  useEffect(() => {
+    setTempArrayContent(arrayContent);
+    setTempClassName(props.itempClassName);
+    setBuildArray(props.ibuildArray);
+  });
+
   buildArray.forEach(buildArrayDisplay)
   function buildArrayDisplay(buildType){
     if(typeof(buildType) === 'number'){
@@ -122,7 +128,7 @@ function TutorialArray(props) {
       
       for(let i  =  0; i < buildType; i++){
         arrayContent.push(
-          <TutNumComponent inumber = {tutorialNumbers[sideCheck]} itempClassname = {tempClassName} iidCounter = {idCounter} ishowNum = {showNum} />
+          <TutNumComponent inumber = {tutorialNumbers[sideCheck]} itempClassname = {tempClassName} iidCounter = {idCounter } ishowNum = {showNum} />
         );
 
         idCounter++;
@@ -144,11 +150,7 @@ function TutorialArray(props) {
     }
   }
 
-  useEffect(() => {
-    setTempArrayContent(arrayContent);
-    setBuildArray(props.ibuildArray);
-    setTempClassName(props.itempClassName);
-  });
+
 
   return (tempArrayContent);
 }

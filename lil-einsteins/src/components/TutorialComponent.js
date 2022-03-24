@@ -83,7 +83,7 @@ function Tutorial () {
             case 2:
                 setTutorialText("Then the left sublist is further divided until it only contains one value.")
                 setLayer2(true);
-                setLayer2Content(<TutorialArray itutorialNumbers = {tutorialNumbers} ibuildArray =  {["s3", 5, "s6", 5]} itempClassName = {"numberAppear"}/>);
+                setLayer2Content(<TutorialArray itutorialNumbers = {tutorialNumbers} ibuildArray =  {["s3", 5, "s6", 5]} itempClassName = {"numberDissppear"}/>);
 
                 setLayer3(true);
                 setLayer3Content(<TutorialArray itutorialNumbers = {tutorialNumbers} ibuildArray =  {["s2",3,"s",2]} itempClassName = {"numberAppear"}/>);
@@ -124,7 +124,6 @@ function Tutorial () {
                 setLayer3Content(<TutorialArray itutorialNumbers = {tutorialNumbers} ibuildArray =  {["s2",3,"s",2]} itempClassName = {"numberAppear"}/>);
 
                 //setLayer3Content(TutorialArrayComponent(tutorialNumbers,"A","s2",3,"s2",2));
-
                 setLayer4(true);
                 setLayer4Content(<TutorialArray itutorialNumbers = {tutorialNumbers} ibuildArray =  {["s",2,"s",1,"s",1,"s",1]} itempClassName = {"numberDisppear"}/>);
                 //setLayer4Content(TutorialArrayComponent("D",2,"s",1,"s3",1,"s",1));
@@ -178,13 +177,10 @@ function Tutorial () {
     
         return(
             <div className="container">
-
                 <div className="tutorialText"> 
-                    <h5>{step}){tutorialText}</h5>
+                    <h6>{step}){tutorialText}</h6>
                 </div>
-                <br></br>
                 <div className="tutoialDisplay">
-                <br></br>
                 <CSSTransition in={layer1} classNames="layer" timeout = {200}>
                 <div className="layer1"><ul>{layer1Content}</ul></div>
                 </CSSTransition>
