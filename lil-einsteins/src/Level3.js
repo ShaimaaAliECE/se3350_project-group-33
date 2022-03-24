@@ -64,24 +64,8 @@ const Level3 = () => {
 
 			{nextArray >= 7 && (
 				<div className=" ">
-					{showNextElement > 1 && (
-						<img
-							className="cursor-pointer fixed bottom-40 rotate-180 left-8"
-							onClick={() => {
-								setShowNextElement(showNextElement - 1);
-							}}
-							src={nextIcon}
-						/>
-					)}
-					{showNextElement <= 10 && (
-						<img
-							className="fixed bottom-40 cursor-pointer left-24"
-							onClick={() => {
-								setShowNextElement(showNextElement + 1);
-							}}
-							src={nextIcon}
-						/>
-					)}
+					{showNextElement > 1}
+					{showNextElement <= 10}
 				</div>
 			)}
 
