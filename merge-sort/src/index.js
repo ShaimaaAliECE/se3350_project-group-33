@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import Level2 from "./Level2";
+import Level3 from "./Level3";
 import Tutorial from "./Tutorial.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import NavbarComponent from "./Components/NavbarComponent";
@@ -16,6 +17,10 @@ function RouteLevel2() {
 	return <Level2 />;
 }
 
+function RouteLevel3() {
+	return <Level3 />;
+}
+
 ReactDOM.render(
 	<React.StrictMode>
 		<NavbarComponent />
@@ -23,6 +28,7 @@ ReactDOM.render(
 			<Routes className="my-5">
 				<Route path="/tutorial" element={<Tutorial />}></Route>
 				<Route path="/level2" element={<Level2 />}></Route>
+				<Route path="/level3" element={<Level3 />}></Route>
 				<Route path="/" element={<Tutorial />}></Route>
 			</Routes>
 		</Router>
