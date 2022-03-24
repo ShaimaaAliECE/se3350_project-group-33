@@ -17,8 +17,7 @@ export default function Component() {
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse id="basic-navbar-nav">
 					<Nav className="ms-auto">
-						<Nav.Link href="tutorial">Tutorial</Nav.Link>
-						<Nav.Link href="Level2">Merge Sort</Nav.Link>
+						<Nav.Link href="Level1">Merge Sort</Nav.Link>
 						<Nav.Link href="#quick"></Nav.Link>
 						<Nav.Link href="#shell"></Nav.Link>
 					</Nav>

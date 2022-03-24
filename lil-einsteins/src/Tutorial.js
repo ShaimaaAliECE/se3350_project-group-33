@@ -1,10 +1,10 @@
-import react, {useEffect} from "react";
-import React, {useState} from "react";
+import React, {useState, useEffect, useCallback} from "react";
 import "./Components/Components.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {CSSTransition} from "react-transition-group";
-import {Container} from "react-bootstrap";
+import {Button} from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import {useNavigate} from "react-router-dom";
 
 import TutNumComponent from "./Components/TutNumComponent";
 import TutorialArrayComponent from "./Components/TutorialArrayComponent";
@@ -13,7 +13,9 @@ function Tutorial() {
 	const [tutorialText, setTutorialText] = useState(
 		"You’ve selected the merge sort algorithm."
 	);
+
 	const [step, setStep] = useState(0);
+	const [levelAllow, setlevelAllow] = useState(true);
 
 	//Populate tutorial Numbers
 	var tempTutorialNumbers = [];
@@ -76,9 +78,11 @@ function Tutorial() {
 				setLayer4(false);
 				setLayer5(false);
 				setStep(0);
+				setlevelAllow(true);
 				break;
 
 			case 1:
+				setlevelAllow(true);
 				setTutorialText(
 					"This algorithm works by dividing the full list of values into two equally sized sublists."
 				);
@@ -212,6 +216,7 @@ function Tutorial() {
 				break;
 
 			case 8:
+				setlevelAllow(true);
 				setTutorialText(
 					"Once the left and right side are sorted, perform one final combination of the two arrays to form the final sorted array. "
 				);
@@ -228,8 +233,23 @@ function Tutorial() {
 				setLayer5Content(TutorialArrayComponent("D", "s10", 1, "s", 1));
 
 				break;
+
+			case 9:
+				setTutorialText(
+					"Level 1 is done! press the button below to go to level 2, or use the buttons below to review"
+				);
+
+				setlevelAllow(false);
+
+				break;
 		}
 	});
+
+	const navigate = useNavigate();
+	const handleLevelChange = useCallback(
+		() => navigate("/Level2", {replace: true}),
+		[navigate]
+	);
 
 	return (
 		<div className="container">
@@ -295,15 +315,37 @@ function Tutorial() {
 			</div>
 
 			<br></br>
-			<button className="prevBtn" onClick={() => setStep(step - 1)}>
+			<Button
+				variant="outline-dark"
+				className="prevBtn"
+				onClick={() => setStep(step - 1)}
+			>
 				Prev
-			</button>
-			<button className="nextBtn" onClick={() => setStep(step + 1)}>
+			</Button>
+			<Button
+				disabled={!levelAllow}
+				variant="outline-dark"
+				className="nextBtn"
+				onClick={() => setStep(step + 1)}
+			>
 				Next
-			</button>
-			<button className="prevBtn" onClick={() => setStep(0)}>
+			</Button>
+			<Button
+				variant="outline-dark"
+				className="prevBtn"
+				onClick={() => setStep(0)}
+			>
 				Reset
-			</button>
+			</Button>
+
+			<Button
+				disabled={levelAllow}
+				variant="outline-dark"
+				className="prevBtn"
+				onClick={() => handleLevelChange()}
+			>
+				Go to Level 2
+			</Button>
 		</div>
 	);
 }

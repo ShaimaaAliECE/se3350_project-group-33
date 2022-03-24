@@ -21,7 +21,7 @@ ReactDOM.render(
 		<NavbarComponent />
 		<Router>
 			<Routes className="my-5">
-				<Route path="/tutorial" element={<Tutorial />}></Route>
+				<Route path="/level1" element={<Tutorial />}></Route>
 				<Route path="/level2" element={<Level2 />}></Route>
 				<Route path="/" element={<Tutorial />}></Route>
 			</Routes>
