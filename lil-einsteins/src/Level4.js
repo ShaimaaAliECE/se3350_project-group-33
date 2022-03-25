@@ -79,8 +79,8 @@ const Level4 = () => {
 				</div>
 			)}
 
-			<div className="w-full mb-80 flex items-center flex-col">
-				<a href="/about">
+			<div className="w-full mb-5 flex items-center flex-col">
+				<a href="/Level4">
 					<div className=" p-4 rounded-xl mt-2 bg-cyan-600 text-white">
 						Generate New Random Array
 					</div>
@@ -98,20 +98,61 @@ const Level4 = () => {
 				<p className=" w-max  p-2 rounded-xl bg-blue-200 m-2">
 					Total elements = 20
 				</p>
-
+            </div>
+            
+            <div className="flex justify-center" style={{position:'absolute', width:'1000px', height:'54px', left:'11%'}}>
 				{/* Displaying Initial Array */}
-				<div className="flex border-black border-b-4 justify-center mb-4 max-w-screen">
+				<div className="flex border-black border-b-4 justify-center">
 					{numbers.map((number) => {
 						return (
 							<div
 								key={number}
-								className="p-8 bg-slate-300 border-r-2 border-white"
+								className="bg-slate-300 border-r-2 border-white" style={{width:'50px', height:'50px'}}
 							>
 								{number}
 							</div>
 						);
 					})}
 				</div>
+            </div>
+
+            <div className="w-full mt-40 flex items-center flex-col">
+            {/* Middle Layer */}
+				{2 <= nextArray && (
+					<DndProvider backend={HTML5Backend}>
+						<div className="flex flex-col justify-center">
+							<div className="flex  justify-center">
+								<p className=" w-max  p-2 rounded-xl bg-blue-200 m-2">
+									Place the numbers in their respective boxes
+								</p>
+							</div>
+
+                            <div className="flex justify-center flex-col mt-40" style={{position:'absolute', width:'1000px', height:'54px', left:'11%'}}>
+                                <div className="flex justify-center w-full gap-8 mb-4">
+                                    <div className="flex border-b-4 border-black">
+                                        {numbers.map((number, index) => {
+                                            return index < half ? (
+                                                <Container shouldAccept={number} />
+                                            ) : (
+                                                ""
+                                            );
+                                        })}
+                                    </div>
+
+                                    <div className="flex border-b-4 border-black">
+                                        {numbers.map((number, index) => {
+                                            return index >= half ? (
+                                                <Container shouldAccept={number} />
+                                            ) : (
+                                                ""
+                                            );
+                                        })}
+                                    </div>
+                                </div>
+							</div>
+						</div>
+					</DndProvider>
+				)}
             </div>
         </div>
     );
