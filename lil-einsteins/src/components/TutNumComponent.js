@@ -17,7 +17,8 @@ export default function TutNumComponent(props){
     useEffect(() => {
         setTempClassname(props.itempClassName);
         setIdCounter(props.iidCounter);
-    }, [props.iidCounter]);
+        setNumber(props.inumber)
+    },[props.itempClassName,props.iidCounter,props.inumber]);
 
     //setNumber(tempNumber)
     return(

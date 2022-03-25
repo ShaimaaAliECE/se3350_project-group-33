@@ -118,7 +118,8 @@ function TutorialArray(props) {
     setTempArrayContent(arrayContent);
     setTempClassName(props.itempClassName);
     setBuildArray(props.ibuildArray);
-  });
+    setTutorialNumbers(props.itutorialNumbers);
+  },[props.itutorialNumbers,props.itempClassName,arrayContent]);
 
   buildArray.forEach(buildArrayDisplay)
   function buildArrayDisplay(buildType){

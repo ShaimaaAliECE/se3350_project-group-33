@@ -26,17 +26,58 @@ function Tutorial () {
     
 
         //TEST VARIABLE
-        var tester = "";
+        //var tester = mergeSort(tutorialNumbers);
+
         var tester1 = "";
         //
     for(var i = 0; i < tempTutorialNumbers.length; i++){
         tester1 +=  "," + tutorialNumbers[i].toString();
     }
-    tester = tempTutorialNumbers.length
     //
 
 
-    let animation =  [{layer:"", block:[]}];
+    var sortedLeft = [];
+    var sortedRight = [];
+    const[sortedLeft, setSortedLeft] = useState([]);
+    const[sortedRight, setSortedRight] = useState([]);
+
+    function mergeSort(array){
+
+        if (array.length === 1) {
+            return array                            // return once we hit an array with a single item
+         }
+    
+         const middle = Math.floor(array.length / 2) // get the middle item of the array rounded down
+         const left = array.slice(0, middle)         // items on the left side
+         setSortedLeft(left);
+         const right = array.slice(middle)   
+         setSortedLeft(right);
+
+         return merge(
+            mergeSort(left),
+            mergeSort(right)
+         )
+    
+    }
+    
+    function merge (left, right) {
+        let result = []
+        let leftIndex = 0
+        let rightIndex = 0
+        while (leftIndex < left.length && rightIndex < right.length) {
+           if (left[leftIndex] < right[rightIndex]) {
+           result.push(left[leftIndex])
+           leftIndex++   
+           } else {
+           result.push(right[rightIndex])
+           rightIndex++      
+        }
+     }
+     return result.concat(left.slice(leftIndex)).concat(right.slice(rightIndex))
+     }
+
+    const[sortedArray, setSortedArray] = useState(mergeSort(tutorialNumbers));
+    const[tutArray, setTutArrayArray] = useState(tempTutorialNumbers);
 
     //Layers
     const[layer1,  setLayer1] = useState({show :true}); //Display Layers
@@ -64,6 +105,7 @@ function Tutorial () {
         switch(step){
             default:
                 setTutorialText("You’ve selected the merge sort algorithm.");
+                setTutorialNumbers(tutArray);
                 setLayer2(false);
                 setLayer3(false);
                 setLayer4(false);
@@ -73,6 +115,7 @@ function Tutorial () {
 
             case 1:
                 setTutorialText("This algorithm works by dividing the full list of values into two equally sized sublists.");
+                setTutorialNumbers(tutArray);
                 setLayer1Content(<TutorialArray itutorialNumbers = {tutorialNumbers} ibuildArray =  {["s6", 10,"s7"]} itempClassName = {"numberDisappear"}/>);
                 setLayer2(true);
                 setLayer2Content(<TutorialArray itutorialNumbers = {tutorialNumbers} ibuildArray =  {["s3", 5, "s6", 5]} itempClassName = {"numberAppear"}/>);
@@ -83,6 +126,7 @@ function Tutorial () {
 
             case 2:
                 setTutorialText("Then the left sublist is further divided until it only contains one value.")
+                setTutorialNumbers(tutArray);
                 setLayer2(true);
                 setLayer2Content(<TutorialArray itutorialNumbers = {tutorialNumbers} ibuildArray =  {["s3", 5, "s6", 5]} itempClassName = {"numberAppear"}/>);
 
@@ -130,11 +174,13 @@ function Tutorial () {
                 //setLayer4Content(TutorialArrayComponent("D",2,"s",1,"s3",1,"s",1));
 
                 setLayer5(false);
+
                 break;
 
             case 6:
                 setTutorialText("This process is repeated until the new array contains all the values from the two smaller ones.")
                 setLayer2(true);
+                setLayer2Content(<TutorialArray itutorialNumbers = {tutorialNumbers} ibuildArray =  {["s3", 5, "s6", 5]} itempClassName = {"numberAppear"}/>);
                 setLayer3(true);
                 //setLayer3Content(TutorialArrayComponent("D","s2",3,"s2",2));
                 setLayer4(false);
@@ -174,12 +220,12 @@ function Tutorial () {
                 break;
             
         }
-    });
+    },[step,tutorialNumbers,tutArray,sortedArray]);
     
         return(
             <div className="container">
                 <div className="tutorialText"> 
-                    <h6>{step}){tutorialText}</h6>
+                    <h6>{step}){sortedArray}){tutArray}){tutorialText}</h6>
                 </div>
                 <div className="tutoialDisplay">
                 <CSSTransition in={layer1} classNames="layer" timeout = {200}>
