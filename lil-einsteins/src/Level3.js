@@ -9,7 +9,7 @@ import randomizeNewArray from "./Components/GenerateNumbers";
 import {ItemTypes} from "./Components/ItemTypes";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const numbers = randomizeNewArray();
+const numbers = randomizeNewArray(10);
 
 const Level3 = () => {
 	const boxDetails = [

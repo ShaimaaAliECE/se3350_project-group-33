@@ -1,7 +1,7 @@
 const pro_IntDigit = () => Math.floor(Math.random() * 50) + 1;
-const randomizeNewArray = () => {
+const randomizeNewArray = (number) => {
 	let temp = [];
-	for (let i = 0; i < 20; i++) {
+	for (let i = 0; i < number; i++) {
 		let item = pro_IntDigit();
 		temp.push(item);
 	}

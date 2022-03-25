@@ -9,7 +9,7 @@ import randomizeNewArray from "./Components/GenerateNumbers";
 import {ItemTypes} from "./Components/ItemTypes";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const numbers = randomizeNewArray();
+const numbers = randomizeNewArray(20);
 
 const Level4 = () => {
     const boxDetails = [
@@ -42,6 +42,13 @@ const Level4 = () => {
 		return droppedBoxNames.indexOf(boxName) > -1;
 	}
 
+    const half = numbers.length / 2;
+	const firstHalf = half / 2;
+
+	const [nextArray, setNextArray] = useState(1);
+
+	const [showNextElement, setShowNextElement] = useState(0);
+
     return (
 		<div>
 			<DndProvider backend={HTML5Backend}>
@@ -56,6 +63,56 @@ const Level4 = () => {
 					))}
 				</div>
 			</DndProvider>
+
+            <img
+				onClick={() => {
+					setNextArray(nextArray + 1);
+				}}
+				src={nextIcon}
+				className="fixed top-1/3 rotate-90 cursor-pointer left-16"
+			/>
+
+			{nextArray >= 7 && (
+				<div className=" ">
+					{showNextElement > 1}
+					{showNextElement <= 10}
+				</div>
+			)}
+
+			<div className="w-full mb-80 flex items-center flex-col">
+				<a href="/about">
+					<div className=" p-4 rounded-xl mt-2 bg-cyan-600 text-white">
+						Generate New Random Array
+					</div>
+				</a>
+
+				<p className=" w-max text-white p-2 rounded-xl bg-slate-500 m-2">
+					Read this first:
+				</p>
+				<p className="w-max flex items-center bg-blue-200 rounded-xl p-2 m-2">
+					{" "}
+					<img src={infoIcon} width="30px" height="10px" alt="" /> You can drag
+					elements from bottom black box of the screen
+				</p>
+				<p className=" w-max  p-2 rounded-xl bg-blue-200 m-2">Initial Array:</p>
+				<p className=" w-max  p-2 rounded-xl bg-blue-200 m-2">
+					Total elements = 20
+				</p>
+
+				{/* Displaying Initial Array */}
+				<div className="flex border-black border-b-4 justify-center mb-4 max-w-screen">
+					{numbers.map((number) => {
+						return (
+							<div
+								key={number}
+								className="p-8 bg-slate-300 border-r-2 border-white"
+							>
+								{number}
+							</div>
+						);
+					})}
+				</div>
+            </div>
         </div>
     );
 };

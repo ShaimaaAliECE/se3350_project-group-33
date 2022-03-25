@@ -4,8 +4,8 @@ import {ItemTypes} from "./ItemTypes";
 const style = {
 	backgroundColor: "#CBD5E1",
 	cursor: "move",
-	width: "80px",
-	height: "80px"
+	width: "50px",
+	height: "50px"
 };
 
 export const Box = function Box({name}) {
