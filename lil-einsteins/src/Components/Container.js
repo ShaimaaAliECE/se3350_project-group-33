@@ -1,10 +1,9 @@
-
-import { useState, useCallback, memo } from 'react';
-import { ItemTypes } from './ItemTypes';
-import update from 'immutability-helper';
-import { useDrop } from 'react-dnd';
-import dingSound from './sounds/Correct.mp3'
-import hmmSound from './sounds/Wrong.mp3'
+import {useState, useCallback, memo} from "react";
+import {ItemTypes} from "./ItemTypes";
+import update from "immutability-helper";
+import {useDrop} from "react-dnd";
+import dingSound from "./sounds/Correct.mp3";
+import hmmSound from "./sounds/Wrong.mp3";
 
 var audio1 = new Audio(dingSound);
 var audio2 = new Audio(hmmSound);
@@ -24,8 +23,8 @@ export const Container = memo(function Container({shouldAccept}) {
 		{accepts: [ItemTypes.BOX], lastDroppedItem: null}
 	]);
 
-
 	const [droppedBoxNames, setDroppedBoxNames] = useState([]);
+	const [solved, setSolved] = useState(false);
 
 	function isDropped(boxName) {
 		return droppedBoxNames.indexOf(boxName) > -1;
@@ -35,8 +34,10 @@ export const Container = memo(function Container({shouldAccept}) {
 			const {name} = item;
 			if (item.name == `${shouldAccept}`) {
 				audio1.play();
+				setSolved(true);
 			} else if (item.name != `${shouldAccept}`) {
 				audio2.play();
+				setSolved(false);
 			}
 			setDroppedBoxNames(
 				update(droppedBoxNames, name ? {$push: [name]} : {$push: []})

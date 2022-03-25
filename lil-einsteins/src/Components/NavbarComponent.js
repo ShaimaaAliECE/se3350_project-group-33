@@ -1,8 +1,9 @@
-import React from "react";
+import {React} from "react";
 import {Navbar, Nav, Container} from "react-bootstrap";
 import "./Components.css";
+import {useLocation} from "react-router-dom";
 
-export default function Component() {
+export default function Component(props) {
 	return (
 		<Navbar className="color-nav m" expand="lg">
 			<Container>
@@ -22,13 +23,7 @@ export default function Component() {
 						<Nav.Link href="#quick"></Nav.Link>
 						<Nav.Link href="#shell"></Nav.Link>
 					</Nav>
-					<Navbar.Brand>
-						{
-							window.location.href.split("/")[
-								window.location.href.split("/").length - 1
-							]
-						}
-					</Navbar.Brand>
+					<Navbar.Brand>{props.level}</Navbar.Brand>
 				</Navbar.Collapse>
 			</Container>
 		</Navbar>

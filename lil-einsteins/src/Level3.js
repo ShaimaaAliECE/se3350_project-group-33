@@ -8,6 +8,7 @@ import nextIcon from "./images/icons8-next.png";
 import randomizeNewArray from "./Components/GenerateNumbers";
 import {ItemTypes} from "./Components/ItemTypes";
 import "bootstrap/dist/css/bootstrap.min.css";
+import NavbarComponent from "./Components/NavbarComponent";
 
 const numbers = randomizeNewArray();
 
@@ -41,6 +42,7 @@ const Level3 = () => {
 
 	return (
 		<div>
+			<NavbarComponent level="Level3" />
 			<DndProvider backend={HTML5Backend}>
 				<div className="fixed bottom-0 bg-red-600 py-6  left-0 right-0 flex gap-1 justify-center">
 					{boxes.map(({name, type}, index) => (
@@ -209,7 +211,6 @@ const Level3 = () => {
 							</div>
 
 							<div className="flex items-center  gap-2 flex-col">
-
 								<div className="flex gap-4">
 									<Container shouldAccept={numbers[7]} />
 									<div className="flex border-b-4 border-black">
@@ -224,8 +225,7 @@ const Level3 = () => {
 
 				{4 <= nextArray && (
 					<div className="flex flex-col items-center gap-3">
-						<div className="flex gap-2">
-						</div>
+						<div className="flex gap-2"></div>
 					</div>
 				)}
 

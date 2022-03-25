@@ -5,6 +5,7 @@ import {CSSTransition} from "react-transition-group";
 import {Button} from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {useNavigate} from "react-router-dom";
+import NavbarComponent from "./Components/NavbarComponent";
 
 import TutNumComponent from "./Components/TutNumComponent";
 import TutorialArrayComponent from "./Components/TutorialArrayComponent";
@@ -252,100 +253,103 @@ function Tutorial() {
 	);
 
 	return (
-		<div className="container">
-			<div className="tutorialText">
-				<h5>{tutorialText}</h5>
+		<div>
+			<NavbarComponent level="Level1" />
+			<div className="container">
+				<div className="tutorialText">
+					<h5>{tutorialText}</h5>
+				</div>
+				<br></br>
+				<div className="tutoialDisplay">
+					<div className="layer1">
+						<ul className="numberList">{layer1Content}</ul>
+					</div>
+					<br></br>
+
+					<div className="layer2">
+						<CSSTransition
+							in={layer2}
+							//timeout={400}
+							classNames="numberList"
+							unmountOnExit /*when the element disappears, it’s actually going to leave the DOM*/
+						>
+							<ul>{layer2Content}</ul>
+						</CSSTransition>
+					</div>
+					<br></br>
+
+					<div className="layer3">
+						<CSSTransition
+							in={layer3}
+							//timeout={layer3Timeout}
+							classNames="numberList"
+							unmountOnExit /*when the element disappears, it’s actually going to leave the DOM*/
+							//appear
+						>
+							<ul>{layer3Content}</ul>
+						</CSSTransition>
+					</div>
+					<br></br>
+
+					<div className="layer4">
+						<CSSTransition
+							in={layer4}
+							//timeout={layer4Timeout}
+							classNames="numberList"
+							unmountOnExit /*when the element disappears, it’s actually going to leave the DOM*/
+							//appear
+						>
+							<ul>{layer4Content}</ul>
+						</CSSTransition>
+					</div>
+					<br></br>
+
+					<div className="layer5">
+						<CSSTransition
+							in={layer5}
+							//timeout={layer5Timeout}
+							classNames="numberList"
+							unmountOnExit /*when the element disappears, it’s actually going to leave the DOM*/
+							//appear
+						>
+							<ul>{layer5Content}</ul>
+						</CSSTransition>
+					</div>
+				</div>
+
+				<br></br>
+				<Button
+					variant="outline-dark"
+					className="prevBtn"
+					onClick={() => setStep(step - 1)}
+				>
+					Prev
+				</Button>
+				<Button
+					disabled={!levelAllow}
+					variant="outline-dark"
+					className="nextBtn"
+					onClick={() => setStep(step + 1)}
+				>
+					Next
+				</Button>
+				<Button
+					variant="outline-dark"
+					className="prevBtn"
+					onClick={() => setStep(0)}
+				>
+					Reset
+				</Button>
+
+				<Button
+					disabled={levelAllow}
+					variant="outline-dark"
+					className="prevBtn"
+					onClick={() => handleLevelChange()}
+				>
+					Go to Level 2
+				</Button>
 			</div>
-			<br></br>
-			<div className="tutoialDisplay">
-				<div className="layer1">
-					<ul className="numberList">{layer1Content}</ul>
-				</div>
-				<br></br>
-
-				<div className="layer2">
-					<CSSTransition
-						in={layer2}
-						//timeout={400}
-						classNames="numberList"
-						unmountOnExit /*when the element disappears, it’s actually going to leave the DOM*/
-					>
-						<ul>{layer2Content}</ul>
-					</CSSTransition>
-				</div>
-				<br></br>
-
-				<div className="layer3">
-					<CSSTransition
-						in={layer3}
-						//timeout={layer3Timeout}
-						classNames="numberList"
-						unmountOnExit /*when the element disappears, it’s actually going to leave the DOM*/
-						//appear
-					>
-						<ul>{layer3Content}</ul>
-					</CSSTransition>
-				</div>
-				<br></br>
-
-				<div className="layer4">
-					<CSSTransition
-						in={layer4}
-						//timeout={layer4Timeout}
-						classNames="numberList"
-						unmountOnExit /*when the element disappears, it’s actually going to leave the DOM*/
-						//appear
-					>
-						<ul>{layer4Content}</ul>
-					</CSSTransition>
-				</div>
-				<br></br>
-
-				<div className="layer5">
-					<CSSTransition
-						in={layer5}
-						//timeout={layer5Timeout}
-						classNames="numberList"
-						unmountOnExit /*when the element disappears, it’s actually going to leave the DOM*/
-						//appear
-					>
-						<ul>{layer5Content}</ul>
-					</CSSTransition>
-				</div>
-			</div>
-
-			<br></br>
-			<Button
-				variant="outline-dark"
-				className="prevBtn"
-				onClick={() => setStep(step - 1)}
-			>
-				Prev
-			</Button>
-			<Button
-				disabled={!levelAllow}
-				variant="outline-dark"
-				className="nextBtn"
-				onClick={() => setStep(step + 1)}
-			>
-				Next
-			</Button>
-			<Button
-				variant="outline-dark"
-				className="prevBtn"
-				onClick={() => setStep(0)}
-			>
-				Reset
-			</Button>
-
-			<Button
-				disabled={levelAllow}
-				variant="outline-dark"
-				className="prevBtn"
-				onClick={() => handleLevelChange()}
-			>
-				Go to Level 2
-			</Button>
 		</div>
 	);
 }

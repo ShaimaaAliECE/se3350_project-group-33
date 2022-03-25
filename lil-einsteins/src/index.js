@@ -13,10 +13,10 @@ import {BrowserRouter as Router, Routes, Route, Link} from "react-router-dom";
 
 ReactDOM.render(
 	<React.StrictMode>
-		<NavbarComponent />
+		{/* <NavbarComponent /> */}
 		<Router>
 			<Routes className="my-5">
-				<Route path="/tutorial" element={<Tutorial />}></Route>
+				<Route path="/Level1" element={<Tutorial />}></Route>
 				<Route path="/level2" element={<Level2 />}></Route>
 				<Route path="/level3" element={<Level3 />}></Route>
 				<Route path="/" element={<Tutorial />}></Route>
