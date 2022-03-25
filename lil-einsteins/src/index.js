@@ -11,18 +11,6 @@ import NavbarComponent from "./Components/NavbarComponent";
 
 import {BrowserRouter as Router, Routes, Route, Link} from "react-router-dom";
 
-function RouteTutorial() {
-	return <Tutorial />;
-}
-
-function RouteLevel2() {
-	return <Level2 />;
-}
-
-function RouteLevel3() {
-	return <Level3 />;
-}
-
 ReactDOM.render(
 	<React.StrictMode>
 		<NavbarComponent />
