@@ -11,6 +11,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 const numbers = randomizeNewArray(20);
 
+//loads values into the boxes
 const Level4 = () => {
     const boxDetails = [
 		{name: `${numbers[5]}`, type: ItemTypes.BOX},
@@ -42,8 +43,10 @@ const Level4 = () => {
 		return droppedBoxNames.indexOf(boxName) > -1;
 	}
 
+    //halfs of the array
     const half = numbers.length / 2;
 	const firstHalf = half / 2;
+    const secondHalf = firstHalf / 2;
 
 	const [nextArray, setNextArray] = useState(1);
 
@@ -52,8 +55,9 @@ const Level4 = () => {
     return (
 		<div>
 			<DndProvider backend={HTML5Backend}>
-				<div className="fixed bottom-0 bg-red-600 py-6  left-0 right-0 flex gap-1 justify-center">
+				<div className="z-10 fixed bottom-0 bg-red-600 py-6  left-0 right-0 flex gap-1 justify-center">
 					{boxes.map(({name, type}, index) => (
+                        //loading the boxes onto the screen
 						<Box
 							name={name}
 							type={type}
@@ -100,7 +104,7 @@ const Level4 = () => {
 				</p>
             </div>
             
-            <div className="flex justify-center" style={{position:'absolute', width:'1000px', height:'54px', left:'11%'}}>
+            <div className="flex justify-center mb-80" style={{position:'absolute', width:'1000px', height:'54px', left:'11%'}}>
 				{/* Displaying Initial Array */}
 				<div className="flex border-black border-b-4 justify-center">
 					{numbers.map((number) => {
@@ -116,19 +120,19 @@ const Level4 = () => {
 				</div>
             </div>
 
-            <div className="w-full mt-40 flex items-center flex-col">
+            <div className="w-full mb-80 flex items-center flex-col">
             {/* Middle Layer */}
 				{2 <= nextArray && (
 					<DndProvider backend={HTML5Backend}>
-						<div className="flex flex-col justify-center">
+						<div className="flex flex-col justify-center mt-20">
 							<div className="flex  justify-center">
-								<p className=" w-max  p-2 rounded-xl bg-blue-200 m-2">
+								<p className=" w-max p-2 rounded-xl bg-blue-200 m-2">
 									Place the numbers in their respective boxes
 								</p>
 							</div>
 
                             <div className="flex justify-center flex-col mt-40" style={{position:'absolute', width:'1000px', height:'54px', left:'11%'}}>
-                                <div className="flex justify-center w-full gap-8 mb-4">
+                                <div className="flex justify-center w-full gap-8">
                                     <div className="flex border-b-4 border-black">
                                         {numbers.map((number, index) => {
                                             return index < half ? (
@@ -151,6 +155,134 @@ const Level4 = () => {
                                 </div>
 							</div>
 						</div>
+					</DndProvider>
+				)}
+
+                {/* Third Layer */}
+
+				{3 <= nextArray && (
+					<DndProvider backend={HTML5Backend}>
+                    <div className="flex justify-center flex-col mt-60" style={{position:'absolute', width:'1000px', height:'54px', left:'11%'}}>
+						<div className="flex justify-center w-full gap-8">
+							<div className="flex border-b-4 border-black">
+								{numbers.map((number, index) => {
+									return index < firstHalf ? (
+										<Container shouldAccept={number} />
+									) : (
+										""
+									);
+								})}
+							</div>
+
+							<div className="flex border-b-4 border-black">
+								{numbers.map((number, index) => {
+									return index >= firstHalf && index < half ? (
+										<Container shouldAccept={number} />
+									) : (
+										""
+									);
+								})}
+							</div>
+							<div className="flex border-b-4 border-black">
+								{numbers.map((number, index) => {
+									return index >= half && index <= 14 ? (
+										<Container shouldAccept={number} />
+									) : (
+										""
+									);
+								})}
+							</div>
+							<div className="flex border-b-4 border-black">
+								{numbers.map((number, index) => {
+									return index >= 15 ? <Container shouldAccept={number} /> : "";
+								})}
+							</div>
+						</div>
+                        </div>
+					</DndProvider>
+				)}  
+                
+                {/* Fourth Layer */}
+
+                {4 <= nextArray && (
+					<DndProvider backend={HTML5Backend}>
+                    <div className="flex justify-center flex-col mt-80 mb-80" style={{position:'absolute', width:'1000px', height:'54px', left:'11%'}}>
+						<div className="flex justify-center w-full gap-6">
+                            <div className="flex border-b-4 border-black">
+								{numbers.map((number, index) => {
+									return index < secondHalf ? (
+										<Container shouldAccept={number} />
+									) : (
+										""
+									);
+								})}
+							</div>
+
+							<div className="flex border-b-4 border-black">
+								{numbers.map((number, index) => {
+									return index >= secondHalf && index < firstHalf ? (
+										<Container shouldAccept={number} />
+									) : (
+										""
+									);
+								})}
+							</div>
+
+							<div className="flex border-b-4 border-black">
+								{numbers.map((number, index) => {
+									return index >= firstHalf && index <= 7 ? (
+										<Container shouldAccept={number} />
+									) : (
+										""
+									);
+								})}
+							</div>
+							<div className="flex border-b-4 border-black">
+								{numbers.map((number, index) => {
+									return index >= 8 && index < half ? (
+                                        <Container shouldAccept={number} />
+                                    ) : (
+									    ""
+									);
+								})}
+							</div>
+
+                            <div className="flex border-b-4 border-black">
+								{numbers.map((number, index) => {
+									return index >= half && index <= 12 ? (
+										<Container shouldAccept={number} />
+									) : (
+										""
+									);
+								})}
+							</div>
+
+							<div className="flex border-b-4 border-black">
+								{numbers.map((number, index) => {
+									return index >= 13 && index <= 14 ? (
+										<Container shouldAccept={number} />
+									) : (
+										""
+									);
+								})}
+							</div>
+
+							<div className="flex border-b-4 border-black">
+								{numbers.map((number, index) => {
+									return index >= 15 && index <= 17 ? (
+										<Container shouldAccept={number} />
+									) : (
+										""
+									);
+								})}
+							</div>
+							<div className="flex border-b-4 border-black">
+								{numbers.map((number, index) => {
+									return index >= 18 ? <Container shouldAccept={number} /> : "";
+								})}
+							</div>
+						</div>
+                    </div>
 					</DndProvider>
 				)}
             </div>
