@@ -13,7 +13,8 @@ export default function Component() {
 					height="20"
 					className="me-2"
 				/>
-				<Navbar.Brand href="tutorial">Lil' Einsteins</Navbar.Brand>
+				<Navbar.Brand href="Level1">Lil' Einsteins</Navbar.Brand>
+
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse id="basic-navbar-nav">
 					<Nav className="ms-auto">
@@ -21,6 +22,13 @@ export default function Component() {
 						<Nav.Link href="#quick"></Nav.Link>
 						<Nav.Link href="#shell"></Nav.Link>
 					</Nav>
+					<Navbar.Brand>
+						{
+							window.location.href.split("/")[
+								window.location.href.split("/").length - 1
+							]
+						}
+					</Navbar.Brand>
 				</Navbar.Collapse>
 			</Container>
 		</Navbar>
