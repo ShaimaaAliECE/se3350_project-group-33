@@ -73,10 +73,10 @@ const Level4 = () => {
 					setNextArray(nextArray + 1);
 				}}
 				src={nextIcon}
-				className="fixed top-1/3 rotate-90 cursor-pointer left-16"
+				className="z-10 fixed top-1/3 rotate-90 cursor-pointer left-16"
 			/>
 
-			{nextArray >= 7 && (
+			{nextArray >= 14 && (
 				<div className=" ">
 					{showNextElement > 1}
 					{showNextElement <= 10}
@@ -104,7 +104,7 @@ const Level4 = () => {
 				</p>
             </div>
             
-            <div className="flex justify-center mb-80" style={{position:'absolute', width:'1000px', height:'54px', left:'11%'}}>
+            <div className="flex justify-center mb-40" style={{position:'absolute', width:'1000px', height:'54px', left:'11%'}}>
 				{/* Displaying Initial Array */}
 				<div className="flex border-black border-b-4 justify-center">
 					{numbers.map((number) => {
@@ -120,7 +120,7 @@ const Level4 = () => {
 				</div>
             </div>
 
-            <div className="w-full mb-80 flex items-center flex-col">
+            <div className="w-full mb-40 flex items-center flex-col">
             {/* Middle Layer */}
 				{2 <= nextArray && (
 					<DndProvider backend={HTML5Backend}>
@@ -159,7 +159,7 @@ const Level4 = () => {
 				)}
 
 
-				<div className="w-full mb-80 flex items-center flex-col">
+				<div className="w-full mb-60 flex items-center flex-col">
                 {/* Third Layer */}
 				{3 <= nextArray && (
 					<DndProvider backend={HTML5Backend}>
@@ -204,7 +204,7 @@ const Level4 = () => {
 				)}  
 				</div>
                 
-				<div className="w-full mb-40 flex items-center flex-col">
+				<div className="w-full mb-20 flex items-center flex-col">
                 {/* Fourth Layer */}
                 {4 <= nextArray && (
 					<DndProvider backend={HTML5Backend}>
@@ -289,7 +289,7 @@ const Level4 = () => {
 				)}
 				</div>
 
-				<div className="w-full mb-40 flex items-center flex-col">
+				<div className="w-full flex items-center flex-col">
                 {/* Fifth Layer */}
 				{5 <= nextArray && (
 					<DndProvider backend={HTML5Backend}>
@@ -368,6 +368,493 @@ const Level4 = () => {
 				)}
 				</div>
 
+				<div className="flex justify-center mb-2" style={{position:'relative', width:'1000px', height:'54px'}}>
+				{6 <= nextArray && (
+					<div className="flex gap-1">
+						{numbers.map((number) => {
+							return (
+								<div className="p-4 border-r-0 border-b-4 border-black bg-slate-300" style={{width:'50px', height:'50px'}}>
+									{number}
+								</div>
+							);
+						})}
+					</div>
+
+					
+				)}
+				</div>
+
+				<div className="w-full flex items-center flex-col">
+				{6 <= nextArray && (
+					<div className="flex justify-center items-center flex-col">
+						<div className=" bg-blue-200 p-2 rounded-xl mb-4">
+							We have successfully made the array atomic i.e. seperated each
+							element out
+						</div>
+
+						<div className=" bg-blue-200 p-2 rounded-xl mb-2">
+							We'll start merging them now :)
+						</div>
+					</div>
+				)}
+				</div>
+
+
+				<DndProvider backend={HTML5Backend}>
+					{7 <= nextArray && (
+						<div className="flex justify-center gap-2">
+							<div className="flex flex-col gap-2 justify-center items-center">
+								<div className="flex">
+									<div className="flex items-center flex-col">
+										<Container shouldAccept={numbers[1]} />
+										<span
+											className={
+												showNextElement == 1 ||
+												showNextElement == 2 ||
+												showNextElement == 3
+													? " text-2xl opacity-100"
+													: " text-2xl opacity-0"
+											}
+										>
+											&uarr;
+										</span>
+									</div>
+
+									<div className="flex items-center flex-col">
+										<Container shouldAccept={numbers[0]} />
+										<span
+											className={
+												showNextElement == 3
+													? " text-2xl opacity-100"
+													: " text-2xl opacity-0"
+											}
+										>
+											&uarr;
+										</span>
+									</div>
+								</div>
+							</div>
+
+							<div className="flex flex-col gap-2 justify-center items-center">
+								<div className="flex">
+									<div className="flex items-center flex-col">
+										<Container shouldAccept={numbers[3]} />
+										<span
+											className={
+												showNextElement == 1
+													? " text-2xl opacity-100"
+													: " text-2xl opacity-0"
+											}
+										>
+											&uarr;
+										</span>
+									</div>
+									<div className="flex items-center flex-col">
+										<Container shouldAccept={numbers[2]} />
+										<span
+											className={
+												showNextElement == 2
+													? " text-2xl opacity-100"
+													: " text-2xl opacity-0"
+											}
+										>
+											&uarr;
+										</span>
+									</div>
+								</div>
+							</div>
+
+							<div className="flex flex-col gap-2 justify-center items-center">
+								<div className="flex">
+									<div className="flex items-center flex-col">
+										<Container shouldAccept={numbers[5]} />
+										<span
+											className={
+												showNextElement == 4 ||
+												showNextElement == 5 ||
+												showNextElement == 6
+													? " text-2xl opacity-100"
+													: " text-2xl opacity-0"
+											}
+										>
+											&uarr;
+										</span>
+									</div>
+									<div className="flex items-center flex-col">
+										<Container shouldAccept={numbers[4]} />
+										<span
+											className={
+												showNextElement == 6
+													? " text-2xl opacity-100"
+													: " text-2xl opacity-0"
+											}
+										>
+											&uarr;
+										</span>
+									</div>
+								</div>
+							</div>
+
+							<div className="flex flex-col gap-2 justify-center items-center">
+								<div className="flex">
+									<div className="flex items-center flex-col">
+										<Container shouldAccept={numbers[7]} />
+										<span
+											className={
+												showNextElement == 4
+													? " text-2xl opacity-100"
+													: " text-2xl opacity-0"
+											}
+										>
+											&uarr;
+										</span>
+									</div>
+									<div className="flex items-center flex-col">
+										<Container shouldAccept={numbers[6]} />
+										<span
+											className={
+												showNextElement == 5
+													? " text-2xl opacity-100"
+													: " text-2xl opacity-0"
+											}
+										>
+											&uarr;
+										</span>
+									</div>
+								</div>
+							</div>
+
+							<div className="flex flex-col gap-2 justify-center items-center">
+								<div className="flex">
+									<div className="flex items-center flex-col">
+										<Container shouldAccept={numbers[9]} />
+										<span
+											className={
+												showNextElement == 7
+													? " text-2xl opacity-100"
+													: " text-2xl opacity-0"
+											}
+										>
+											&uarr;
+										</span>
+									</div>
+									<div className="flex items-center flex-col">
+										<Container shouldAccept={numbers[8]} />
+										<span
+											className={
+												showNextElement == 7
+													? " text-2xl opacity-100"
+													: " text-2xl opacity-0"
+											}
+										>
+											&uarr;
+										</span>
+									</div>
+								</div>
+							</div>
+							<div className="flex flex-col gap-2 justify-center items-center">
+								<div className="flex">
+									<div className="flex items-center flex-col">
+										<Container shouldAccept={numbers[11]} />
+										<span
+											className={
+												showNextElement == 1 ||
+												showNextElement == 2 ||
+												showNextElement == 3
+													? " text-2xl opacity-100"
+													: " text-2xl opacity-0"
+											}
+										>
+											&uarr;
+										</span>
+									</div>
+
+									<div className="flex items-center flex-col">
+										<Container shouldAccept={numbers[10]} />
+										<span
+											className={
+												showNextElement == 3
+													? " text-2xl opacity-100"
+													: " text-2xl opacity-0"
+											}
+										>
+											&uarr;
+										</span>
+									</div>
+								</div>
+							</div>
+
+							<div className="flex flex-col gap-2 justify-center items-center">
+								<div className="flex">
+									<div className="flex items-center flex-col">
+										<Container shouldAccept={numbers[13]} />
+										<span
+											className={
+												showNextElement == 1
+													? " text-2xl opacity-100"
+													: " text-2xl opacity-0"
+											}
+										>
+											&uarr;
+										</span>
+									</div>
+									<div className="flex items-center flex-col">
+										<Container shouldAccept={numbers[12]} />
+										<span
+											className={
+												showNextElement == 2
+													? " text-2xl opacity-100"
+													: " text-2xl opacity-0"
+											}
+										>
+											&uarr;
+										</span>
+									</div>
+								</div>
+							</div>
+
+							<div className="flex flex-col gap-2 justify-center items-center">
+								<div className="flex">
+									<div className="flex items-center flex-col">
+										<Container shouldAccept={numbers[15]} />
+										<span
+											className={
+												showNextElement == 4 ||
+												showNextElement == 5 ||
+												showNextElement == 6
+													? " text-2xl opacity-100"
+													: " text-2xl opacity-0"
+											}
+										>
+											&uarr;
+										</span>
+									</div>
+									<div className="flex items-center flex-col">
+										<Container shouldAccept={numbers[14]} />
+										<span
+											className={
+												showNextElement == 6
+													? " text-2xl opacity-100"
+													: " text-2xl opacity-0"
+											}
+										>
+											&uarr;
+										</span>
+									</div>
+								</div>
+							</div>
+
+							<div className="flex flex-col gap-2 justify-center items-center">
+								<div className="flex">
+									<div className="flex items-center flex-col">
+										<Container shouldAccept={numbers[17]} />
+										<span
+											className={
+												showNextElement == 4
+													? " text-2xl opacity-100"
+													: " text-2xl opacity-0"
+											}
+										>
+											&uarr;
+										</span>
+									</div>
+									<div className="flex items-center flex-col">
+										<Container shouldAccept={numbers[16]} />
+										<span
+											className={
+												showNextElement == 5
+													? " text-2xl opacity-100"
+													: " text-2xl opacity-0"
+											}
+										>
+											&uarr;
+										</span>
+									</div>
+								</div>
+							</div>
+
+							<div className="flex flex-col gap-2 justify-center items-center">
+								<div className="flex">
+									<div className="flex items-center flex-col">
+										<Container shouldAccept={numbers[19]} />
+										<span
+											className={
+												showNextElement == 7
+													? " text-2xl opacity-100"
+													: " text-2xl opacity-0"
+											}
+										>
+											&uarr;
+										</span>
+									</div>
+									<div className="flex items-center flex-col">
+										<Container shouldAccept={numbers[18]} />
+										<span
+											className={
+												showNextElement == 7
+													? " text-2xl opacity-100"
+													: " text-2xl opacity-0"
+											}
+										>
+											&uarr;
+										</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					)}
+
+					{8 <= nextArray && (
+						<div className="flex justify-center mb-4 gap-3">
+							<div className="flex flex-col ">
+								<div className="flex mt-2 ">
+									<Container shouldAccept={numbers[3]} />
+									<Container shouldAccept={numbers[2]} />
+									<Container shouldAccept={numbers[1]} />
+									<Container shouldAccept={numbers[0]} />
+								</div>
+							</div>
+
+							<div className="flex flex-col ">
+								<div className="flex  mt-2">
+									<Container shouldAccept={numbers[7]} />
+									<Container shouldAccept={numbers[6]} />
+									<Container shouldAccept={numbers[5]} />
+									<Container shouldAccept={numbers[4]} />
+								</div>
+							</div>
+
+							<div className="flex flex-col ">
+								<div className="flex mt-2 ">
+									<Container shouldAccept={numbers[11]} />
+									<Container shouldAccept={numbers[10]} />
+									<Container shouldAccept={numbers[9]} />
+									<Container shouldAccept={numbers[8]} />
+								</div>
+							</div>
+
+							<div className="flex flex-col ">
+								<div className="flex  mt-2">
+									<Container shouldAccept={numbers[15]} />
+									<Container shouldAccept={numbers[14]} />
+									<Container shouldAccept={numbers[13]} />
+									<Container shouldAccept={numbers[12]} />
+								</div>
+							</div>
+
+							<div className="flex flex-col ">
+								<div className="flex mt-2">
+									<Container shouldAccept={numbers[19]} />
+									<Container shouldAccept={numbers[18]} />
+									<Container shouldAccept={numbers[17]} />
+									<Container shouldAccept={numbers[16]} />
+								</div>
+							</div>
+						</div>
+					)}
+
+					{9 <= nextArray && (
+						<div className="flex justify-center mb-4 gap-4">
+							<div className="flex flex-col ">
+								<div className="flex mt-2 ">
+									<Container shouldAccept={numbers[7]} />
+									<Container shouldAccept={numbers[6]} />
+									<Container shouldAccept={numbers[5]} />
+									<Container shouldAccept={numbers[4]} />
+									<Container shouldAccept={numbers[3]} />
+									<Container shouldAccept={numbers[2]} />
+									<Container shouldAccept={numbers[1]} />
+									<Container shouldAccept={numbers[0]} />
+								</div>
+							</div>
+
+							<div className="flex flex-col ">
+								<div className="flex mt-2 ">
+									<Container shouldAccept={numbers[15]} />
+									<Container shouldAccept={numbers[14]} />
+									<Container shouldAccept={numbers[13]} />
+									<Container shouldAccept={numbers[12]} />
+									<Container shouldAccept={numbers[11]} />
+									<Container shouldAccept={numbers[10]} />
+									<Container shouldAccept={numbers[9]} />
+									<Container shouldAccept={numbers[8]} />
+								</div>
+							</div>
+
+							<div className="flex flex-col ">
+								<div className="flex mt-2">
+									<Container shouldAccept={numbers[19]} />
+									<Container shouldAccept={numbers[18]} />
+									<Container shouldAccept={numbers[17]} />
+									<Container shouldAccept={numbers[16]} />
+								</div>
+							</div>
+						</div>
+					)}
+
+					{10 <= nextArray && (
+						<div className="flex justify-center mb-4 gap-4">
+							<div className="flex flex-col ">
+								<div className="flex mt-2 ">
+									<Container shouldAccept={numbers[15]} />
+									<Container shouldAccept={numbers[14]} />
+									<Container shouldAccept={numbers[13]} />
+									<Container shouldAccept={numbers[12]} />
+									<Container shouldAccept={numbers[11]} />
+									<Container shouldAccept={numbers[10]} />
+									<Container shouldAccept={numbers[9]} />
+									<Container shouldAccept={numbers[8]} />
+									<Container shouldAccept={numbers[7]} />
+									<Container shouldAccept={numbers[6]} />
+									<Container shouldAccept={numbers[5]} />
+									<Container shouldAccept={numbers[4]} />
+									<Container shouldAccept={numbers[3]} />
+									<Container shouldAccept={numbers[2]} />
+									<Container shouldAccept={numbers[1]} />
+									<Container shouldAccept={numbers[0]} />
+								</div>
+							</div>
+
+							<div className="flex flex-col ">
+								<div className="flex mt-2">
+									<Container shouldAccept={numbers[19]} />
+									<Container shouldAccept={numbers[18]} />
+									<Container shouldAccept={numbers[17]} />
+									<Container shouldAccept={numbers[16]} />
+								</div>
+							</div>
+						</div>
+					)}
+
+					{11 <= nextArray && (
+						<div className="flex justify-center mb-12 gap-4">
+							<div className="flex flex-col ">
+								<div className="flex mt-2 ">
+									<Container shouldAccept={numbers[19]} />
+									<Container shouldAccept={numbers[18]} />
+									<Container shouldAccept={numbers[17]} />
+									<Container shouldAccept={numbers[16]} />
+									<Container shouldAccept={numbers[15]} />
+									<Container shouldAccept={numbers[14]} />
+									<Container shouldAccept={numbers[13]} />
+									<Container shouldAccept={numbers[12]} />
+									<Container shouldAccept={numbers[11]} />
+									<Container shouldAccept={numbers[10]} />
+									<Container shouldAccept={numbers[9]} />
+									<Container shouldAccept={numbers[8]} />
+									<Container shouldAccept={numbers[7]} />
+									<Container shouldAccept={numbers[6]} />
+									<Container shouldAccept={numbers[5]} />
+									<Container shouldAccept={numbers[4]} />
+									<Container shouldAccept={numbers[3]} />
+									<Container shouldAccept={numbers[2]} />
+									<Container shouldAccept={numbers[1]} />
+									<Container shouldAccept={numbers[0]} />
+								</div>
+							</div>
+						</div>
+					)}
+				</DndProvider>
             </div>
         </div>
     );
