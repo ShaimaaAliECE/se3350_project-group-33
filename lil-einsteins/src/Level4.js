@@ -120,7 +120,7 @@ const Level4 = () => {
 				</div>
             </div>
 
-            <div className="w-full mb-40 flex items-center flex-col">
+            <div className="w-full mb-10 flex items-center flex-col">
             {/* Middle Layer */}
 				{2 <= nextArray && (
 					<DndProvider backend={HTML5Backend}>
@@ -131,7 +131,7 @@ const Level4 = () => {
 								</p>
 							</div>
 
-                            <div className="flex justify-center flex-col mt-40" style={{position:'absolute', width:'1000px', height:'54px', left:'11%'}}>
+                            <div className="flex justify-center flex-col" style={{position:'relative', width:'1000px', height:'54px'}}>
                                 <div className="flex justify-center w-full gap-8">
                                     <div className="flex border-b-4 border-black">
                                         {numbers.map((number, index) => {
@@ -157,13 +157,14 @@ const Level4 = () => {
 						</div>
 					</DndProvider>
 				)}
+				</div>
 
 
-				<div className="w-full mb-60 flex items-center flex-col">
+				<div className="w-full mt-5 mb-5 flex items-center flex-col">
                 {/* Third Layer */}
 				{3 <= nextArray && (
 					<DndProvider backend={HTML5Backend}>
-                    <div className="flex justify-center flex-col mt-40" style={{position:'absolute', width:'1000px', height:'54px', left:'11%'}}>
+                    <div className="flex justify-center flex-col" style={{position:'relative', width:'1000px', height:'54px'}}>
 						<div className="flex justify-center w-full gap-8">
 							<div className="flex border-b-4 border-black">
 								{numbers.map((number, index) => {
@@ -204,11 +205,11 @@ const Level4 = () => {
 				)}  
 				</div>
                 
-				<div className="w-full mb-20 flex items-center flex-col">
+				<div className="w-full mb-5 flex items-center flex-col">
                 {/* Fourth Layer */}
                 {4 <= nextArray && (
 					<DndProvider backend={HTML5Backend}>
-                    <div className="flex justify-center flex-col" style={{position:'absolute', width:'1000px', height:'54px', left:'11%'}}>
+                    <div className="flex justify-center flex-col" style={{position:'relative', width:'1000px', height:'54px'}}>
 						<div className="flex justify-center w-full gap-6">
                             <div className="flex border-b-4 border-black">
 								{numbers.map((number, index) => {
@@ -293,7 +294,7 @@ const Level4 = () => {
                 {/* Fifth Layer */}
 				{5 <= nextArray && (
 					<DndProvider backend={HTML5Backend}>
-						<div className="flex gap-2.5 mb-4">
+						<div className="flex gap-2.5 mb-5">
 							<div className="flex items-center  gap-1 flex-col">
 								<div className="flex gap-2.5">
 									<Container shouldAccept={numbers[0]} />
@@ -368,7 +369,7 @@ const Level4 = () => {
 				)}
 				</div>
 
-				<div className="flex justify-center mb-2" style={{position:'relative', width:'1000px', height:'54px'}}>
+				<div className="flex justify-center mb-2" style={{position:'relative', width:'1000px', height:'54px', left: '11%'}}>
 				{6 <= nextArray && (
 					<div className="flex gap-1">
 						{numbers.map((number) => {
@@ -399,8 +400,8 @@ const Level4 = () => {
 				)}
 				</div>
 
-
 				<DndProvider backend={HTML5Backend}>
+				<div className="w-full mb-20 flex items-center flex-col">
 					{7 <= nextArray && (
 						<div className="flex justify-center gap-2">
 							<div className="flex flex-col gap-2 justify-center items-center">
@@ -854,9 +855,9 @@ const Level4 = () => {
 							</div>
 						</div>
 					)}
+					</div>
 				</DndProvider>
             </div>
-        </div>
     );
 };
 
