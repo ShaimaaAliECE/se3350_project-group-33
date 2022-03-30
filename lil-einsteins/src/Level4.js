@@ -158,11 +158,12 @@ const Level4 = () => {
 					</DndProvider>
 				)}
 
-                {/* Third Layer */}
 
+				<div className="w-full mb-80 flex items-center flex-col">
+                {/* Third Layer */}
 				{3 <= nextArray && (
 					<DndProvider backend={HTML5Backend}>
-                    <div className="flex justify-center flex-col mt-60" style={{position:'absolute', width:'1000px', height:'54px', left:'11%'}}>
+                    <div className="flex justify-center flex-col mt-40" style={{position:'absolute', width:'1000px', height:'54px', left:'11%'}}>
 						<div className="flex justify-center w-full gap-8">
 							<div className="flex border-b-4 border-black">
 								{numbers.map((number, index) => {
@@ -201,12 +202,13 @@ const Level4 = () => {
                         </div>
 					</DndProvider>
 				)}  
+				</div>
                 
+				<div className="w-full mb-40 flex items-center flex-col">
                 {/* Fourth Layer */}
-
                 {4 <= nextArray && (
 					<DndProvider backend={HTML5Backend}>
-                    <div className="flex justify-center flex-col mt-80 mb-80" style={{position:'absolute', width:'1000px', height:'54px', left:'11%'}}>
+                    <div className="flex justify-center flex-col" style={{position:'absolute', width:'1000px', height:'54px', left:'11%'}}>
 						<div className="flex justify-center w-full gap-6">
                             <div className="flex border-b-4 border-black">
 								{numbers.map((number, index) => {
@@ -285,6 +287,87 @@ const Level4 = () => {
                     </div>
 					</DndProvider>
 				)}
+				</div>
+
+				<div className="w-full mb-40 flex items-center flex-col">
+                {/* Fifth Layer */}
+				{5 <= nextArray && (
+					<DndProvider backend={HTML5Backend}>
+						<div className="flex gap-2.5 mb-4">
+							<div className="flex items-center  gap-1 flex-col">
+								<div className="flex gap-2.5">
+									<Container shouldAccept={numbers[0]} />
+									<Container shouldAccept={numbers[1]} />
+								</div>
+							</div>
+
+							<div className="flex items-center  gap-1 flex-col">
+								<div className="flex gap-2.5">
+									<Container shouldAccept={numbers[2]} />
+									<div className="flex border-b-4 border-black">
+										<Container shouldAccept={numbers[3]} />
+										<Container shouldAccept={numbers[4]} />
+									</div>
+								</div>
+							</div>
+
+							<div className="flex items-center  gap-1 flex-col">
+								<div className="flex gap-2.5">
+									<Container shouldAccept={numbers[5]} />
+									<Container shouldAccept={numbers[6]} />
+								</div>
+							</div>
+
+							<div className="flex items-center  gap-1 flex-col">
+
+								<div className="flex gap-2.5">
+									<Container shouldAccept={numbers[7]} />
+									<div className="flex border-b-4 border-black">
+										<Container shouldAccept={numbers[8]} />
+										<Container shouldAccept={numbers[9]} />
+									</div>
+								</div>
+							</div>
+
+							<div className="flex items-center  gap-1 flex-col">
+								<div className="flex gap-2.5">
+									<Container shouldAccept={numbers[10]} />
+									<Container shouldAccept={numbers[11]} />
+								</div>
+							</div>
+
+							<div className="flex items-center  gap-1 flex-col">
+								<div className="flex gap-2.5">
+									<Container shouldAccept={numbers[12]} />
+									<div className="flex border-b-4 border-black">
+										<Container shouldAccept={numbers[13]} />
+										<Container shouldAccept={numbers[14]} />
+									</div>
+								</div>
+							</div>
+
+							<div className="flex items-center  gap-1 flex-col">
+								<div className="flex gap-2.5">
+									<Container shouldAccept={numbers[15]} />
+									<Container shouldAccept={numbers[16]} />
+								</div>
+							</div>
+
+							<div className="flex items-center  gap-1 flex-col">
+
+								<div className="flex gap-2.5">
+									<Container shouldAccept={numbers[17]} />
+									<div className="flex border-b-4 border-black">
+										<Container shouldAccept={numbers[18]} />
+										<Container shouldAccept={numbers[19]} />
+									</div>
+								</div>
+							</div>
+						</div>
+					</DndProvider>
+				)}
+				</div>
+
             </div>
         </div>
     );
