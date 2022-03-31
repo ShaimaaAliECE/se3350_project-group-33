@@ -18,7 +18,7 @@ export default function TutNumComponent(props){
         setTempClassname(props.itempClassName);
         setIdCounter(props.iidCounter);
         setNumber(props.inumber)
-    },[props.itempClassName,props.iidCounter,props.inumber]);
+    },[props.itempClassName,props.iidCounter,props.inumber,tempClassName,number,idCounter]);
 
     //setNumber(tempNumber)
     return(
