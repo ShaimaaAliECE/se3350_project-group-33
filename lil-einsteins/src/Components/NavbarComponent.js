@@ -4,6 +4,7 @@ import "./Components.css";
 import {useLocation} from "react-router-dom";
 
 export default function Component(props) {
+	console.log("test");
 	return (
 		<Navbar className="color-nav m" expand="lg">
 			<Container>
