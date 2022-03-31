@@ -1,16 +1,15 @@
 import "./App.css";
-import NavbarComponent from "./components/NavbarComponent";
-import Footer from "./components/Footer";
-import TutorialComponent from "./components/TutorialComponent";
+import NavbarComponent from "./Components/NavbarComponent";
+import Footer from "./Components/Footer";
+import TutorialComponent from "./Components/TutorialComponent";
 import "bootstrap/dist/css/bootstrap.min.css";
-//import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd';
 
 function Tutorial() {
 	return (
 		<div>
-			<NavbarComponent />
+			<NavbarComponent level="Level1" />
 			<br></br>
-			<TutorialComponent/>
+			{/* <TutorialComponent /> */}
 			<Footer />
 		</div>
 	);

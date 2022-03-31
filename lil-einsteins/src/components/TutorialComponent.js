@@ -5,7 +5,7 @@ import {CSSTransition} from "react-transition-group";
 import {Container} from "react-bootstrap";
 
 import TutNumComponent from "./TutNumComponent";
-import TutorialArrayComponent from "./TutorialArrayComponent";
+import TutorialArrayComponent from "./TutorialArray";
 
 function Tutorial() {
 	const [tutorialText, setTutorialText] = useState(
