@@ -1,8 +1,8 @@
-const pro_IntDigit = () => Math.floor(Math.random() * 50) + 1;
-const randomizeNewArray = (number) => {
+const pro_IntDigit = (range) => Math.floor(Math.random() * range) + 1;
+const randomizeNewArray = (number, range) => {
 	let temp = [];
 	for (let i = 0; i < number; i++) {
-		let item = pro_IntDigit();
+		let item = pro_IntDigit(range);
 		temp.push(item);
 	}
 	const random_val = (temp) => {

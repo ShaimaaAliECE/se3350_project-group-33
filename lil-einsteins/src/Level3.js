@@ -13,20 +13,34 @@ import NavbarComponent from "./Components/NavbarComponent";
 import Timer from "./Components/Timer";
 import {useNavigate} from "react-router-dom";
 
-const numbers = randomizeNewArray(10);
+const numbers = randomizeNewArray(10, 20);
+
+let tempArray = numbers.slice();
+
+const shuffleArray = (array) => {
+	for (let i = array.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		const temp = array[i];
+		array[i] = array[j];
+		array[j] = temp;
+	}
+	return array;
+};
+
+const unsorted = shuffleArray(tempArray);
 
 const Level3 = () => {
 	const boxDetails = [
-		{name: `${numbers[5]}`, type: ItemTypes.BOX},
-		{name: `${numbers[0]}`, type: ItemTypes.BOX},
-		{name: `${numbers[2]}`, type: ItemTypes.BOX},
-		{name: `${numbers[9]}`, type: ItemTypes.BOX},
-		{name: `${numbers[1]}`, type: ItemTypes.BOX},
-		{name: `${numbers[8]}`, type: ItemTypes.BOX},
-		{name: `${numbers[3]}`, type: ItemTypes.BOX},
-		{name: `${numbers[6]}`, type: ItemTypes.BOX},
-		{name: `${numbers[7]}`, type: ItemTypes.BOX},
-		{name: `${numbers[4]}`, type: ItemTypes.BOX}
+		{name: `${unsorted[0]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[1]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[2]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[3]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[4]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[5]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[6]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[7]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[8]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[9]}`, type: ItemTypes.BOX}
 	];
 
 	const [boxes] = useState(boxDetails);
@@ -112,7 +126,7 @@ const Level3 = () => {
 
 				{/* Displaying Initial Array */}
 				<div className="flex border-black border-b-4 justify-center mb-4">
-					{numbers.map((number) => {
+					{unsorted.map((number) => {
 						return (
 							<div
 								key={number}
@@ -135,7 +149,7 @@ const Level3 = () => {
 							</div>
 							<div className="flex justify-center w-full gap-8 mb-4">
 								<div className="flex border-b-4 border-black">
-									{numbers.map((number, index) => {
+									{unsorted.map((number, index) => {
 										return index < half ? (
 											<Container shouldAccept={number} />
 										) : (
@@ -145,7 +159,7 @@ const Level3 = () => {
 								</div>
 
 								<div className="flex border-b-4 border-black">
-									{numbers.map((number, index) => {
+									{unsorted.map((number, index) => {
 										return index >= half ? (
 											<Container shouldAccept={number} />
 										) : (
@@ -164,7 +178,7 @@ const Level3 = () => {
 					<DndProvider backend={HTML5Backend}>
 						<div className="flex justify-center w-full gap-12 mb-4">
 							<div className="flex border-b-4 border-black">
-								{numbers.map((number, index) => {
+								{unsorted.map((number, index) => {
 									return index < firstHalf - 1 ? (
 										<Container shouldAccept={number} />
 									) : (
@@ -174,7 +188,7 @@ const Level3 = () => {
 							</div>
 
 							<div className="flex border-b-4 border-black">
-								{numbers.map((number, index) => {
+								{unsorted.map((number, index) => {
 									return index >= firstHalf - 1 && index <= half - 1 ? (
 										<Container shouldAccept={number} />
 									) : (
@@ -183,7 +197,7 @@ const Level3 = () => {
 								})}
 							</div>
 							<div className="flex border-b-4 border-black">
-								{numbers.map((number, index) => {
+								{unsorted.map((number, index) => {
 									return index > half - 1 && index <= 6 ? (
 										<Container shouldAccept={number} />
 									) : (
@@ -192,7 +206,7 @@ const Level3 = () => {
 								})}
 							</div>
 							<div className="flex border-b-4 border-black">
-								{numbers.map((number, index) => {
+								{unsorted.map((number, index) => {
 									return index >= 7 ? <Container shouldAccept={number} /> : "";
 								})}
 							</div>
@@ -207,34 +221,34 @@ const Level3 = () => {
 						<div className="flex gap-4 mb-4">
 							<div className="flex items-center  gap-2 flex-col">
 								<div className="flex gap-4">
-									<Container shouldAccept={numbers[0]} />
-									<Container shouldAccept={numbers[1]} />
+									<Container shouldAccept={unsorted[0]} />
+									<Container shouldAccept={unsorted[1]} />
 								</div>
 							</div>
 
 							<div className="flex items-center  gap-2 flex-col">
 								<div className="flex gap-4">
-									<Container shouldAccept={numbers[2]} />
+									<Container shouldAccept={unsorted[2]} />
 									<div className="flex border-b-4 border-black">
-										<Container shouldAccept={numbers[3]} />
-										<Container shouldAccept={numbers[4]} />
+										<Container shouldAccept={unsorted[3]} />
+										<Container shouldAccept={unsorted[4]} />
 									</div>
 								</div>
 							</div>
 
 							<div className="flex items-center  gap-2 flex-col">
 								<div className="flex gap-4">
-									<Container shouldAccept={numbers[5]} />
-									<Container shouldAccept={numbers[6]} />
+									<Container shouldAccept={unsorted[5]} />
+									<Container shouldAccept={unsorted[6]} />
 								</div>
 							</div>
 
 							<div className="flex items-center  gap-2 flex-col">
 								<div className="flex gap-4">
-									<Container shouldAccept={numbers[7]} />
+									<Container shouldAccept={unsorted[7]} />
 									<div className="flex border-b-4 border-black">
-										<Container shouldAccept={numbers[8]} />
-										<Container shouldAccept={numbers[9]} />
+										<Container shouldAccept={unsorted[8]} />
+										<Container shouldAccept={unsorted[9]} />
 									</div>
 								</div>
 							</div>
@@ -250,7 +264,7 @@ const Level3 = () => {
 
 				{5 <= nextArray && (
 					<div className="flex gap-4 mb-4">
-						{numbers.map((number) => {
+						{unsorted.map((number) => {
 							return (
 								<div className="p-8 border-r-0 border-b-4 border-black bg-slate-300   w-20 h-20 ">
 									{number}
@@ -279,7 +293,11 @@ const Level3 = () => {
 							<div className="flex flex-col gap-2 justify-center items-center">
 								<div className="flex">
 									<div className="flex items-center flex-col">
-										<Container shouldAccept={numbers[1]} />
+										<Container shouldAccept={
+											unsorted.slice(0, 2).sort(function (a, b) {
+												return a - b;
+											})[0]
+										} />
 										<span
 											className={
 												showNextElement == 1 ||
@@ -294,7 +312,11 @@ const Level3 = () => {
 									</div>
 
 									<div className="flex items-center flex-col">
-										<Container shouldAccept={numbers[0]} />
+										<Container shouldAccept={
+											unsorted.slice(0, 2).sort(function (a, b) {
+												return a - b;
+											})[1]
+										} />
 										<span
 											className={
 												showNextElement == 3
@@ -311,7 +333,11 @@ const Level3 = () => {
 							<div className="flex flex-col gap-2 justify-center items-center">
 								<div className="flex">
 									<div className="flex items-center flex-col">
-										<Container shouldAccept={numbers[3]} />
+										<Container shouldAccept={
+											unsorted.slice(2, 4).sort(function (a, b) {
+												return a - b;
+											})[0]
+										} />
 										<span
 											className={
 												showNextElement == 1
@@ -323,7 +349,11 @@ const Level3 = () => {
 										</span>
 									</div>
 									<div className="flex items-center flex-col">
-										<Container shouldAccept={numbers[2]} />
+										<Container shouldAccept={
+											unsorted.slice(2, 4).sort(function (a, b) {
+												return a - b;
+											})[1]
+										} />
 										<span
 											className={
 												showNextElement == 2
@@ -340,7 +370,11 @@ const Level3 = () => {
 							<div className="flex flex-col gap-2 justify-center items-center">
 								<div className="flex">
 									<div className="flex items-center flex-col">
-										<Container shouldAccept={numbers[5]} />
+										<Container shouldAccept={
+											unsorted.slice(4, 6).sort(function (a, b) {
+												return a - b;
+											})[0]
+										} />
 										<span
 											className={
 												showNextElement == 4 ||
@@ -354,7 +388,11 @@ const Level3 = () => {
 										</span>
 									</div>
 									<div className="flex items-center flex-col">
-										<Container shouldAccept={numbers[4]} />
+										<Container shouldAccept={
+											unsorted.slice(4, 6).sort(function (a, b) {
+												return a - b;
+											})[1]
+										} />
 										<span
 											className={
 												showNextElement == 6
@@ -371,7 +409,11 @@ const Level3 = () => {
 							<div className="flex flex-col gap-2 justify-center items-center">
 								<div className="flex">
 									<div className="flex items-center flex-col">
-										<Container shouldAccept={numbers[7]} />
+										<Container shouldAccept={
+											unsorted.slice(6, 8).sort(function (a, b) {
+												return a - b;
+											})[0]
+										} />
 										<span
 											className={
 												showNextElement == 4
@@ -383,7 +425,11 @@ const Level3 = () => {
 										</span>
 									</div>
 									<div className="flex items-center flex-col">
-										<Container shouldAccept={numbers[6]} />
+										<Container shouldAccept={
+											unsorted.slice(6, 8).sort(function (a, b) {
+												return a - b;
+											})[1]
+										} />
 										<span
 											className={
 												showNextElement == 5
@@ -400,7 +446,11 @@ const Level3 = () => {
 							<div className="flex flex-col gap-2 justify-center items-center">
 								<div className="flex">
 									<div className="flex items-center flex-col">
-										<Container shouldAccept={numbers[9]} />
+										<Container shouldAccept={
+											unsorted.slice(8, 10).sort(function (a, b) {
+												return a - b;
+											})[0]
+										} />
 										<span
 											className={
 												showNextElement == 7
@@ -412,7 +462,11 @@ const Level3 = () => {
 										</span>
 									</div>
 									<div className="flex items-center flex-col">
-										<Container shouldAccept={numbers[8]} />
+										<Container shouldAccept={
+											unsorted.slice(8, 10).sort(function (a, b) {
+												return a - b;
+											})[1]
+										} />
 										<span
 											className={
 												showNextElement == 7
@@ -432,26 +486,66 @@ const Level3 = () => {
 						<div className="flex justify-center mb-12 gap-4">
 							<div className="flex flex-col ">
 								<div className="flex mt-2 ">
-									<Container shouldAccept={numbers[3]} />
-									<Container shouldAccept={numbers[2]} />
-									<Container shouldAccept={numbers[1]} />
-									<Container shouldAccept={numbers[0]} />
+									<Container shouldAccept={
+											unsorted.slice(0, 4).sort(function (a, b) {
+												return a - b;
+											})[0]
+										} />
+									<Container shouldAccept={
+											unsorted.slice(0, 4).sort(function (a, b) {
+												return a - b;
+											})[1]
+										} />
+									<Container shouldAccept={
+											unsorted.slice(0, 4).sort(function (a, b) {
+												return a - b;
+											})[2]
+										} />
+									<Container shouldAccept={
+											unsorted.slice(0, 4).sort(function (a, b) {
+												return a - b;
+											})[3]
+										} />
 								</div>
 							</div>
 
 							<div className="flex flex-col ">
 								<div className="flex  mt-2">
-									<Container shouldAccept={numbers[7]} />
-									<Container shouldAccept={numbers[6]} />
-									<Container shouldAccept={numbers[5]} />
-									<Container shouldAccept={numbers[4]} />
+								<Container shouldAccept={
+											unsorted.slice(4, 8).sort(function (a, b) {
+												return a - b;
+											})[0]
+										} />
+									<Container shouldAccept={
+											unsorted.slice(4, 8).sort(function (a, b) {
+												return a - b;
+											})[1]
+										} />
+									<Container shouldAccept={
+											unsorted.slice(4, 8).sort(function (a, b) {
+												return a - b;
+											})[2]
+										} />
+									<Container shouldAccept={
+											unsorted.slice(4, 8).sort(function (a, b) {
+												return a - b;
+											})[3]
+										} />
 								</div>
 							</div>
 
 							<div className="flex flex-col ">
 								<div className="flex mt-2">
-									<Container shouldAccept={numbers[9]} />
-									<Container shouldAccept={numbers[8]} />
+								<Container shouldAccept={
+											unsorted.slice(8, 10).sort(function (a, b) {
+												return a - b;
+											})[0]
+										} />
+									<Container shouldAccept={
+											unsorted.slice(8, 10).sort(function (a, b) {
+												return a - b;
+											})[1]
+										} />
 								</div>
 							</div>
 						</div>
@@ -461,7 +555,11 @@ const Level3 = () => {
 						<div className="flex justify-center gap-4">
 							<div className="flex">
 								<div className="flex items-center flex-col">
-									<Container shouldAccept={numbers[7]} />
+									<Container shouldAccept={
+											unsorted.slice(0, 8).sort(function (a, b) {
+												return a - b;
+											})[0]
+										} />
 									<span
 										className={
 											showNextElement == 8 || showNextElement == 9
@@ -473,7 +571,11 @@ const Level3 = () => {
 									</span>
 								</div>
 								<div className="flex items-center flex-col">
-									<Container shouldAccept={numbers[6]} />
+									<Container shouldAccept={
+											unsorted.slice(0, 8).sort(function (a, b) {
+												return a - b;
+											})[1]
+										} />
 									<span
 										className={
 											showNextElement == 10
@@ -485,7 +587,11 @@ const Level3 = () => {
 									</span>
 								</div>
 								<div className="flex items-center flex-col">
-									<Container shouldAccept={numbers[5]} />
+									<Container shouldAccept={
+											unsorted.slice(0, 8).sort(function (a, b) {
+												return a - b;
+											})[2]
+										} />
 									<span
 										className={
 											showNextElement == 10
@@ -497,7 +603,11 @@ const Level3 = () => {
 									</span>
 								</div>
 								<div className="flex items-center flex-col">
-									<Container shouldAccept={numbers[4]} />
+									<Container shouldAccept={
+											unsorted.slice(0, 8).sort(function (a, b) {
+												return a - b;
+											})[3]
+										} />
 									<span
 										className={
 											showNextElement == 10
@@ -509,7 +619,11 @@ const Level3 = () => {
 									</span>
 								</div>
 								<div className="flex items-center flex-col">
-									<Container shouldAccept={numbers[3]} />
+									<Container shouldAccept={
+											unsorted.slice(0, 8).sort(function (a, b) {
+												return a - b;
+											})[4]
+										} />
 									<span
 										className={
 											showNextElement == 10
@@ -521,7 +635,11 @@ const Level3 = () => {
 									</span>
 								</div>
 								<div className="flex items-center flex-col">
-									<Container shouldAccept={numbers[2]} />
+									<Container shouldAccept={
+											unsorted.slice(0, 8).sort(function (a, b) {
+												return a - b;
+											})[5]
+										}/>
 									<span
 										className={
 											showNextElement == 10
@@ -533,7 +651,11 @@ const Level3 = () => {
 									</span>
 								</div>
 								<div className="flex items-center flex-col">
-									<Container shouldAccept={numbers[1]} />
+									<Container shouldAccept={
+											unsorted.slice(0, 8).sort(function (a, b) {
+												return a - b;
+											})[6]
+										} />
 									<span
 										className={
 											showNextElement == 10
@@ -545,7 +667,11 @@ const Level3 = () => {
 									</span>
 								</div>
 								<div className="flex items-center flex-col">
-									<Container shouldAccept={numbers[0]} />
+									<Container shouldAccept={
+											unsorted.slice(0, 8).sort(function (a, b) {
+												return a - b;
+											})[7]
+										}/>
 									<span
 										className={
 											showNextElement == 10
@@ -560,7 +686,11 @@ const Level3 = () => {
 
 							<div className="flex">
 								<div className="flex items-center flex-col">
-									<Container shouldAccept={numbers[9]} />
+									<Container shouldAccept={
+											unsorted.slice(8, 10).sort(function (a, b) {
+												return a - b;
+											})[0]
+										} />
 									<span
 										className={
 											showNextElement == 8
@@ -572,7 +702,11 @@ const Level3 = () => {
 									</span>
 								</div>
 								<div className="flex items-center flex-col">
-									<Container shouldAccept={numbers[8]} />
+									<Container shouldAccept={
+											unsorted.slice(8, 10).sort(function (a, b) {
+												return a - b;
+											})[1]
+										} />
 									<span
 										className={
 											showNextElement == 9
@@ -590,16 +724,56 @@ const Level3 = () => {
 					{9 <= nextArray && (
 						<div className="flex justify-center flex-col mb-12 gap-4">
 							<div className="flex ">
-								<Container shouldAccept={numbers[9]} />
-								<Container shouldAccept={numbers[8]} />
-								<Container shouldAccept={numbers[7]} />
-								<Container shouldAccept={numbers[6]} />
-								<Container shouldAccept={numbers[5]} />
-								<Container shouldAccept={numbers[4]} />
-								<Container shouldAccept={numbers[3]} />
-								<Container shouldAccept={numbers[2]} />
-								<Container shouldAccept={numbers[1]} />
-								<Container shouldAccept={numbers[0]} />
+								<Container shouldAccept={
+											unsorted.slice(0, 10).sort(function (a, b) {
+												return a - b;
+											})[0]
+										} />
+								<Container shouldAccept={
+											unsorted.slice(0, 10).sort(function (a, b) {
+												return a - b;
+											})[1]
+										} />
+								<Container shouldAccept={
+											unsorted.slice(0, 10).sort(function (a, b) {
+												return a - b;
+											})[2]
+										} />
+								<Container shouldAccept={
+											unsorted.slice(0, 10).sort(function (a, b) {
+												return a - b;
+											})[3]
+										} />
+								<Container shouldAccept={
+											unsorted.slice(0, 10).sort(function (a, b) {
+												return a - b;
+											})[4]
+										} />
+								<Container shouldAccept={
+											unsorted.slice(0, 10).sort(function (a, b) {
+												return a - b;
+											})[5]
+										} />
+								<Container shouldAccept={
+											unsorted.slice(0, 10).sort(function (a, b) {
+												return a - b;
+											})[6]
+										} />
+								<Container shouldAccept={
+											unsorted.slice(0, 10).sort(function (a, b) {
+												return a - b;
+											})[7]
+										} />
+								<Container shouldAccept={
+											unsorted.slice(0, 10).sort(function (a, b) {
+												return a - b;
+											})[8]
+										} />
+								<Container shouldAccept={
+											unsorted.slice(0, 10).sort(function (a, b) {
+												return a - b;
+											})[9]
+										} />
 							</div>
 						</div>
 					)}

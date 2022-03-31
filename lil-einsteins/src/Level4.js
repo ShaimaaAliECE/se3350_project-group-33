@@ -10,7 +10,7 @@ import {ItemTypes} from "./Components/ItemTypes";
 import NavbarComponent from "./Components/NavbarComponent";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const numbers = randomizeNewArray(20);
+const numbers = randomizeNewArray(20, 50);
 
 let tempArray = numbers.slice();
 
