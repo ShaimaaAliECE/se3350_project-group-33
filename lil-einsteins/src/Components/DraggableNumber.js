@@ -7,7 +7,7 @@ import "../App.css";
 import {Draggable} from "react-beautiful-dnd";
 
 export default function DraggableNumber(props) {
-	const [number, setNumber] = useState(Math.floor(Math.random() * 10) + 1);
+	const [number, setNumber] = useState(Math.floor(Math.random() * 50) + 1);
 
 	return (
 		<div>

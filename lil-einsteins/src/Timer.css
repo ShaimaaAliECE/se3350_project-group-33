@@ -1,0 +1,35 @@
+.Timers {
+    width: 200px;
+    text-align: center;
+    margin: 0 auto;
+    
+  }
+  
+  #display {
+    margin-bottom: 20px;
+  }
+  #display span {
+    font-size: 26px;
+  }
+  #buttons button:nth-child(2) {
+    margin-left: 10px;
+  }
+  
+  button {
+    font-size: 16px;
+    background-color: rgb(0,0,0);
+    color: #fff;
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 10px 10px;
+  
+  }
+  button:hover {
+    background-color: rgb(0,0,0);
+  }
+  button:active {
+    background-color: rgb(0, 0, 0);
+  }
+  button:focus {
+    outline: 0;
+  }
