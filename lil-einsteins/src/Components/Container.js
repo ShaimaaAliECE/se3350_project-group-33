@@ -29,14 +29,21 @@ export const Container = memo(function Container({shouldAccept}) {
 	function isDropped(boxName) {
 		return droppedBoxNames.indexOf(boxName) > -1;
 	}
+	
+	//Function handles the draggable number component when it is dropeed 
 	const handleDrop = useCallback(
 		(index, item) => {
 			const {name} = item;
+			var mistakeCounter; 
 			if (item.name == `${shouldAccept}`) {
 				audio1.play();
 				setSolved(true);
 			} else if (item.name != `${shouldAccept}`) {
 				audio2.play();
+				mistakeCounter++ 
+				if (mistakeCounter == 3){
+					//Trigger event for when the player makes 3 mistakes
+				}
 				setSolved(false);
 			}
 			setDroppedBoxNames(
