@@ -356,7 +356,7 @@ const Level2 = () => {
               <div className="flex flex-col gap-2 justify-center items-center">
                 <div>
                   <div className=" w-56 bg-blue-200 rounded-xl p-2">
-                    As <span className=" font-bold"> {numbers[0]} </span>&gt;{" "}
+                    As <span className=" font-bold"> {numbers[0]} </span>&gt;{"= "}
                     <span className=" font-bold"> {numbers[1]} </span>therefore
                     they will interchange their positions{" "}
                   </div>
@@ -395,7 +395,7 @@ const Level2 = () => {
               <div className="flex flex-col gap-2 justify-center items-center">
                 <div>
                   <div className=" w-56 bg-blue-200 rounded-xl p-2">
-                    As <span className=" font-bold"> {numbers[2]} </span>&gt;{" "}
+                    As <span className=" font-bold"> {numbers[2]} </span>&gt;{"= "}
                     <span className=" font-bold"> {numbers[3]} </span>therefore
                     they will interchange their positions{" "}
                   </div>
@@ -431,7 +431,7 @@ const Level2 = () => {
               <div className="flex flex-col gap-2 justify-center items-center">
                 <div>
                   <div className=" w-56 bg-blue-200 rounded-xl p-2">
-                    As <span className=" font-bold"> {numbers[4]} </span>&gt;{" "}
+                    As <span className=" font-bold"> {numbers[4]} </span>&gt;{"= "}
                     <span className=" font-bold"> {numbers[5]} </span>therefore
                     they will interchange their positions{" "}
                   </div>
@@ -469,7 +469,7 @@ const Level2 = () => {
               <div className="flex flex-col gap-2 justify-center items-center">
                 <div>
                   <div className=" w-56 bg-blue-200 rounded-xl p-2">
-                    As <span className=" font-bold"> {numbers[6]} </span>&gt;{" "}
+                    As <span className=" font-bold"> {numbers[6]} </span>&gt;{"= "}
                     <span className=" font-bold"> {numbers[7]} </span>therefore
                     they will interchange their positions{" "}
                   </div>
@@ -505,7 +505,7 @@ const Level2 = () => {
               <div className="flex flex-col gap-2 justify-center items-center">
                 <div>
                   <div className=" w-56 bg-blue-200 rounded-xl p-2">
-                    As <span className=" font-bold"> {numbers[8]} </span>&gt;{" "}
+                    As <span className=" font-bold"> {numbers[8]} </span>&gt;{"= "}
                     <span className=" font-bold"> {numbers[9]} </span>therefore
                     they will interchange their positions{" "}
                   </div>
