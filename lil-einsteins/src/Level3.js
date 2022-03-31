@@ -1,7 +1,8 @@
-import {useState} from "react";
+import {useState, useCallback} from "react";
 import {HTML5Backend} from "react-dnd-html5-backend";
 import {DndProvider} from "react-dnd";
 import {Box} from "./Components/DraggableBox";
+import {Button} from "react-bootstrap";
 import {Container} from "./Components/Container";
 import infoIcon from "./images/icons8-info.png";
 import nextIcon from "./images/icons8-next.png";
@@ -10,6 +11,7 @@ import {ItemTypes} from "./Components/ItemTypes";
 import "bootstrap/dist/css/bootstrap.min.css";
 import NavbarComponent from "./Components/NavbarComponent";
 import Timer from "./Components/Timer";
+import {useNavigate} from "react-router-dom";
 
 const numbers = randomizeNewArray(10);
 
@@ -38,13 +40,20 @@ const Level3 = () => {
 	const firstHalf = half / 2;
 
 	const [nextArray, setNextArray] = useState(1);
+	const [solved, setSolved] = useState(false);
 
 	const [showNextElement, setShowNextElement] = useState(0);
+
+	const navigate = useNavigate();
+	const handleLevelChange = useCallback(
+		() => navigate("/Level4", {replace: true}),
+		[navigate]
+	);
 
 	return (
 		<div>
 			<NavbarComponent level="Level3" />
-		        <Timer/>
+			<Timer />
 			<DndProvider backend={HTML5Backend}>
 				<div className="fixed bottom-0 bg-red-600 py-6  left-0 right-0 flex gap-1 justify-center">
 					{boxes.map(({name, type}, index) => (
@@ -55,12 +64,20 @@ const Level3 = () => {
 							key={index}
 						/>
 					))}
+					<Button
+						disabled={!solved}
+						variant="primary"
+						onClick={() => handleLevelChange()}
+					>
+						Next Level
+					</Button>
 				</div>
 			</DndProvider>
 
 			<img
 				onClick={() => {
 					setNextArray(nextArray + 1);
+					if (nextArray >= 9) setSolved(true);
 				}}
 				src={nextIcon}
 				className="fixed top-1/3 rotate-90 cursor-pointer left-16"
