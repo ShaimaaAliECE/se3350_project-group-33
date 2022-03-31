@@ -5,9 +5,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {CSSTransition} from "react-transition-group";
 import {Container} from "react-bootstrap";
 
-import TutNumComponent from "./TutNumComponent";
 import TutorialArray from "./TutorialArray";
-import TutorialArrayComponent from "./TutorialArrayComponent";
+
 
 function Tutorial () {
 
@@ -85,6 +84,7 @@ function Tutorial () {
 
     const[layer2,  setLayer2] = useState({show :false}); //Display Layers
     const[ layer2Content , setLayer2Content] = useState([]); //Visual Content
+    const[ layer2Time , setLayer2Time] = useState(400); //Visual Content
 
     const[layer3,  setLayer3] = useState({show :false}); //Display Layers
     const[ layer3Content , setLayer3Content] = useState([]); //Visual Content
@@ -94,6 +94,8 @@ function Tutorial () {
 
     const[layer5,  setLayer5] = useState({show :false}); //Display Layers
     const[ layer5Content , setLayer5Content] = useState([]); //Visual Content
+    const[ layer5Time , setLayer5Time] = useState(400); //Visual Content
+
     //<TutorialArray itutorialNumbers = {tutorialNumbers} ibuildArray =  {[1,"s", 1, "s8",1,"s",1]} itempClassName = {"numberAppear"}/>
 
 
@@ -141,8 +143,7 @@ function Tutorial () {
  
                 },
                 step7: {
-                    layer1: [],
-                    layer2: [],
+                    layer2: mergeSort(tutArray.slice(0,5)).concat(mergeSort(tutArray.slice(5))) ,
                     layer3: tutArray.slice(5),
                     layer4: tutArray.slice(5),
                     layer5: tutArray.slice(5)
@@ -150,15 +151,7 @@ function Tutorial () {
                 step8: {
                     layer1: mergeSort(tutArray),
                     layer2: mergeSort(tutArray.slice(0,5)).concat(mergeSort(tutArray.slice(5))),
-                },
-                // step9: [{
-                //     layer1: ["","","","","","","","","","",],
-                //     layer2:  tempTutorialNumbers,
-                //     layer3: ,
-                //     layer4: ,
-                //     layer5: 
-                // }],
-                
+                }
     };
 
     let animTest =[""];
@@ -170,7 +163,7 @@ function Tutorial () {
             default:
                 setTutorialText("You’ve selected the merge sort algorithm.");
                 setTutorialNumbers(tutArray);
-                setLayer1Content(<TutorialArray itutorialNumbers = {animation.step0.layer1} ibuildArray =  {["s6", 10,"s7"]} itempClassName = {"numberAppear"}/>);
+                setLayer1Content(<TutorialArray itutorialNumbers = {tutArray} ibuildArray =  {["s6", 10,"s7"]} itempClassName = {"numberAppear"}/>);
                 setLayer2(false);
                 setLayer3(false);
                 setLayer4(false);
@@ -181,7 +174,7 @@ function Tutorial () {
             case 1:
                 setTutorialText("This algorithm works by dividing the full list of values into two equally sized sublists.");
                 setTutorialNumbers(tutArray);
-                setLayer1Content(<TutorialArray itutorialNumbers = {animation.step1.layer1} ibuildArray =  {["s6", 10,"s7"]} itempClassName = {"numberDisappear"}/>);
+                //setLayer1Content(<TutorialArray itutorialNumbers = {animation.step1.layer1} ibuildArray =  {["s6", 10,"s7"]} itempClassName = {"numberDisappear"}/>);
                 setLayer2(true);
                 setLayer2Content(<TutorialArray itutorialNumbers = {animation.step1.layer2} ibuildArray =  {["s3", 5, "s6", 5]} itempClassName = {"numberAppear"}/>);
                 setLayer3(false);
@@ -190,7 +183,7 @@ function Tutorial () {
                 break;
 
             case 2:
-                setTutorialText("Then the left sublist is further divided until it only contains one value.")
+                setTutorialText("Then the left sublist is further divided until it only contains one value.");
                 setTutorialNumbers(tutArray);
                 setLayer2(true);
                 setLayer2Content(<TutorialArray itutorialNumbers = {animation.step2.layer2} ibuildArray =  {["s3", 5, "s6", 5]} itempClassName = {"numberAppear"}/>);
@@ -217,9 +210,10 @@ function Tutorial () {
                 //let array =  array.concat(sortedLeft.slice(0,2),tutArray.slice(1));
                 //setLayer5Content(TutorialArrayComponent(tutorialNumbers,"D",1,"s",1));
                 //setTutorialNumbers(sortedLeft.slice(0,2).concat(tutArray.slice(1)));
-                setLayer5(true);
-                setLayer5Content(<TutorialArray itutorialNumbers = {animation.step3.layer5} ibuildArray =  {[1,"s",1]} itempClassName = {"numberDisappear-exit-active"}/>)
-                setLayer5(false)
+                
+                setLayer5(false);
+                setLayer5Content(<TutorialArray itutorialNumbers = {animation.step3.layer5} ibuildArray =  {[1,"s",1,"s"]} itempClassName = {"numberDisappear"}/>);
+                
                 break;
             
             case 4:
@@ -243,7 +237,7 @@ function Tutorial () {
 
                 //setLayer3Content(TutorialArrayComponent(tutorialNumbers,"A","s2",3,"s2",2));
                 setLayer4(false);
-                setLayer4Content(<TutorialArray itutorialNumbers = {animation.step4.layer4} ibuildArray =  {["s6",1,"s",1]} itempClassName = {"numberDisappear"}/>);
+                setLayer4Content(<TutorialArray itutorialNumbers = {animation.step4.layer4} ibuildArray =  {["s6",1,"s",1]} itempClassName = {"numberAppear"}/>);
                 //setLayer4Content(TutorialArrayComponent("D",2,"s",1,"s3",1,"s",1));
 
                 setLayer5(false);
@@ -251,7 +245,7 @@ function Tutorial () {
                 break;
 
             case 6:
-                setTutorialText("This process is repeated until the new array contains all the values from the two smaller ones.")
+                setTutorialText("This process is repeated until the new array contains all the values from the two smaller ones.");
                 setLayer2(true);
                 setLayer2Content(<TutorialArray itutorialNumbers = {animation.step6.layer2} ibuildArray =  {["s3", 5, "s6", 5]} itempClassName = {"numberAppear"}/>);
                 setLayer3(false);
@@ -261,20 +255,28 @@ function Tutorial () {
                 break;
 
             case 7:
-                setTutorialText("Once the entire left side is done, you can begin the process over again to sort the right side.")
-                setLayer2(true);
+                setTutorialText("Once the entire left side is done, you can begin the process over again to sort the right side.");
+
+                setLayer1Content(<TutorialArray itutorialNumbers = {animation.step0.layer1} ibuildArray =  {["s6", 10,"s7"]} itempClassName = {"numberAppear"}/>);
+
+
                 setLayer3(true);
 
                 //setLayer3Content(TutorialArrayComponent(tutorialNumbers,"A","s12",3,"s2",2));
-                setLayer3Content(<TutorialArray itutorialNumbers = {animation.step7.layer3} ibuildArray =  {["s13",3,"s",2]} itempClassName = {"numberAppear"}/>);
+                setLayer3Content(<TutorialArray itutorialNumbers = {animation.step7.layer3} ibuildArray =  {["s13",3,"s",2]} itempClassName = {"numberDisappear"}/>);
 
                 setLayer4(true);
                 //setLayer4Content(TutorialArrayComponent(tutorialNumbers,"A","s11",2,"s",1,"s2",1,"s",1));
-                setLayer4Content(<TutorialArray itutorialNumbers = {animation.step7.layer4} ibuildArray =  {["s12",2,"s",1,"s",1,"s",1]} itempClassName = {"numberAppear"}/>); 
+                setLayer4Content(<TutorialArray itutorialNumbers = {animation.step7.layer4} ibuildArray =  {["s12",2,"s",1,"s",1,"s",1]} itempClassName = {"numberDisappear"}/>); 
  
-                setLayer5(true);
-                setLayer5Content(<TutorialArray itutorialNumbers = {animation.step7.layer5} ibuildArray =  {["s11",1,"s",1]} itempClassName = {"numberAppear"}/>);
 
+
+                setLayer2(true);
+                setLayer2Content(<TutorialArray itutorialNumbers = {animation.step7.layer2} ibuildArray =  {["s3", 5, "s6", 5]} itempClassName = {"numberAppear"}/>);
+
+                
+                setLayer5(true);
+                setLayer5Content(<TutorialArray itutorialNumbers = {animation.step7.layer5} ibuildArray =  {["s11",1,"s",1]} itempClassName = {"numberDisappear"}/>);
                 //setLayer5Content(TutorialArrayComponent(tutorialNumbers,"A","s11",1,"s",1));
                 break;
 
@@ -284,6 +286,9 @@ function Tutorial () {
                 setLayer1Content(<TutorialArray itutorialNumbers = {animation.step8.layer1} ibuildArray =  {["s6", 10,"s7"]} itempClassName = {"numberAppear"}/>);
 
                 setLayer2Content(<TutorialArray itutorialNumbers = {animation.step8.layer2} ibuildArray =  {["s3", 5, "s6", 5]} itempClassName = {"numberAppear"}/>);
+                
+                
+                
                 setLayer2(false);
 
                 setLayer5(false);
@@ -299,32 +304,32 @@ function Tutorial () {
                 break;
             
         }
-    },[step,tutorialNumbers,tutArray,sortedArray]);
+    },[step,tutorialNumbers,tutArray,sortedArray,layer2Time,setLayer1Content,setLayer2Content,setLayer5Content]);
     
         return(
             <div className="container">
                 <div className="tutorialText"> 
-                    <h6>{tutorialText}</h6>
-                    <h5>{step})srtd:{sortedArray})tut:{tutArray})</h5>
+                    <h6>{step}){tutorialText}</h6>
+                    {/* <h5>{step})srtd:{sortedArray})tut:{tutArray})</h5> */}
                 </div>
                 <div className="tutoialDisplay">
-                <CSSTransition in={layer1} classNames="layer" timeout = {200} unmountOnExit>
+                <CSSTransition in={layer1} classNames="layer" timeout = {layer2Time} unmountOnExit>
                 <div className="layer1"><ul>{layer1Content}</ul></div>
                 </CSSTransition>
                 <br></br>
-                <CSSTransition in={layer2} classNames="layer" timeout = {200} unmountOnExit>
+                <CSSTransition in={layer2} classNames="layer" timeout = {400} unmountOnExit>
                 <div  className="layer2Content"><ul>{layer2Content}</ul></div>
                 </CSSTransition>
                 <br></br>
-                <CSSTransition in={layer3} classNames="layer" timeout = {200} unmountOnExit>
+                <CSSTransition in={layer3} classNames="layer" timeout = {400} unmountOnExit>
                 <div className="layer3"><ul>{layer3Content}</ul></div>
                 </CSSTransition>
                 <br></br>
-                <CSSTransition in={layer4} classNames="layer" timeout = {200} unmountOnExit>
+                <CSSTransition in={layer4} classNames="layer" timeout = {400} unmountOnExit>
                 <div className="layer4"><ul>{layer4Content}</ul></div>
                 </CSSTransition>
                 <br></br>
-                <CSSTransition in={layer5} classNames="layer" timeout = {200} unmountOnExit>
+                <CSSTransition in={layer5} classNames="layer" timeout = {layer5Time} unmountOnExit>
                 <div className="layer5"><ul>{layer5Content}</ul></div>
                 </CSSTransition>
                 <br></br>

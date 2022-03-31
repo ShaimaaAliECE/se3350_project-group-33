@@ -99,25 +99,40 @@
   transition: opacity 400ms, transform 400ms;
 }
 
+.numberDisappear-enter,.numberDisappear-appear {
+  opacity: 1;
+}
 
+.numberDisappear-enter-active{
+  opacity: 0;
+  /* transform: translateX(0); */
+  transform: scale(0.9);
+  transition: opacity 1000ms, transform 1000ms;
+}
+
+.numberDisappear-enter-done{
+  opacity: 0;
+  transform: scale(0.9);
+  transition: width 0.5s 0.5s, height 0.5s 0.5s, opacity 1000ms;
+}
 
 .numberDisappear-exit{
   opacity: 1;
   transform: scale(0.9);
-  transition: width 0.5s 0.5s, height 0.5s 0.5s, opacity 400ms;
+  transition: width 0.5s 0.5s, height 0.5s 0.5s, opacity 1000ms;
 }
 
 .numberDisappear-exit-active{
   opacity: 0;
   transform: scale(0.9);
-  transition: width 0.5s 0.5s, height 0.5s 0.5s, opacity 400ms;
+  transition: width 0.5s 0.5s, height 0.5s 0.5s, opacity 1000ms;
 }
 
 
 .numberDisppear-exit-done{
   opacity: 0;
   transform: scale(0.9);
-  transition: width 0.5s 0.5s, height 0.5s 0.5s, opacity 400ms;
+  transition: width 0.5s 0.5s, height 0.5s 0.5s, opacity 1000ms;
 }
 
 
