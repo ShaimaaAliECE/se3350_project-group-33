@@ -14,7 +14,7 @@ export default function Component(props) {
 					height="20"
 					className="me-2"
 				/>
-				<Navbar.Brand href="Level1">Lil' Einsteins</Navbar.Brand>
+				<Navbar.Brand href="Home">Lil' Einsteins</Navbar.Brand>
 
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse id="basic-navbar-nav">

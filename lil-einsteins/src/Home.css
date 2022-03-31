@@ -1,0 +1,63 @@
+ .title{
+    font-size: 35px;
+    text-align: center;
+  }
+
+  .subtitle{
+    font-size: 25px;
+    text-align: center;
+  }
+
+  .sort-button{
+    background-color: red;
+    color: black;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }
+
+  
+.fade-in-text {
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    animation: fadeIn linear 1s;
+    -webkit-animation: fadeIn linear 1s;
+    -moz-animation: fadeIn linear 1s;
+    -o-animation: fadeIn linear 1s;
+    -ms-animation: fadeIn linear 1s;
+  }
+
+.fade-in-button {
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    animation: fadeIn linear 1.5s;
+    -webkit-animation: fadeIn linear 1.5s;
+    -moz-animation: fadeIn linear 1.5s;
+    -o-animation: fadeIn linear 1.5s;
+    -ms-animation: fadeIn linear 1.5s;
+  }
+  
+  @keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+  
+  @-moz-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+  
+  @-webkit-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+  
+  @-o-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+  
+  @-ms-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
