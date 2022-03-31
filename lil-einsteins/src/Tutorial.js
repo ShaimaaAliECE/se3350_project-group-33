@@ -9,7 +9,7 @@ function Tutorial() {
 		<div>
 			<NavbarComponent level="Level1" />
 			<br></br>
-			{/* <TutorialComponent /> */}
+			<TutorialComponent />
 			<Footer />
 		</div>
 	);
