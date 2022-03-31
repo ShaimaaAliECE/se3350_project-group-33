@@ -13,7 +13,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import NavbarComponent from "./Components/NavbarComponent";
 import Timer from "./Components/Timer";
 
-const numbers = randomizeNewArray();
+const numbers = randomizeNewArray(10);
 
 const Level2 = () => {
 	const boxDetails = [
@@ -108,7 +108,7 @@ const Level2 = () => {
 			)}
 
 			<div className="w-full mb-80 flex items-center flex-col">
-				<a href="/about">
+				<a href="/Level2">
 					<div className=" p-4 rounded-xl mt-2 bg-cyan-600 text-white">
 						Generate New Random Array
 					</div>

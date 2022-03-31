@@ -9,8 +9,8 @@ var audio1 = new Audio(dingSound);
 var audio2 = new Audio(hmmSound);
 
 const style = {
-	height: "6rem",
-	width: "6rem",
+	height: "3rem",
+	width: "3rem",
 	marginRight: "5px",
 	padding: "1rem",
 	textAlign: "center",

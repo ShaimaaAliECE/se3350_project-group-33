@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import Level2 from "./Level2";
 import Level3 from "./Level3";
+import Level4 from "./Level4";
 import Tutorial from "./Tutorial.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import NavbarComponent from "./Components/NavbarComponent";
@@ -11,6 +12,25 @@ import NavbarComponent from "./Components/NavbarComponent";
 
 import {BrowserRouter as Router, Routes, Route, Link} from "react-router-dom";
 
+<<<<<<< HEAD
+=======
+function RouteTutorial() {
+	return <Tutorial />;
+}
+
+function RouteLevel2() {
+	return <Level2 />;
+}
+
+function RouteLevel3() {
+	return <Level3 />;
+}
+
+function RouteLevel4() {
+	return <Level4 />;
+}
+
+>>>>>>> noahs-branch
 ReactDOM.render(
 	<React.StrictMode>
 		{/* <NavbarComponent /> */}
@@ -19,6 +39,7 @@ ReactDOM.render(
 				<Route path="/Level1" element={<Tutorial />}></Route>
 				<Route path="/level2" element={<Level2 />}></Route>
 				<Route path="/level3" element={<Level3 />}></Route>
+				<Route path="/level4" element={<Level4 />}></Route>
 				<Route path="/" element={<Tutorial />}></Route>
 			</Routes>
 		</Router>
