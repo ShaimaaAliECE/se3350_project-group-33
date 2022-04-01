@@ -1,19 +1,16 @@
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import { Button } from "react-bootstrap";
 import { DndProvider } from "react-dnd";
 import { Box } from "./Components/DraggableBox";
 import { Container } from "./Components/Container";
-import infoIcon from "./images/icons8-info.png";
+import Timer from "./Components/Timer";
 import nextIcon from "./images/icons8-next.png";
 import randomizeNewArray from "./Components/GenerateNumbers";
 import { ItemTypes } from "./Components/ItemTypes";
 import NavbarComponent from "./Components/NavbarComponent";
-import Timer from "./Components/Timer";
-import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const numbers = randomizeNewArray(20, 50);
+const numbers = randomizeNewArray(50, 100);
 
 let tempArray = numbers.slice();
 
@@ -30,7 +27,7 @@ const shuffleArray = (array) => {
 const unsorted = shuffleArray(tempArray);
 
 //loads values into the boxes
-const Level4 = () => {
+const Level5 = () => {
   const boxDetails = [
     { name: `${unsorted[0]}`, type: ItemTypes.BOX },
     { name: `${unsorted[1]}`, type: ItemTypes.BOX },
@@ -42,6 +39,36 @@ const Level4 = () => {
     { name: `${unsorted[7]}`, type: ItemTypes.BOX },
     { name: `${unsorted[8]}`, type: ItemTypes.BOX },
     { name: `${unsorted[9]}`, type: ItemTypes.BOX },
+    { name: `${unsorted[20]}`, type: ItemTypes.BOX },
+    { name: `${unsorted[21]}`, type: ItemTypes.BOX },
+    { name: `${unsorted[22]}`, type: ItemTypes.BOX },
+    { name: `${unsorted[23]}`, type: ItemTypes.BOX },
+    { name: `${unsorted[24]}`, type: ItemTypes.BOX },
+    { name: `${unsorted[25]}`, type: ItemTypes.BOX },
+    { name: `${unsorted[26]}`, type: ItemTypes.BOX },
+    { name: `${unsorted[27]}`, type: ItemTypes.BOX },
+    { name: `${unsorted[28]}`, type: ItemTypes.BOX },
+    { name: `${unsorted[29]}`, type: ItemTypes.BOX },
+    { name: `${unsorted[30]}`, type: ItemTypes.BOX },
+    { name: `${unsorted[31]}`, type: ItemTypes.BOX },
+    { name: `${unsorted[32]}`, type: ItemTypes.BOX },
+    { name: `${unsorted[33]}`, type: ItemTypes.BOX },
+    { name: `${unsorted[34]}`, type: ItemTypes.BOX },
+    { name: `${unsorted[35]}`, type: ItemTypes.BOX },
+    { name: `${unsorted[36]}`, type: ItemTypes.BOX },
+    { name: `${unsorted[37]}`, type: ItemTypes.BOX },
+    { name: `${unsorted[38]}`, type: ItemTypes.BOX },
+    { name: `${unsorted[39]}`, type: ItemTypes.BOX },
+    { name: `${unsorted[40]}`, type: ItemTypes.BOX },
+    { name: `${unsorted[41]}`, type: ItemTypes.BOX },
+    { name: `${unsorted[42]}`, type: ItemTypes.BOX },
+    { name: `${unsorted[43]}`, type: ItemTypes.BOX },
+    { name: `${unsorted[44]}`, type: ItemTypes.BOX },
+    { name: `${unsorted[45]}`, type: ItemTypes.BOX },
+    { name: `${unsorted[46]}`, type: ItemTypes.BOX },
+    { name: `${unsorted[47]}`, type: ItemTypes.BOX },
+    { name: `${unsorted[48]}`, type: ItemTypes.BOX },
+    { name: `${unsorted[49]}`, type: ItemTypes.BOX },
     { name: `${unsorted[10]}`, type: ItemTypes.BOX },
     { name: `${unsorted[11]}`, type: ItemTypes.BOX },
     { name: `${unsorted[12]}`, type: ItemTypes.BOX },
@@ -67,19 +94,12 @@ const Level4 = () => {
   const secondHalf = firstHalf / 2;
 
   const [nextArray, setNextArray] = useState(1);
-  const [solved, setSolved] = useState(false);
 
   const [showNextElement, setShowNextElement] = useState(0);
 
-  const navigate = useNavigate();
-  const handleLevelChange = useCallback(
-    () => navigate("/Level5", { replace: true }),
-    [navigate]
-  );
-
   return (
     <div>
-      <NavbarComponent level="Level4" />
+      <NavbarComponent level="Level5" />
       <Timer />
       <DndProvider backend={HTML5Backend}>
         <div className="z-10 fixed bottom-0 bg-red-600 py-6  left-0 right-0 flex gap-1 justify-center">
@@ -92,20 +112,12 @@ const Level4 = () => {
               key={index}
             />
           ))}
-          <Button
-            disabled={!solved}
-            variant="primary"
-            onClick={() => handleLevelChange()}
-          >
-            Next Level
-          </Button>
         </div>
       </DndProvider>
 
       <img
         onClick={() => {
           setNextArray(nextArray + 1);
-          if (nextArray >= 11) setSolved(true);
         }}
         src={nextIcon}
         className="z-10 fixed top-1/3 rotate-90 cursor-pointer left-16"
@@ -119,23 +131,15 @@ const Level4 = () => {
       )}
 
       <div className="w-full mb-5 flex items-center flex-col">
-        <a href="/Level4">
+        <a href="/Level5">
           <div className=" p-4 rounded-xl mt-2 bg-cyan-600 text-white">
             Generate New Random Array
           </div>
         </a>
 
-        <p className=" w-max text-white p-2 rounded-xl bg-slate-500 m-2">
-          Read this first:
-        </p>
-        <p className="w-max flex items-center bg-blue-200 rounded-xl p-2 m-2">
-          {" "}
-          <img src={infoIcon} width="30px" height="10px" alt="" /> You can drag
-          elements from bottom black box of the screen
-        </p>
         <p className=" w-max  p-2 rounded-xl bg-blue-200 m-2">Initial Array:</p>
         <p className=" w-max  p-2 rounded-xl bg-blue-200 m-2">
-          Total elements = 20
+          Total elements = 50
         </p>
       </div>
 
@@ -147,7 +151,7 @@ const Level4 = () => {
               <div
                 key={number}
                 className="bg-slate-300 border-r-2 border-white"
-                style={{ width: "50px", height: "50px" }}
+                style={{ width: "27px", height: "50px" }}
               >
                 {number}
               </div>
@@ -156,7 +160,7 @@ const Level4 = () => {
         </div>
       </div>
 
-      <div className="w-full mb-10 flex items-center flex-col">
+      <div className="flex flex-col justify-center">
         {/* Middle Layer */}
         {2 <= nextArray && (
           <DndProvider backend={HTML5Backend}>
@@ -167,15 +171,8 @@ const Level4 = () => {
                 </p>
               </div>
 
-              <div
-                className="flex justify-center flex-col"
-                style={{
-                  position: "relative",
-                  width: "1000px",
-                  height: "54px"
-                }}
-              >
-                <div className="flex justify-center w-full gap-8">
+              <div className="flex justify-center flex-col">
+                <div className="flex w-full gap-4">
                   <div className="flex border-b-4 border-black">
                     {unsorted.map((number, index) => {
                       return index < half ? (
@@ -202,7 +199,7 @@ const Level4 = () => {
         )}
       </div>
 
-      <div className="w-full mt-5 mb-5 flex items-center flex-col">
+      <div className="w-full mt-5  flex items-center flex-col">
         {/* Third Layer */}
         {3 <= nextArray && (
           <DndProvider backend={HTML5Backend}>
@@ -1328,4 +1325,4 @@ const Level4 = () => {
   );
 };
 
-export default Level4;
+export default Level5;
