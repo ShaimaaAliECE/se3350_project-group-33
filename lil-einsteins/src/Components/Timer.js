@@ -11,6 +11,7 @@ const Timer = () => {
 
 	// Hook runs any time the user presses play and timer is turned on
 	React.useEffect(() => {
+		console.log(clock);
 		// Declaring the current interval of the timer is set to null
 		let current = null;
 
