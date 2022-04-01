@@ -11,7 +11,7 @@
     align-items: center;
 }
 
-.popup-inner { 
+.inner-popup { 
     position: relative;
     padding: 32px;    
     width: 100%;
@@ -19,14 +19,14 @@
     background-color: white; 
 }
 
-.popup-inner .close-button { 
+.inner-popup .close-button { 
     position: absolute;
     top: 16px;
     right: 16px;
 }
 
-.popup-inner .return-button { 
+.inner-popup .return-button { 
     position: absolute;
     top: 16px;
-    right: 16px;
+    right: 8px;
 }

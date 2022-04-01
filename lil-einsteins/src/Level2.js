@@ -13,6 +13,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import NavbarComponent from "./Components/NavbarComponent";
 import Timer from "./Components/Timer";
 
+
 const numbers = randomizeNewArray(10, 20);
 
 const Level2 = () => {
