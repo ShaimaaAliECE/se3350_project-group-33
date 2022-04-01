@@ -1,5 +1,6 @@
-import React from "react";
+import React, {useCallback} from "react";
 import "../App.css";
+import {useNavigate} from "react-router-dom";
 
 const Timer = () => {
 	// Clock keeps track of miliseconds
@@ -25,6 +26,17 @@ const Timer = () => {
 			clearInterval(current);
 		}
 	}, [play]);
+	
+	if(clock === 300000){
+       handleLevelChange();
+     }
+
+     const navigate = useNavigate();
+	const handleLevelChange = useCallback(
+		() => navigate("/Home", {replace: true}),
+		[navigate]
+	);
+
 
 	return (
 		<div className="Timer mx-3 my-3">

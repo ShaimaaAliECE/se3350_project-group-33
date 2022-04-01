@@ -1,13 +1,16 @@
-import {useState} from "react";
-import {HTML5Backend} from "react-dnd-html5-backend";
-import {DndProvider} from "react-dnd";
-import {Box} from "./Components/DraggableBox";
-import {Container} from "./Components/Container";
+import { useState, useCallback } from "react";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import { Button } from "react-bootstrap";
+import { DndProvider } from "react-dnd";
+import { Box } from "./Components/DraggableBox";
+import { Container } from "./Components/Container";
 import infoIcon from "./images/icons8-info.png";
 import nextIcon from "./images/icons8-next.png";
 import randomizeNewArray from "./Components/GenerateNumbers";
 import {ItemTypes} from "./Components/ItemTypes";
 import NavbarComponent from "./Components/NavbarComponent";
+import Timer from "./Components/Timer";
+import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const numbers = randomizeNewArray(20, 50); //generates a new array with 20 values ranging 1-50
@@ -64,34 +67,50 @@ const Level4 = () => {
 	const firstHalf = half / 2;
 	const secondHalf = firstHalf / 2;
 
-	const [nextArray, setNextArray] = useState(1);
+  const [nextArray, setNextArray] = useState(1);
+  const [solved, setSolved] = useState(false);
 
 	const [showNextElement, setShowNextElement] = useState(0);
 
-	return (
-		<div>
-			<NavbarComponent level="Level4" />
-			<DndProvider backend={HTML5Backend}>
-				<div className="z-10 fixed bottom-0 bg-red-600 py-6  left-0 right-0 flex gap-1 justify-center">
-					{boxes.map(({name, type}, index) => (
-						//mapping the boxes onto the screen
-						<Box
-							name={name} //assigns the name from box details
-							type={type} //assigns the type from box details
-							isDropped={isDropped(name)}
-							key={index} //gives the box a key based on its index in box details
-						/>
-					))}
-				</div>
-			</DndProvider>
+  const navigate = useNavigate();
+  const handleLevelChange = useCallback(
+    () => navigate("/Level5", { replace: true }),
+    [navigate]
+  );
 
-			{/* css and funtionality of down arrow button */}
-			<img alt="down arrow" onClick={() => { //on click
-					setNextArray(nextArray + 1); //move to the next stage of the array
-				}}
-				src={nextIcon}
-				className="z-10 fixed top-1/3 rotate-90 cursor-pointer left-16"
-			/>
+  return (
+    <div>
+      <NavbarComponent level="Level4" />
+      <Timer />
+      <DndProvider backend={HTML5Backend}>
+        <div className="z-10 fixed bottom-0 bg-red-600 py-6  left-0 right-0 flex gap-1 justify-center">
+          {boxes.map(({ name, type }, index) => (
+            //loading the boxes onto the screen
+            <Box
+              name={name}
+              type={type}
+              isDropped={isDropped(name)}
+              key={index}
+            />
+          ))}
+          <Button
+            disabled={!solved}
+            variant="primary"
+            onClick={() => handleLevelChange()}
+          >
+            Next Level
+          </Button>
+        </div>
+      </DndProvider>
+
+      <img
+        onClick={() => {
+          setNextArray(nextArray + 1);
+          if (nextArray >= 11) setSolved(true);
+        }}
+        src={nextIcon}
+        className="z-10 fixed top-1/3 rotate-90 cursor-pointer left-16"
+      />
 
 			{nextArray >= 12 && (
 				<div className=" ">
@@ -122,32 +141,22 @@ const Level4 = () => {
 				</p>
 			</div>
 
-			{/* css to display the initial array in the correst position and size */}
-			<div
-				className="flex justify-center mb-40"
-				style={{
-					position: "absolute",
-					width: "1000px",
-					height: "54px",
-					left: "11%"
-				}}
-			>
-				{/* Displaying Initial Array */}
-				<div className="flex border-black border-b-4 justify-center">
-					{unsorted.map((number) => { //map the unsorted array into divs
-						return (
-							//css and style for the individual number containers
-							<div
-								key={number}
-								className="bg-slate-300 border-r-2 border-white"
-								style={{width: "50px", height: "50px"}}
-							>
-								{number}
-							</div>
-						);
-					})}
-				</div>
-			</div>
+      <div className="flex justify-center mb-40">
+        {/* Displaying Initial Array */}
+        <div className="flex border-black border-b-4 justify-center">
+          {unsorted.map((number) => {
+            return (
+              <div
+                key={number}
+                className="bg-slate-300 border-r-2 border-white"
+                style={{ width: "50px", height: "50px" }}
+              >
+                {number}
+              </div>
+            );
+          })}
+        </div>
+      </div>
 
 			<div className="w-full mb-10 flex items-center flex-col">
 				{/* Middle Layer */}
@@ -341,73 +350,73 @@ const Level4 = () => {
 
 			<div className="w-full flex items-center flex-col">
 				{/* Fifth Layer */}
-				{5 <= nextArray && (
+				{5 <= nextArray && ( //fourth and final array split
 					<DndProvider backend={HTML5Backend}>
-						<div className="flex gap-2.5 mb-5">
-							<div className="flex items-center  gap-1 flex-col">
+						<div className="flex gap-2.5 mb-5"> {/* determines the gap between arrays*/}
+							<div className="flex items-center  gap-1 flex-col"> {/* css for the individual boxes */}
 								<div className="flex gap-2.5">
-									<Container shouldAccept={unsorted[0]} />
-									<Container shouldAccept={unsorted[1]} />
+									<Container shouldAccept={unsorted[0]} /> {/* the box should only accept its corresponding value*/ }
+									<Container shouldAccept={unsorted[1]} /> {/* the box should only accept its corresponding value*/ }
 								</div>
 							</div>
 
-							<div className="flex items-center  gap-1 flex-col">
+							<div className="flex items-center  gap-1 flex-col"> {/* css for the individual boxes */}
 								<div className="flex gap-2.5">
-									<Container shouldAccept={unsorted[2]} />
-									<div className="flex border-b-4 border-black">
-										<Container shouldAccept={unsorted[3]} />
-										<Container shouldAccept={unsorted[4]} />
+									<Container shouldAccept={unsorted[2]} /> {/* the box should only accept its corresponding value*/ }
+									<div className="flex border-b-4 border-black"> {/* css for the individual boxes */}
+										<Container shouldAccept={unsorted[3]} /> {/* the box should only accept its corresponding value*/ }
+										<Container shouldAccept={unsorted[4]} /> {/* the box should only accept its corresponding value*/ }
 									</div>
 								</div>
 							</div>
 
-							<div className="flex items-center  gap-1 flex-col">
+							<div className="flex items-center  gap-1 flex-col"> {/* css for the individual boxes */}
 								<div className="flex gap-2.5">
-									<Container shouldAccept={unsorted[5]} />
-									<Container shouldAccept={unsorted[6]} />
+									<Container shouldAccept={unsorted[5]} /> {/* the box should only accept its corresponding value*/ }
+									<Container shouldAccept={unsorted[6]} /> {/* the box should only accept its corresponding value*/ }
 								</div>
 							</div>
 
-							<div className="flex items-center  gap-1 flex-col">
+							<div className="flex items-center  gap-1 flex-col"> {/* css for the individual boxes */}
 								<div className="flex gap-2.5">
-									<Container shouldAccept={unsorted[7]} />
-									<div className="flex border-b-4 border-black">
-										<Container shouldAccept={unsorted[8]} />
-										<Container shouldAccept={unsorted[9]} />
+									<Container shouldAccept={unsorted[7]} /> {/* the box should only accept its corresponding value*/ }
+									<div className="flex border-b-4 border-black"> {/* css for the individual boxes */}
+										<Container shouldAccept={unsorted[8]} /> {/* the box should only accept its corresponding value*/ }
+										<Container shouldAccept={unsorted[9]} /> {/* the box should only accept its corresponding value*/ }
 									</div>
 								</div>
 							</div>
 
-							<div className="flex items-center  gap-1 flex-col">
+							<div className="flex items-center  gap-1 flex-col"> {/* css for the individual boxes */}
 								<div className="flex gap-2.5">
-									<Container shouldAccept={unsorted[10]} />
-									<Container shouldAccept={unsorted[11]} />
+									<Container shouldAccept={unsorted[10]} /> {/* the box should only accept its corresponding value*/ }
+									<Container shouldAccept={unsorted[11]} /> {/* the box should only accept its corresponding value*/ }
 								</div>
 							</div>
 
-							<div className="flex items-center  gap-1 flex-col">
+							<div className="flex items-center  gap-1 flex-col"> {/* css for the individual boxes */}
 								<div className="flex gap-2.5">
-									<Container shouldAccept={unsorted[12]} />
-									<div className="flex border-b-4 border-black">
-										<Container shouldAccept={unsorted[13]} />
-										<Container shouldAccept={unsorted[14]} />
+									<Container shouldAccept={unsorted[12]} /> {/* the box should only accept its corresponding value*/ }
+									<div className="flex border-b-4 border-black"> {/* css for the individual boxes */}
+										<Container shouldAccept={unsorted[13]} /> {/* the box should only accept its corresponding value*/ }
+										<Container shouldAccept={unsorted[14]} /> {/* the box should only accept its corresponding value*/ }
 									</div>
 								</div>
 							</div>
 
-							<div className="flex items-center  gap-1 flex-col">
+							<div className="flex items-center  gap-1 flex-col"> {/* css for the individual boxes */}
 								<div className="flex gap-2.5">
-									<Container shouldAccept={unsorted[15]} />
-									<Container shouldAccept={unsorted[16]} />
+									<Container shouldAccept={unsorted[15]} /> {/* the box should only accept its corresponding value*/ }
+									<Container shouldAccept={unsorted[16]} /> {/* the box should only accept its corresponding value*/ }
 								</div>
 							</div>
 
-							<div className="flex items-center  gap-1 flex-col">
+							<div className="flex items-center  gap-1 flex-col"> {/* css for the individual boxes */}
 								<div className="flex gap-2.5">
-									<Container shouldAccept={unsorted[17]} />
-									<div className="flex border-b-4 border-black">
-										<Container shouldAccept={unsorted[18]} />
-										<Container shouldAccept={unsorted[19]} />
+									<Container shouldAccept={unsorted[17]} /> {/* the box should only accept its corresponding value*/ }
+									<div className="flex border-b-4 border-black"> {/* css for the individual boxes */}
+										<Container shouldAccept={unsorted[18]} /> {/* the box should only accept its corresponding value*/ }
+										<Container shouldAccept={unsorted[19]} /> {/* the box should only accept its corresponding value*/ }
 									</div>
 								</div>
 							</div>
@@ -416,34 +425,26 @@ const Level4 = () => {
 				)}
 			</div>
 
-			<div
-				className="flex justify-center mb-2"
-				style={{
-					position: "relative",
-					width: "1000px",
-					height: "54px",
-					left: "11%"
-				}}
-			>
-				{6 <= nextArray && (
-					<div className="flex gap-2.5">
-						{unsorted.map((number) => {
-							return (
-								<div
-									className="p-4 border-r-0 border-b-4 border-black bg-slate-300"
-									style={{width: "50px", height: "50px"}}
-								>
-									{number}
-								</div>
-							);
-						})}
-					</div>
-				)}
-			</div>
+      <div className="flex justify-center mb-2">
+        {6 <= nextArray && (
+          <div className="flex gap-2.5">
+            {unsorted.map((number) => {
+              return (
+                <div
+                  className="p-4 border-r-0 border-b-4 border-black bg-slate-300"
+                  style={{ width: "50px", height: "50px" }}
+                >
+                  {number}
+                </div>
+              );
+            })}
+          </div>
+        )}
+      </div>
 
 			<div className="w-full flex items-center flex-col">
 				{6 <= nextArray && (
-					<div className="flex justify-center items-center flex-col">
+					<div className="flex justify-center items-center flex-col"> {/* css for text following atomized array */}
 						<div className=" bg-blue-200 p-2 rounded-xl mb-4">
 							We have successfully made the array atomic i.e. seperated each
 							element out
@@ -456,394 +457,249 @@ const Level4 = () => {
 				)}
 			</div>
 
-			<DndProvider backend={HTML5Backend}>
-				<div className="w-full mb-40 flex items-center flex-col">
-					{7 <= nextArray && (
-						<div className="flex justify-center gap-3">
-							<div className="flex flex-col gap-2 justify-center items-center">
-								<div className="flex">
-									<div className="flex items-center flex-col">
-										<Container
-											shouldAccept={
-												unsorted.slice(0, 2).sort(function (a, b) {
-													return a - b;
-												})[0]
-											}
-										/>
-										<span
-											className={
-												showNextElement == 1 ||
-												showNextElement == 2 ||
-												showNextElement == 3
-													? " text-2xl opacity-100"
-													: " text-2xl opacity-0"
-											}
-										>
-											&uarr;
-										</span>
-									</div>
+      <DndProvider backend={HTML5Backend}>
+        <div className="w-full mb-40 flex items-center flex-col">
+          {7 <= nextArray && (
+            <div className="flex justify-center gap-3">
+              <div className="flex flex-col gap-2 justify-center items-center">
+                <div className="flex">
+                  <div className="flex items-center flex-col">
+                    <Container
+                      shouldAccept={
+                        unsorted.slice(0, 2).sort(function (a, b) {
+                          return a - b;
+                        })[0]
+                      }
+                    />
+                  </div>
 
-									<div className="flex items-center flex-col">
-										<Container
-											shouldAccept={
-												unsorted.slice(0, 2).sort(function (a, b) {
-													return a - b;
-												})[1]
-											}
-										/>
-										<span
-											className={
-												showNextElement == 3
-													? " text-2xl opacity-100"
-													: " text-2xl opacity-0"
-											}
-										>
-											&uarr;
-										</span>
-									</div>
-								</div>
-							</div>
+                  <div className="flex items-center flex-col">
+                    <Container
+                      shouldAccept={
+                        unsorted.slice(0, 2).sort(function (a, b) {
+                          return a - b;
+                        })[1]
+                      }
+                    />
+                  </div>
+                </div>
+              </div>
 
-							<div className="flex flex-col gap-2 justify-center items-center">
-								<div className="flex">
-									<div className="flex items-center flex-col">
-										<Container
-											shouldAccept={
-												unsorted.slice(2, 4).sort(function (a, b) {
-													return a - b;
-												})[0]
-											}
-										/>
-										<span
-											className={
-												showNextElement == 1
-													? " text-2xl opacity-100"
-													: " text-2xl opacity-0"
-											}
-										>
-											&uarr;
-										</span>
-									</div>
-									<div className="flex items-center flex-col">
-										<Container
-											shouldAccept={
-												unsorted.slice(2, 4).sort(function (a, b) {
-													return a - b;
-												})[1]
-											}
-										/>
-										<span
-											className={
-												showNextElement == 2
-													? " text-2xl opacity-100"
-													: " text-2xl opacity-0"
-											}
-										>
-											&uarr;
-										</span>
-									</div>
-								</div>
-							</div>
+              <div className="flex flex-col gap-2 justify-center items-center">
+                <div className="flex">
+                  <div className="flex items-center flex-col">
+                    <Container
+                      shouldAccept={
+                        unsorted.slice(2, 4).sort(function (a, b) {
+                          return a - b;
+                        })[0]
+                      }
+                    />
+                  </div>
+                  <div className="flex items-center flex-col">
+                    <Container
+                      shouldAccept={
+                        unsorted.slice(2, 4).sort(function (a, b) {
+                          return a - b;
+                        })[1]
+                      }
+                    />
+                  </div>
+                </div>
+              </div>
 
-							<div className="flex flex-col gap-2 justify-center items-center">
-								<div className="flex">
-									<div className="flex items-center flex-col">
-										<Container
-											shouldAccept={
-												unsorted.slice(4, 6).sort(function (a, b) {
-													return a - b;
-												})[0]
-											}
-										/>
-										<span
-											className={
-												showNextElement == 4 ||
-												showNextElement == 5 ||
-												showNextElement == 6
-													? " text-2xl opacity-100"
-													: " text-2xl opacity-0"
-											}
-										>
-											&uarr;
-										</span>
-									</div>
-									<div className="flex items-center flex-col">
-										<Container
-											shouldAccept={
-												unsorted.slice(4, 6).sort(function (a, b) {
-													return a - b;
-												})[1]
-											}
-										/>
-										<span
-											className={
-												showNextElement == 6
-													? " text-2xl opacity-100"
-													: " text-2xl opacity-0"
-											}
-										>
-											&uarr;
-										</span>
-									</div>
-								</div>
-							</div>
+              <div className="flex flex-col gap-2 justify-center items-center">
+                <div className="flex">
+                  <div className="flex items-center flex-col">
+                    <Container
+                      shouldAccept={
+                        unsorted.slice(4, 6).sort(function (a, b) {
+                          return a - b;
+                        })[0]
+                      }
+                    />
+                  </div>
+                  <div className="flex items-center flex-col">
+                    <Container
+                      shouldAccept={
+                        unsorted.slice(4, 6).sort(function (a, b) {
+                          return a - b;
+                        })[1]
+                      }
+                    />
+                  </div>
+                </div>
+              </div>
 
-							<div className="flex flex-col gap-2 justify-center items-center">
-								<div className="flex">
-									<div className="flex items-center flex-col">
-										<Container
-											shouldAccept={
-												unsorted.slice(6, 8).sort(function (a, b) {
-													return a - b;
-												})[0]
-											}
-										/>
-										<span
-											className={
-												showNextElement == 4
-													? " text-2xl opacity-100"
-													: " text-2xl opacity-0"
-											}
-										>
-											&uarr;
-										</span>
-									</div>
-									<div className="flex items-center flex-col">
-										<Container
-											shouldAccept={
-												unsorted.slice(6, 8).sort(function (a, b) {
-													return a - b;
-												})[1]
-											}
-										/>
-										<span
-											className={
-												showNextElement == 5
-													? " text-2xl opacity-100"
-													: " text-2xl opacity-0"
-											}
-										>
-											&uarr;
-										</span>
-									</div>
-								</div>
-							</div>
+              <div className="flex flex-col gap-2 justify-center items-center">
+                <div className="flex">
+                  <div className="flex items-center flex-col">
+                    <Container
+                      shouldAccept={
+                        unsorted.slice(6, 8).sort(function (a, b) {
+                          return a - b;
+                        })[0]
+                      }
+                    />
+                  </div>
+                  <div className="flex items-center flex-col">
+                    <Container
+                      shouldAccept={
+                        unsorted.slice(6, 8).sort(function (a, b) {
+                          return a - b;
+                        })[1]
+                      }
+                    />
+                  </div>
+                </div>
+              </div>
 
-							<div className="flex flex-col gap-2 justify-center items-center">
-								<div className="flex">
-									<div className="flex items-center flex-col">
-										<Container
-											shouldAccept={
-												unsorted.slice(8, 10).sort(function (a, b) {
-													return a - b;
-												})[0]
-											}
-										/>
-										<span
-											className={
-												showNextElement == 7
-													? " text-2xl opacity-100"
-													: " text-2xl opacity-0"
-											}
-										>
-											&uarr;
-										</span>
-									</div>
-									<div className="flex items-center flex-col">
-										<Container
-											shouldAccept={
-												unsorted.slice(8, 10).sort(function (a, b) {
-													return a - b;
-												})[1]
-											}
-										/>
-										<span
-											className={
-												showNextElement == 7
-													? " text-2xl opacity-100"
-													: " text-2xl opacity-0"
-											}
-										>
-											&uarr;
-										</span>
-									</div>
-								</div>
-							</div>
-							<div className="flex flex-col gap-2 justify-center items-center">
-								<div className="flex">
-									<div className="flex items-center flex-col">
-										<Container
-											shouldAccept={
-												unsorted.slice(10, 12).sort(function (a, b) {
-													return a - b;
-												})[0]
-											}
-										/>
-										<span
-											className={
-												showNextElement == 1 ||
-												showNextElement == 2 ||
-												showNextElement == 3
-													? " text-2xl opacity-100"
-													: " text-2xl opacity-0"
-											}
-										>
-											&uarr;
-										</span>
-									</div>
+              <div className="flex flex-col gap-2 justify-center items-center">
+                <div className="flex">
+                  <div className="flex items-center flex-col">
+                    <Container
+                      shouldAccept={
+                        unsorted.slice(8, 10).sort(function (a, b) {
+                          return a - b;
+                        })[0]
+                      }
+                    />
+                  </div>
+                  <div className="flex items-center flex-col">
+                    <Container
+                      shouldAccept={
+                        unsorted.slice(8, 10).sort(function (a, b) {
+                          return a - b;
+                        })[1]
+                      }
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="flex flex-col gap-2 justify-center items-center">
+                <div className="flex">
+                  <div className="flex items-center flex-col">
+                    <Container
+                      shouldAccept={
+                        unsorted.slice(10, 12).sort(function (a, b) {
+                          return a - b;
+                        })[0]
+                      }
+                    />
+                  </div>
 
-									<div className="flex items-center flex-col">
-										<Container
-											shouldAccept={
-												unsorted.slice(10, 12).sort(function (a, b) {
-													return a - b;
-												})[1]
-											}
-										/>
-										<span
-											className={
-												showNextElement == 3
-													? " text-2xl opacity-100"
-													: " text-2xl opacity-0"
-											}
-										>
-											&uarr;
-										</span>
-									</div>
-								</div>
-							</div>
+                  <div className="flex items-center flex-col">
+                    <Container
+                      shouldAccept={
+                        unsorted.slice(10, 12).sort(function (a, b) {
+                          return a - b;
+                        })[1]
+                      }
+                    />
+                  </div>
+                </div>
+              </div>
 
-							<div className="flex flex-col gap-2 justify-center items-center">
-								<div className="flex">
-									<div className="flex items-center flex-col">
-										<Container
-											shouldAccept={
-												unsorted.slice(12, 14).sort(function (a, b) {
-													return a - b;
-												})[0]
-											}
-										/>
-										<span
-											className={
-												showNextElement == 1
-													? " text-2xl opacity-100"
-													: " text-2xl opacity-0"
-											}
-										>
-											&uarr;
-										</span>
-									</div>
-									<div className="flex items-center flex-col">
-										<Container
-											shouldAccept={
-												unsorted.slice(12, 14).sort(function (a, b) {
-													return a - b;
-												})[1]
-											}
-										/>
-										<span
-											className={
-												showNextElement == 2
-													? " text-2xl opacity-100"
-													: " text-2xl opacity-0"
-											}
-										>
-											&uarr;
-										</span>
-									</div>
-								</div>
-							</div>
+              <div className="flex flex-col gap-2 justify-center items-center">
+                <div className="flex">
+                  <div className="flex items-center flex-col">
+                    <Container
+                      shouldAccept={
+                        unsorted.slice(12, 14).sort(function (a, b) {
+                          return a - b;
+                        })[0]
+                      }
+                    />
+                  </div>
+                  <div className="flex items-center flex-col">
+                    <Container
+                      shouldAccept={
+                        unsorted.slice(12, 14).sort(function (a, b) {
+                          return a - b;
+                        })[1]
+                      }
+                    />
+                  </div>
+                </div>
+              </div>
 
-							<div className="flex flex-col gap-2 justify-center items-center">
-								<div className="flex">
-									<div className="flex items-center flex-col">
-										<Container
-											shouldAccept={
-												unsorted.slice(14, 16).sort(function (a, b) {
-													return a - b;
-												})[0]
-											}
-										/>
-										<span
-											className={
-												showNextElement == 4 ||
-												showNextElement == 5 ||
-												showNextElement == 6
-													? " text-2xl opacity-100"
-													: " text-2xl opacity-0"
-											}
-										>
-											&uarr;
-										</span>
-									</div>
-									<div className="flex items-center flex-col">
-										<Container
-											shouldAccept={
-												unsorted.slice(14, 16).sort(function (a, b) {
-													return a - b;
-												})[1]
-											}
-										/>
-										<span
-											className={
-												showNextElement == 6
-													? " text-2xl opacity-100"
-													: " text-2xl opacity-0"
-											}
-										>
-											&uarr;
-										</span>
-									</div>
-								</div>
-							</div>
+              <div className="flex flex-col gap-2 justify-center items-center">
+                <div className="flex">
+                  <div className="flex items-center flex-col">
+                    <Container
+                      shouldAccept={
+                        unsorted.slice(14, 16).sort(function (a, b) {
+                          return a - b;
+                        })[0]
+                      }
+                    />
+                  </div>
+                  <div className="flex items-center flex-col">
+                    <Container
+                      shouldAccept={
+                        unsorted.slice(14, 16).sort(function (a, b) {
+                          return a - b;
+                        })[1]
+                      }
+                    />
+                  </div>
+                </div>
+              </div>
 
-							<div className="flex flex-col gap-2 justify-center items-center">
-								<div className="flex">
-									<div className="flex items-center flex-col">
-										<Container
-											shouldAccept={
-												unsorted.slice(16, 18).sort(function (a, b) {
-													return a - b;
-												})[0]
-											}
-										/>
-										<span
-											className={
-												showNextElement == 4
-													? " text-2xl opacity-100"
-													: " text-2xl opacity-0"
-											}
-										>
-											&uarr;
-										</span>
-									</div>
-									<div className="flex items-center flex-col">
-										<Container
-											shouldAccept={
-												unsorted.slice(16, 18).sort(function (a, b) {
-													return a - b;
-												})[1]
-											}
-										/>
-										<span
-											className={
-												showNextElement == 5
-													? " text-2xl opacity-100"
-													: " text-2xl opacity-0"
-											}
-										>
-											&uarr;
-										</span>
-									</div>
-								</div>
-							</div>
+              <div className="flex flex-col gap-2 justify-center items-center">
+                <div className="flex">
+                  <div className="flex items-center flex-col">
+                    <Container
+                      shouldAccept={
+                        unsorted.slice(16, 18).sort(function (a, b) {
+                          return a - b;
+                        })[0]
+                      }
+                    />
+                  </div>
+                  <div className="flex items-center flex-col">
+                    <Container
+                      shouldAccept={
+                        unsorted.slice(16, 18).sort(function (a, b) {
+                          return a - b;
+                        })[1]
+                      }
+                    />
+                  </div>
+                </div>
+              </div>
 
-							<div className="flex flex-col gap-2 justify-center items-center">
+              <div className="flex flex-col gap-2 justify-center items-center">
+                <div className="flex">
+                  <div className="flex items-center flex-col">
+                    <Container
+                      shouldAccept={
+                        unsorted.slice(18, 20).sort(function (a, b) {
+                          return a - b;
+                        })[0]
+                      }
+                    />
+                  </div>
+                  <div className="flex items-center flex-col">
+                    <Container
+                      shouldAccept={
+                        unsorted.slice(18, 20).sort(function (a, b) {
+                          return a - b;
+                        })[1]
+                      }
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+							<div className="flex flex-col gap-2 justify-center items-center"> {/* determines the gap between boxes*/}
 								<div className="flex">
-									<div className="flex items-center flex-col">
+									<div className="flex items-center flex-col"> {/* css for the individual boxes */}
 										<Container
 											shouldAccept={
-												unsorted.slice(18, 20).sort(function (a, b) {
+												unsorted.slice(18, 20).sort(function (a, b) { //the container should accept the first value of the sorted sliced array
 													return a - b;
 												})[0]
 											}
@@ -858,10 +714,10 @@ const Level4 = () => {
 											&uarr;
 										</span>
 									</div>
-									<div className="flex items-center flex-col">
+									<div className="flex items-center flex-col"> 
 										<Container
 											shouldAccept={
-												unsorted.slice(18, 20).sort(function (a, b) {
+												unsorted.slice(18, 20).sort(function (a, b) { //the container should accept the second value of the sorted sliced array
 													return a - b;
 												})[1]
 											}
