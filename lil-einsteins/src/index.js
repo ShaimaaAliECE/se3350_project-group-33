@@ -24,8 +24,8 @@ ReactDOM.render(
 				<Route path="/Level1" element={<Tutorial />}></Route>
 				<Route path="/level2" element={<Level2 />}></Route>
 				<Route path="/level3" element={<Level3 />}></Route>
-				<Route path="/level5" element={<Level4 />}></Route>
-				<Route path="/level4" element={<Level5 />}></Route>
+				<Route path="/level4" element={<Level4 />}></Route>
+				<Route path="/level5" element={<Level5 />}></Route>
 				<Route path="/" element={<Home />}></Route>
 			</Routes>
 		</Router>
