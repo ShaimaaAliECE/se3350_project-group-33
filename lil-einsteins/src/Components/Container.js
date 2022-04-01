@@ -30,6 +30,7 @@ export const Container = memo(function Container({shouldAccept}) {
 	const [solved, setSolved] = useState(false);
 
 	const [mistakeCounter, setMistakeCounter] = useState(0);
+	const [tracker, setTracker] = useState(false);
 
 
 	function isDropped(boxName) {
@@ -50,12 +51,7 @@ export const Container = memo(function Container({shouldAccept}) {
 
 				if (mistakesMade === 3){
 					//Trigger event for when the player makes 3 mistakes
-					<Popup trigger={true}> 
-					 <h3>Oops!</h3>
-                <p> You have made 3 mistakes!</p> 
-                <p>Would you like to return to the previous level?</p>
-					</Popup>
-					//alert("3 mistakes have been made");
+					setTracker(true); 
 				}
 				setSolved(false);
 			}
@@ -106,6 +102,11 @@ export const Container = memo(function Container({shouldAccept}) {
 
 	return (
 		<div>
+			<Popup trigger={tracker}> 
+					 <h3>Oops!</h3>
+                <p> You have made 3 mistakes!</p> 
+                <p>Would you like to return to the previous level?</p>
+					</Popup>
 			<div style={{overflow: "hidden", clear: "both"}} id={mistakeCounter}>
 				{dustbins.map(({accepts, lastDroppedItem}, index) => (
 					<div
