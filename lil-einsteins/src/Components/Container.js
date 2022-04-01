@@ -8,6 +8,7 @@ import Popup from "./Popup";
  
 var audio1 = new Audio(dingSound);
 var audio2 = new Audio(hmmSound);
+var mistakesMade = 0 ;
 
 const style = {
 	height: "3rem",
@@ -27,6 +28,7 @@ export const Container = memo(function Container({shouldAccept}) {
 
 	const [droppedBoxNames, setDroppedBoxNames] = useState([]);
 	const [solved, setSolved] = useState(false);
+
 	const [mistakeCounter, setMistakeCounter] = useState(0);
 
 
@@ -43,17 +45,18 @@ export const Container = memo(function Container({shouldAccept}) {
 				setSolved(true);
 			} else if (item.name != `${shouldAccept}`) {
 				audio2.play();
+				mistakesMade++;
+				console.log(mistakesMade);
 
-				/*if (mistakeCounter === 3){
+				if (mistakesMade === 3){
 					//Trigger event for when the player makes 3 mistakes
-					<div>
 					<Popup trigger={true}> 
 					 <h3>Oops!</h3>
                 <p> You have made 3 mistakes!</p> 
                 <p>Would you like to return to the previous level?</p>
-					</Popup> 
-					</div>
-				}*/
+					</Popup>
+					//alert("3 mistakes have been made");
+				}
 				setSolved(false);
 			}
 			
