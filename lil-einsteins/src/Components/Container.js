@@ -72,15 +72,6 @@ export const Container = memo(function Container({shouldAccept}) {
 		},
 		[droppedBoxNames, dustbins,setMistakeCounter]
 	);
-	
-
-	useEffect(() => { 
-		//setMistakeCounter(mistakeCounter++)
-
-	},[
-		shouldAccept,
-		setMistakeCounter
-	]);
 
 	const onDrop = (item) => handleDrop(0, item);
 
@@ -102,7 +93,7 @@ export const Container = memo(function Container({shouldAccept}) {
 
 	return (
 		<div>
-			<Popup trigger={tracker}> 
+			<Popup trigger={tracker} >  
 					 <h3>Oops!</h3>
                 <p> You have made 3 mistakes!</p> 
                 <p>Would you like to return to the previous level?</p>
