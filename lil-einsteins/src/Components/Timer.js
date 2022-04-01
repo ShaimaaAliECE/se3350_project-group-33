@@ -1,10 +1,17 @@
-import React from "react";
+import React, {useCallback} from "react";
 import "../App.css";
+import {useNavigate} from "react-router-dom";
 
-const Timer = () => {
+export default function TimerTest() {
 	// Clock keeps track of miliseconds
 	// Time sets the current time
 	const [clock, time] = React.useState(0); // Default value for time
+
+	const navigate = useNavigate();
+	const handleLevelChange = useCallback(
+		() => navigate("/Home", {replace: true}),
+		[navigate]
+	);
 
 	// Checks if the timer is running
 	const [play, start] = React.useState(false); // False is default value
@@ -25,11 +32,15 @@ const Timer = () => {
 		}
 	}, [play]);
 
+	if (clock === 300000) {
+		handleLevelChange();
+	}
+
 	return (
 		<div className="Timer mx-3 my-3">
 			<h2>Game Time: </h2>
 			<div id="display">
-				<span>{("0" + Math.floor((clock / 20000) % 60)).slice(-2)}:</span>
+				<span>{("0" + Math.floor((clock / 60000) % 60)).slice(-2)}:</span>
 				<span>{("0" + Math.floor((clock / 1000) % 60)).slice(-2)}:</span>
 
 				<span>{("0" + ((clock / 10) % 100)).slice(-2)}</span>
@@ -48,6 +59,4 @@ const Timer = () => {
 			</div>
 		</div>
 	);
-};
-
-export default Timer;
+}
