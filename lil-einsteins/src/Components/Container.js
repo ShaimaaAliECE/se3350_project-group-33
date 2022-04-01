@@ -44,7 +44,7 @@ export const Container = memo(function Container({shouldAccept}) {
 				mistakeCounter++ 
 				if (mistakeCounter == 3){
 					//Trigger event for when the player makes 3 mistakes
-					Popup(); 
+					<Popup trigger={true}/> 
 				}
 				setSolved(false);
 			}
