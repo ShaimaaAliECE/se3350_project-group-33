@@ -341,73 +341,73 @@ const Level4 = () => {
 
 			<div className="w-full flex items-center flex-col">
 				{/* Fifth Layer */}
-				{5 <= nextArray && (
+				{5 <= nextArray && ( //fourth and final array split
 					<DndProvider backend={HTML5Backend}>
-						<div className="flex gap-2.5 mb-5">
-							<div className="flex items-center  gap-1 flex-col">
+						<div className="flex gap-2.5 mb-5"> {/* determines the gap between arrays*/}
+							<div className="flex items-center  gap-1 flex-col"> {/* css for the individual boxes */}
 								<div className="flex gap-2.5">
-									<Container shouldAccept={unsorted[0]} />
-									<Container shouldAccept={unsorted[1]} />
+									<Container shouldAccept={unsorted[0]} /> {/* the box should only accept its corresponding value*/ }
+									<Container shouldAccept={unsorted[1]} /> {/* the box should only accept its corresponding value*/ }
 								</div>
 							</div>
 
-							<div className="flex items-center  gap-1 flex-col">
+							<div className="flex items-center  gap-1 flex-col"> {/* css for the individual boxes */}
 								<div className="flex gap-2.5">
-									<Container shouldAccept={unsorted[2]} />
-									<div className="flex border-b-4 border-black">
-										<Container shouldAccept={unsorted[3]} />
-										<Container shouldAccept={unsorted[4]} />
+									<Container shouldAccept={unsorted[2]} /> {/* the box should only accept its corresponding value*/ }
+									<div className="flex border-b-4 border-black"> {/* css for the individual boxes */}
+										<Container shouldAccept={unsorted[3]} /> {/* the box should only accept its corresponding value*/ }
+										<Container shouldAccept={unsorted[4]} /> {/* the box should only accept its corresponding value*/ }
 									</div>
 								</div>
 							</div>
 
-							<div className="flex items-center  gap-1 flex-col">
+							<div className="flex items-center  gap-1 flex-col"> {/* css for the individual boxes */}
 								<div className="flex gap-2.5">
-									<Container shouldAccept={unsorted[5]} />
-									<Container shouldAccept={unsorted[6]} />
+									<Container shouldAccept={unsorted[5]} /> {/* the box should only accept its corresponding value*/ }
+									<Container shouldAccept={unsorted[6]} /> {/* the box should only accept its corresponding value*/ }
 								</div>
 							</div>
 
-							<div className="flex items-center  gap-1 flex-col">
+							<div className="flex items-center  gap-1 flex-col"> {/* css for the individual boxes */}
 								<div className="flex gap-2.5">
-									<Container shouldAccept={unsorted[7]} />
-									<div className="flex border-b-4 border-black">
-										<Container shouldAccept={unsorted[8]} />
-										<Container shouldAccept={unsorted[9]} />
+									<Container shouldAccept={unsorted[7]} /> {/* the box should only accept its corresponding value*/ }
+									<div className="flex border-b-4 border-black"> {/* css for the individual boxes */}
+										<Container shouldAccept={unsorted[8]} /> {/* the box should only accept its corresponding value*/ }
+										<Container shouldAccept={unsorted[9]} /> {/* the box should only accept its corresponding value*/ }
 									</div>
 								</div>
 							</div>
 
-							<div className="flex items-center  gap-1 flex-col">
+							<div className="flex items-center  gap-1 flex-col"> {/* css for the individual boxes */}
 								<div className="flex gap-2.5">
-									<Container shouldAccept={unsorted[10]} />
-									<Container shouldAccept={unsorted[11]} />
+									<Container shouldAccept={unsorted[10]} /> {/* the box should only accept its corresponding value*/ }
+									<Container shouldAccept={unsorted[11]} /> {/* the box should only accept its corresponding value*/ }
 								</div>
 							</div>
 
-							<div className="flex items-center  gap-1 flex-col">
+							<div className="flex items-center  gap-1 flex-col"> {/* css for the individual boxes */}
 								<div className="flex gap-2.5">
-									<Container shouldAccept={unsorted[12]} />
-									<div className="flex border-b-4 border-black">
-										<Container shouldAccept={unsorted[13]} />
-										<Container shouldAccept={unsorted[14]} />
+									<Container shouldAccept={unsorted[12]} /> {/* the box should only accept its corresponding value*/ }
+									<div className="flex border-b-4 border-black"> {/* css for the individual boxes */}
+										<Container shouldAccept={unsorted[13]} /> {/* the box should only accept its corresponding value*/ }
+										<Container shouldAccept={unsorted[14]} /> {/* the box should only accept its corresponding value*/ }
 									</div>
 								</div>
 							</div>
 
-							<div className="flex items-center  gap-1 flex-col">
+							<div className="flex items-center  gap-1 flex-col"> {/* css for the individual boxes */}
 								<div className="flex gap-2.5">
-									<Container shouldAccept={unsorted[15]} />
-									<Container shouldAccept={unsorted[16]} />
+									<Container shouldAccept={unsorted[15]} /> {/* the box should only accept its corresponding value*/ }
+									<Container shouldAccept={unsorted[16]} /> {/* the box should only accept its corresponding value*/ }
 								</div>
 							</div>
 
-							<div className="flex items-center  gap-1 flex-col">
+							<div className="flex items-center  gap-1 flex-col"> {/* css for the individual boxes */}
 								<div className="flex gap-2.5">
-									<Container shouldAccept={unsorted[17]} />
-									<div className="flex border-b-4 border-black">
-										<Container shouldAccept={unsorted[18]} />
-										<Container shouldAccept={unsorted[19]} />
+									<Container shouldAccept={unsorted[17]} /> {/* the box should only accept its corresponding value*/ }
+									<div className="flex border-b-4 border-black"> {/* css for the individual boxes */}
+										<Container shouldAccept={unsorted[18]} /> {/* the box should only accept its corresponding value*/ }
+										<Container shouldAccept={unsorted[19]} /> {/* the box should only accept its corresponding value*/ }
 									</div>
 								</div>
 							</div>
@@ -416,6 +416,7 @@ const Level4 = () => {
 				)}
 			</div>
 
+			{/* css for the container holding all of the boxes */}
 			<div
 				className="flex justify-center mb-2"
 				style={{
@@ -425,14 +426,14 @@ const Level4 = () => {
 					left: "11%"
 				}}
 			>
-				{6 <= nextArray && (
-					<div className="flex gap-2.5">
-						{unsorted.map((number) => {
+				{6 <= nextArray && ( //atomized array
+					<div className="flex gap-2.5"> {/* determines the gap between boxes*/}
+						{unsorted.map((number) => { //map the numbers to the boxes
 							return (
 								<div
 									className="p-4 border-r-0 border-b-4 border-black bg-slate-300"
 									style={{width: "50px", height: "50px"}}
-								>
+								> {/* css for the individual boxes */}
 									{number}
 								</div>
 							);
@@ -443,7 +444,7 @@ const Level4 = () => {
 
 			<div className="w-full flex items-center flex-col">
 				{6 <= nextArray && (
-					<div className="flex justify-center items-center flex-col">
+					<div className="flex justify-center items-center flex-col"> {/* css for text following atomized array */}
 						<div className=" bg-blue-200 p-2 rounded-xl mb-4">
 							We have successfully made the array atomic i.e. seperated each
 							element out
@@ -458,14 +459,14 @@ const Level4 = () => {
 
 			<DndProvider backend={HTML5Backend}>
 				<div className="w-full mb-40 flex items-center flex-col">
-					{7 <= nextArray && (
-						<div className="flex justify-center gap-3">
-							<div className="flex flex-col gap-2 justify-center items-center">
+					{7 <= nextArray && ( //first merging step
+						<div className="flex justify-center gap-3"> {/* determines the gap between arrays*/}
+							<div className="flex flex-col gap-2 justify-center items-center"> {/* determines the gap between boxes*/}
 								<div className="flex">
-									<div className="flex items-center flex-col">
+									<div className="flex items-center flex-col"> {/* css for the individual boxes */}
 										<Container
 											shouldAccept={
-												unsorted.slice(0, 2).sort(function (a, b) {
+												unsorted.slice(0, 2).sort(function (a, b) { //the container should accept the first value of the sorted sliced array
 													return a - b;
 												})[0]
 											}
@@ -483,10 +484,10 @@ const Level4 = () => {
 										</span>
 									</div>
 
-									<div className="flex items-center flex-col">
+									<div className="flex items-center flex-col"> {/* css for the individual boxes */}
 										<Container
 											shouldAccept={
-												unsorted.slice(0, 2).sort(function (a, b) {
+												unsorted.slice(0, 2).sort(function (a, b) { //the container should accept the second value of the sorted sliced array
 													return a - b;
 												})[1]
 											}
@@ -504,12 +505,12 @@ const Level4 = () => {
 								</div>
 							</div>
 
-							<div className="flex flex-col gap-2 justify-center items-center">
+							<div className="flex flex-col gap-2 justify-center items-center"> {/* determines the gap between boxes*/}
 								<div className="flex">
-									<div className="flex items-center flex-col">
+									<div className="flex items-center flex-col"> {/* css for the individual boxes */}
 										<Container
 											shouldAccept={
-												unsorted.slice(2, 4).sort(function (a, b) {
+												unsorted.slice(2, 4).sort(function (a, b) { //the container should accept the first value of the sorted sliced array
 													return a - b;
 												})[0]
 											}
@@ -524,10 +525,10 @@ const Level4 = () => {
 											&uarr;
 										</span>
 									</div>
-									<div className="flex items-center flex-col">
+									<div className="flex items-center flex-col"> {/* css for the individual boxes */}
 										<Container
 											shouldAccept={
-												unsorted.slice(2, 4).sort(function (a, b) {
+												unsorted.slice(2, 4).sort(function (a, b) { //the container should accept the second value of the sorted sliced array
 													return a - b;
 												})[1]
 											}
@@ -545,12 +546,12 @@ const Level4 = () => {
 								</div>
 							</div>
 
-							<div className="flex flex-col gap-2 justify-center items-center">
+							<div className="flex flex-col gap-2 justify-center items-center"> {/* determines the gap between boxes*/}
 								<div className="flex">
-									<div className="flex items-center flex-col">
+									<div className="flex items-center flex-col"> {/* css for the individual boxes */}
 										<Container
 											shouldAccept={
-												unsorted.slice(4, 6).sort(function (a, b) {
+												unsorted.slice(4, 6).sort(function (a, b) { //the container should accept the first value of the sorted sliced array
 													return a - b;
 												})[0]
 											}
@@ -567,10 +568,10 @@ const Level4 = () => {
 											&uarr;
 										</span>
 									</div>
-									<div className="flex items-center flex-col">
+									<div className="flex items-center flex-col"> {/* css for the individual boxes */}
 										<Container
 											shouldAccept={
-												unsorted.slice(4, 6).sort(function (a, b) {
+												unsorted.slice(4, 6).sort(function (a, b) { //the container should accept the second value of the sorted sliced array
 													return a - b;
 												})[1]
 											}
@@ -588,12 +589,12 @@ const Level4 = () => {
 								</div>
 							</div>
 
-							<div className="flex flex-col gap-2 justify-center items-center">
+							<div className="flex flex-col gap-2 justify-center items-center"> {/* determines the gap between boxes*/}
 								<div className="flex">
-									<div className="flex items-center flex-col">
+									<div className="flex items-center flex-col"> {/* css for the individual boxes */}
 										<Container
 											shouldAccept={
-												unsorted.slice(6, 8).sort(function (a, b) {
+												unsorted.slice(6, 8).sort(function (a, b) { //the container should accept the first value of the sorted sliced array
 													return a - b;
 												})[0]
 											}
@@ -608,10 +609,10 @@ const Level4 = () => {
 											&uarr;
 										</span>
 									</div>
-									<div className="flex items-center flex-col">
+									<div className="flex items-center flex-col"> {/* css for the individual boxes */}
 										<Container
 											shouldAccept={
-												unsorted.slice(6, 8).sort(function (a, b) {
+												unsorted.slice(6, 8).sort(function (a, b) { //the container should accept the second value of the sorted sliced array
 													return a - b;
 												})[1]
 											}
@@ -629,12 +630,12 @@ const Level4 = () => {
 								</div>
 							</div>
 
-							<div className="flex flex-col gap-2 justify-center items-center">
+							<div className="flex flex-col gap-2 justify-center items-center"> {/* determines the gap between boxes*/}
 								<div className="flex">
-									<div className="flex items-center flex-col">
+									<div className="flex items-center flex-col"> {/* css for the individual boxes */}
 										<Container
 											shouldAccept={
-												unsorted.slice(8, 10).sort(function (a, b) {
+												unsorted.slice(8, 10).sort(function (a, b) { //the container should accept the first value of the sorted sliced array
 													return a - b;
 												})[0]
 											}
@@ -649,10 +650,10 @@ const Level4 = () => {
 											&uarr;
 										</span>
 									</div>
-									<div className="flex items-center flex-col">
-										<Container
+									<div className="flex items-center flex-col"> {/* css for the individual boxes */}
+										<Container 
 											shouldAccept={
-												unsorted.slice(8, 10).sort(function (a, b) {
+												unsorted.slice(8, 10).sort(function (a, b) { //the container should accept the second value of the sorted sliced array
 													return a - b;
 												})[1]
 											}
@@ -669,12 +670,13 @@ const Level4 = () => {
 									</div>
 								</div>
 							</div>
-							<div className="flex flex-col gap-2 justify-center items-center">
+
+							<div className="flex flex-col gap-2 justify-center items-center"> {/* determines the gap between boxes*/}
 								<div className="flex">
-									<div className="flex items-center flex-col">
+									<div className="flex items-center flex-col"> {/* css for the individual boxes */}
 										<Container
 											shouldAccept={
-												unsorted.slice(10, 12).sort(function (a, b) {
+												unsorted.slice(10, 12).sort(function (a, b) { //the container should accept the first value of the sorted sliced array
 													return a - b;
 												})[0]
 											}
@@ -692,10 +694,10 @@ const Level4 = () => {
 										</span>
 									</div>
 
-									<div className="flex items-center flex-col">
-										<Container
+									<div className="flex items-center flex-col"> {/* css for the individual boxes */}
+										<Container 
 											shouldAccept={
-												unsorted.slice(10, 12).sort(function (a, b) {
+												unsorted.slice(10, 12).sort(function (a, b) { //the container should accept the second value of the sorted sliced array
 													return a - b;
 												})[1]
 											}
@@ -713,12 +715,12 @@ const Level4 = () => {
 								</div>
 							</div>
 
-							<div className="flex flex-col gap-2 justify-center items-center">
+							<div className="flex flex-col gap-2 justify-center items-center"> {/* determines the gap between boxes*/}
 								<div className="flex">
-									<div className="flex items-center flex-col">
+									<div className="flex items-center flex-col"> {/* css for the individual boxes */}
 										<Container
 											shouldAccept={
-												unsorted.slice(12, 14).sort(function (a, b) {
+												unsorted.slice(12, 14).sort(function (a, b) { //the container should accept the first value of the sorted sliced array
 													return a - b;
 												})[0]
 											}
@@ -733,10 +735,10 @@ const Level4 = () => {
 											&uarr;
 										</span>
 									</div>
-									<div className="flex items-center flex-col">
+									<div className="flex items-center flex-col"> {/* css for the individual boxes */}
 										<Container
 											shouldAccept={
-												unsorted.slice(12, 14).sort(function (a, b) {
+												unsorted.slice(12, 14).sort(function (a, b) { //the container should accept the second value of the sorted sliced array
 													return a - b;
 												})[1]
 											}
@@ -754,13 +756,13 @@ const Level4 = () => {
 								</div>
 							</div>
 
-							<div className="flex flex-col gap-2 justify-center items-center">
+							<div className="flex flex-col gap-2 justify-center items-center"> {/* determines the gap between boxes*/}
 								<div className="flex">
-									<div className="flex items-center flex-col">
+									<div className="flex items-center flex-col"> {/* css for the individual boxes */}
 										<Container
 											shouldAccept={
-												unsorted.slice(14, 16).sort(function (a, b) {
-													return a - b;
+												unsorted.slice(14, 16).sort(function (a, b) { //the container should accept the first value of the sorted sliced array
+													return a - b; 
 												})[0]
 											}
 										/>
@@ -776,10 +778,10 @@ const Level4 = () => {
 											&uarr;
 										</span>
 									</div>
-									<div className="flex items-center flex-col">
+									<div className="flex items-center flex-col"> {/* css for the individual boxes */}
 										<Container
-											shouldAccept={
-												unsorted.slice(14, 16).sort(function (a, b) {
+											shouldAccept={ 
+												unsorted.slice(14, 16).sort(function (a, b) { //the container should accept the second value of the sorted sliced array
 													return a - b;
 												})[1]
 											}
@@ -797,12 +799,12 @@ const Level4 = () => {
 								</div>
 							</div>
 
-							<div className="flex flex-col gap-2 justify-center items-center">
+							<div className="flex flex-col gap-2 justify-center items-center"> {/* determines the gap between boxes*/}
 								<div className="flex">
-									<div className="flex items-center flex-col">
+									<div className="flex items-center flex-col"> {/* css for the individual boxes */}
 										<Container
 											shouldAccept={
-												unsorted.slice(16, 18).sort(function (a, b) {
+												unsorted.slice(16, 18).sort(function (a, b) { //the container should accept the first value of the sorted sliced array
 													return a - b;
 												})[0]
 											}
@@ -817,10 +819,10 @@ const Level4 = () => {
 											&uarr;
 										</span>
 									</div>
-									<div className="flex items-center flex-col">
+									<div className="flex items-center flex-col"> {/* css for the individual boxes */}
 										<Container
 											shouldAccept={
-												unsorted.slice(16, 18).sort(function (a, b) {
+												unsorted.slice(16, 18).sort(function (a, b) { //the container should accept the second value of the sorted sliced array
 													return a - b;
 												})[1]
 											}
@@ -838,12 +840,12 @@ const Level4 = () => {
 								</div>
 							</div>
 
-							<div className="flex flex-col gap-2 justify-center items-center">
+							<div className="flex flex-col gap-2 justify-center items-center"> {/* determines the gap between boxes*/}
 								<div className="flex">
-									<div className="flex items-center flex-col">
+									<div className="flex items-center flex-col"> {/* css for the individual boxes */}
 										<Container
 											shouldAccept={
-												unsorted.slice(18, 20).sort(function (a, b) {
+												unsorted.slice(18, 20).sort(function (a, b) { //the container should accept the first value of the sorted sliced array
 													return a - b;
 												})[0]
 											}
@@ -858,10 +860,10 @@ const Level4 = () => {
 											&uarr;
 										</span>
 									</div>
-									<div className="flex items-center flex-col">
+									<div className="flex items-center flex-col"> 
 										<Container
 											shouldAccept={
-												unsorted.slice(18, 20).sort(function (a, b) {
+												unsorted.slice(18, 20).sort(function (a, b) { //the container should accept the second value of the sorted sliced array
 													return a - b;
 												})[1]
 											}
