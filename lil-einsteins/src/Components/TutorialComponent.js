@@ -115,20 +115,20 @@ function Tutorial() {
 
 		step2: {
 			layer1: [],
-			layer2: ["", , , , ,].concat(tutArray.slice(5)),
-			layer3: [, , ,].concat(tutArray.slice(3)),
+			layer2: tutArray,//["", , , , ,].concat(tutArray.slice(5)),
+			layer3: tutArray,//[, , ,].concat(tutArray.slice(3)),
 			layer4: [, ,].concat(tutArray.slice(2)),
 			layer5: tutArray
 		},
 
 		step3: {
 			layer1: [],
-			layer3: [, , ,].concat(tutArray.slice(3)),
+			layer3: tutArray,//[, , ,].concat(tutArray.slice(3)),
 			layer4: mergeSort(tutArray.slice(0, 2)).concat(tutArray.slice(2)),
 			layer5: tutArray
 		},
 		step4: {
-			layer2: [, , , , ,].concat(tutArray.slice(5)),
+			layer2: tutArray,//[, , , , ,].concat(tutArray.slice(5)),
 			layer3: mergeSort(tutArray.slice(0, 3)).concat([]),
 			layer4: tutArray.slice(3)
 		},
