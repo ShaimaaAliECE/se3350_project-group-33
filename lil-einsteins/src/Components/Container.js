@@ -5,10 +5,12 @@ import {useDrop} from "react-dnd";
 import dingSound from "./sounds/Correct.mp3";
 import hmmSound from "./sounds/Wrong.mp3";
 import Popup from "./Popup";
- 
+import {useNavigate} from "react-router-dom";
+import {Button} from "react-bootstrap";
+
 var audio1 = new Audio(dingSound);
 var audio2 = new Audio(hmmSound);
-var mistakesMade = 0 ;
+var mistakesMade = 0;
 
 const style = {
 	height: "3rem",
@@ -28,17 +30,16 @@ export const Container = memo(function Container({shouldAccept}) {
 
 	const [droppedBoxNames, setDroppedBoxNames] = useState([]);
 	const [solved, setSolved] = useState(false);
-	const [test, setTest] = useState(0); 
+	const [test, setTest] = useState(0);
 
 	const [mistakeCounter, setMistakeCounter] = useState(0);
 	const [tracker, setTracker] = useState(false);
 
-
 	function isDropped(boxName) {
 		return droppedBoxNames.indexOf(boxName) > -1;
 	}
-	
-	//Function handles the draggable number component when it is dropeed 
+
+	//Function handles the draggable number component when it is dropeed
 	const handleDrop = useCallback(
 		(index, item) => {
 			const {name} = item;
@@ -50,15 +51,15 @@ export const Container = memo(function Container({shouldAccept}) {
 				mistakesMade++;
 				console.log(mistakesMade);
 
-				if (mistakesMade === 3){
+				if (mistakesMade === 3) {
 					//Trigger event for when the player makes 3 mistakes
-					setTracker(true); 
+					setTracker(true);
 				}
 				setSolved(false);
 				setTest(test++);
 				console.log(test);
 			}
-			
+
 			setDroppedBoxNames(
 				update(droppedBoxNames, name ? {$push: [name]} : {$push: []})
 			);
@@ -71,9 +72,9 @@ export const Container = memo(function Container({shouldAccept}) {
 					}
 				})
 			);
-			setMistakeCounter(mistakeCounter++)
+			setMistakeCounter(mistakeCounter++);
 		},
-		[droppedBoxNames, dustbins,setMistakeCounter]
+		[droppedBoxNames, dustbins, setMistakeCounter]
 	);
 
 	const onDrop = (item) => handleDrop(0, item);
@@ -94,13 +95,32 @@ export const Container = memo(function Container({shouldAccept}) {
 		backgroundColor = "darkkhaki";
 	}
 
+	function handleLevelChange(level) {
+		setTracker(false);
+		mistakesMade = 0;
+		cahngeLevel(level);
+	}
+
+	const navigate = useNavigate();
+	const cahngeLevel = useCallback(
+		(level) => navigate(level, {replace: true}),
+		[navigate]
+	);
+
 	return (
 		<div>
-			<Popup trigger={tracker} >  
-					 <h3>Oops!</h3>
-                <p> You have made 3 mistakes!</p> 
-                <p>Would you like to return to the previous level?</p>
-					</Popup>
+			<Popup trigger={tracker}>
+				<h3>Oops!</h3>
+				<p> You have made 3 mistakes!</p>
+				<div>
+					<Button className="mx-2" onClick={() => handleLevelChange("/Home")}>
+						Home Screen
+					</Button>
+					<Button className="mx-2" onClick={() => handleLevelChange("/Level1")}>
+						Back to Level 1
+					</Button>
+				</div>
+			</Popup>
 			<div style={{overflow: "hidden", clear: "both"}} id={test}>
 				{dustbins.map(({accepts, lastDroppedItem}, index) => (
 					<div
