@@ -4,7 +4,8 @@ import update from "immutability-helper";
 import {useDrop} from "react-dnd";
 import dingSound from "./sounds/Correct.mp3";
 import hmmSound from "./sounds/Wrong.mp3";
-
+import Popup from "./components/Popup";
+ 
 var audio1 = new Audio(dingSound);
 var audio2 = new Audio(hmmSound);
 
@@ -43,6 +44,7 @@ export const Container = memo(function Container({shouldAccept}) {
 				mistakeCounter++ 
 				if (mistakeCounter == 3){
 					//Trigger event for when the player makes 3 mistakes
+					Popup(); 
 				}
 				setSolved(false);
 			}
