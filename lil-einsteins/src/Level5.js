@@ -39,6 +39,16 @@ const Level5 = () => {
     { name: `${unsorted[7]}`, type: ItemTypes.BOX },
     { name: `${unsorted[8]}`, type: ItemTypes.BOX },
     { name: `${unsorted[9]}`, type: ItemTypes.BOX },
+    { name: `${unsorted[10]}`, type: ItemTypes.BOX },
+    { name: `${unsorted[11]}`, type: ItemTypes.BOX },
+    { name: `${unsorted[12]}`, type: ItemTypes.BOX },
+    { name: `${unsorted[13]}`, type: ItemTypes.BOX },
+    { name: `${unsorted[14]}`, type: ItemTypes.BOX },
+    { name: `${unsorted[15]}`, type: ItemTypes.BOX },
+    { name: `${unsorted[16]}`, type: ItemTypes.BOX },
+    { name: `${unsorted[17]}`, type: ItemTypes.BOX },
+    { name: `${unsorted[18]}`, type: ItemTypes.BOX },
+    { name: `${unsorted[19]}`, type: ItemTypes.BOX },
     { name: `${unsorted[20]}`, type: ItemTypes.BOX },
     { name: `${unsorted[21]}`, type: ItemTypes.BOX },
     { name: `${unsorted[22]}`, type: ItemTypes.BOX },
@@ -54,7 +64,7 @@ const Level5 = () => {
     { name: `${unsorted[32]}`, type: ItemTypes.BOX },
     { name: `${unsorted[33]}`, type: ItemTypes.BOX },
     { name: `${unsorted[34]}`, type: ItemTypes.BOX },
-    { name: `${unsorted[35]}`, type: ItemTypes.BOX },
+    { name: `${unsorted[45]}`, type: ItemTypes.BOX },
     { name: `${unsorted[36]}`, type: ItemTypes.BOX },
     { name: `${unsorted[37]}`, type: ItemTypes.BOX },
     { name: `${unsorted[38]}`, type: ItemTypes.BOX },
@@ -68,17 +78,7 @@ const Level5 = () => {
     { name: `${unsorted[46]}`, type: ItemTypes.BOX },
     { name: `${unsorted[47]}`, type: ItemTypes.BOX },
     { name: `${unsorted[48]}`, type: ItemTypes.BOX },
-    { name: `${unsorted[49]}`, type: ItemTypes.BOX },
-    { name: `${unsorted[10]}`, type: ItemTypes.BOX },
-    { name: `${unsorted[11]}`, type: ItemTypes.BOX },
-    { name: `${unsorted[12]}`, type: ItemTypes.BOX },
-    { name: `${unsorted[13]}`, type: ItemTypes.BOX },
-    { name: `${unsorted[14]}`, type: ItemTypes.BOX },
-    { name: `${unsorted[15]}`, type: ItemTypes.BOX },
-    { name: `${unsorted[16]}`, type: ItemTypes.BOX },
-    { name: `${unsorted[17]}`, type: ItemTypes.BOX },
-    { name: `${unsorted[18]}`, type: ItemTypes.BOX },
-    { name: `${unsorted[19]}`, type: ItemTypes.BOX }
+    { name: `${unsorted[49]}`, type: ItemTypes.BOX }
   ];
 
   const [boxes] = useState(boxDetails);
@@ -102,7 +102,8 @@ const Level5 = () => {
       <NavbarComponent level="Level5" />
       <Timer />
       <DndProvider backend={HTML5Backend}>
-        <div className="z-10 fixed bottom-0 bg-red-600 py-6  left-0 right-0 flex gap-1 justify-center">
+        <div className="z-10 fixed bottom-0 bg-red-600 py-6  left-0 right-0 flex gap-0.5 justify-center">
+        {/*<div className="flex border-black border-b-4 justify-center">*/}
           {boxes.map(({ name, type }, index) => (
             //loading the boxes onto the screen
             <Box
@@ -112,6 +113,7 @@ const Level5 = () => {
               key={index}
             />
           ))}
+          {/*</div>*/}
         </div>
       </DndProvider>
 
@@ -143,7 +145,7 @@ const Level5 = () => {
         </p>
       </div>
 
-      <div className="flex justify-center mb-40">
+      <div className="flex justify-center mb-10">
         {/* Displaying Initial Array */}
         <div className="flex border-black border-b-4 justify-center">
           {unsorted.map((number) => {
@@ -151,7 +153,7 @@ const Level5 = () => {
               <div
                 key={number}
                 className="bg-slate-300 border-r-2 border-white"
-                style={{ width: "27px", height: "50px" }}
+                style={{ width: "25px", height: "25px" }}
               >
                 {number}
               </div>
@@ -160,18 +162,25 @@ const Level5 = () => {
         </div>
       </div>
 
-      <div className="flex flex-col justify-center">
+      <div className="w-full flex flex-col justify-center">
         {/* Middle Layer */}
         {2 <= nextArray && (
           <DndProvider backend={HTML5Backend}>
-            <div className="flex flex-col justify-center mt-20">
-              <div className="flex  justify-center">
-                <p className=" w-max p-2 rounded-xl bg-blue-200 m-2">
+            <div className="flex flex-col justify-center">
+              <div className="flex  justify-center mb-10">
+                <p className="w-max p-2 rounded-xl bg-blue-200 m-2">
                   Place the numbers in their respective boxes
                 </p>
               </div>
 
-              <div className="flex justify-center flex-col">
+              <div
+                className="flex justify-center flex-col"
+                style={{
+                  position: "relative",
+                  width: "full",
+                  height: "25px"
+                }}
+              >
                 <div className="flex w-full gap-4">
                   <div className="flex border-b-4 border-black">
                     {unsorted.map((number, index) => {
@@ -251,7 +260,7 @@ const Level5 = () => {
         )}
       </div>
 
-      <div className="w-full mb-5 flex items-center flex-col">
+      <div className="w-full mt-5 mb-5 flex items-center flex-col">
         {/* Fourth Layer */}
         {4 <= nextArray && (
           <DndProvider backend={HTML5Backend}>
