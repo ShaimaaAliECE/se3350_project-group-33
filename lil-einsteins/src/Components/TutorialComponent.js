@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import {CSSTransition} from "react-transition-group";
 import {Button} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
+import {Container} from "react-bootstrap";
 
 import TutorialArray from "./TutorialArray";
 // import {Button} from "bootstrap";
@@ -115,20 +116,20 @@ function Tutorial() {
 
 		step2: {
 			layer1: [],
-			layer2: ["", , , , ,].concat(tutArray.slice(5)),
-			layer3: [, , ,].concat(tutArray.slice(3)),
+			layer2: tutArray,//["", , , , ,].concat(tutArray.slice(5)),
+			layer3: tutArray,//[, , ,].concat(tutArray.slice(3)),
 			layer4: [, ,].concat(tutArray.slice(2)),
 			layer5: tutArray
 		},
 
 		step3: {
 			layer1: [],
-			layer3: [, , ,].concat(tutArray.slice(3)),
+			layer3: tutArray,//[, , ,].concat(tutArray.slice(3)),
 			layer4: mergeSort(tutArray.slice(0, 2)).concat(tutArray.slice(2)),
 			layer5: tutArray
 		},
 		step4: {
-			layer2: [, , , , ,].concat(tutArray.slice(5)),
+			layer2: tutArray,//[, , , , ,].concat(tutArray.slice(5)),
 			layer3: mergeSort(tutArray.slice(0, 3)).concat([]),
 			layer4: tutArray.slice(3)
 		},
@@ -538,7 +539,13 @@ function Tutorial() {
 				</CSSTransition>
 				<br></br>
 			</div>
-			<Button className="prevBtn" onClick={() => setStep(step - 1)}>
+
+
+
+
+            <Container fluid className="color-foot my-auto">
+			<div className="footer-child" style={{textAlign: "center"}}>
+            <Button className="prevBtn" onClick={() => setStep(step - 1)}>
 				Prev
 			</Button>
 			<Button
@@ -559,7 +566,11 @@ function Tutorial() {
 			>
 				Go To Level 2
 			</Button>
+			</div>
+		</Container>
 		</div>
+
+        
 	);
 }
 

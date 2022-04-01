@@ -1,62 +1,93 @@
 import {useState, useCallback} from "react";
 import {HTML5Backend} from "react-dnd-html5-backend";
-import {Button} from "react-bootstrap";
 import {DndProvider} from "react-dnd";
+import {Button} from "react-bootstrap";
 import {Box} from "./Components/DraggableBox";
 import {Container} from "./Components/Container";
-import infoIcon from "./images/icons8-info.png";
+import Timer from "./Components/Timer";
 import nextIcon from "./images/icons8-next.png";
 import randomizeNewArray from "./Components/GenerateNumbers";
 import {ItemTypes} from "./Components/ItemTypes";
 import NavbarComponent from "./Components/NavbarComponent";
-import Timer from "./Components/Timer";
 import {useNavigate} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const numbers = randomizeNewArray(20, 50); //generates a new array with 20 values ranging 1-50
+const numbers = randomizeNewArray(50, 100);
 
-let tempArray = numbers.slice(); //duplicates the array
+let tempArray = numbers.slice();
 
-{
-	/* method for shuffling the array */
-}
 const shuffleArray = (array) => {
 	for (let i = array.length - 1; i > 0; i--) {
-		//loop over the length of the array
-		const j = Math.floor(Math.random() * (i + 1)); //generate a random number between 0 and i
-		const temp = array[i]; //temporarily store the index i of the array
-		array[i] = array[j]; //set index i of the array to index j
-		array[j] = temp; //sets index j to index i
+		const j = Math.floor(Math.random() * (i + 1));
+		const temp = array[i];
+		array[i] = array[j];
+		array[j] = temp;
 	}
-	return array; //return the array
+	return array;
 };
 
-const unsorted = shuffleArray(tempArray); //stores the unsorted array
+const unsorted = shuffleArray(tempArray);
 
-//loads each value into a box
-const Level4 = () => {
+//loads values into the boxes
+const Level5 = () => {
 	const boxDetails = [
-		{name: `${unsorted[0]}`, type: ItemTypes.BOX}, //first value
-		{name: `${unsorted[1]}`, type: ItemTypes.BOX}, //second value
-		{name: `${unsorted[2]}`, type: ItemTypes.BOX}, //.
-		{name: `${unsorted[3]}`, type: ItemTypes.BOX}, //.
-		{name: `${unsorted[4]}`, type: ItemTypes.BOX}, //.
-		{name: `${unsorted[5]}`, type: ItemTypes.BOX}, //.
-		{name: `${unsorted[6]}`, type: ItemTypes.BOX}, //.
-		{name: `${unsorted[7]}`, type: ItemTypes.BOX}, //.
-		{name: `${unsorted[8]}`, type: ItemTypes.BOX}, //.
-		{name: `${unsorted[9]}`, type: ItemTypes.BOX}, //.
-		{name: `${unsorted[10]}`, type: ItemTypes.BOX}, //.
-		{name: `${unsorted[11]}`, type: ItemTypes.BOX}, //.
-		{name: `${unsorted[12]}`, type: ItemTypes.BOX}, //.
-		{name: `${unsorted[13]}`, type: ItemTypes.BOX}, //.
-		{name: `${unsorted[14]}`, type: ItemTypes.BOX}, //.
-		{name: `${unsorted[15]}`, type: ItemTypes.BOX}, //.
-		{name: `${unsorted[16]}`, type: ItemTypes.BOX}, //.
-		{name: `${unsorted[17]}`, type: ItemTypes.BOX}, //.
-		{name: `${unsorted[18]}`, type: ItemTypes.BOX}, //ninteenth value
-		{name: `${unsorted[19]}`, type: ItemTypes.BOX} //twenthieth value
+		{name: `${unsorted[0]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[1]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[2]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[3]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[4]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[5]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[6]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[7]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[8]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[9]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[10]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[11]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[12]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[13]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[14]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[15]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[16]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[17]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[18]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[19]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[20]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[21]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[22]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[23]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[24]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[25]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[26]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[27]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[28]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[29]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[30]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[31]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[32]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[33]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[34]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[45]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[36]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[37]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[38]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[39]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[40]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[41]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[42]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[43]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[44]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[45]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[46]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[47]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[48]}`, type: ItemTypes.BOX},
+		{name: `${unsorted[49]}`, type: ItemTypes.BOX}
 	];
+
+	const navigate = useNavigate();
+	const handleLevelChange = useCallback(
+		() => navigate("/Home", {replace: true}),
+		[navigate]
+	);
 
 	const [boxes] = useState(boxDetails);
 	const [droppedBoxNames] = useState([]);
@@ -65,28 +96,22 @@ const Level4 = () => {
 		return droppedBoxNames.indexOf(boxName) > -1;
 	}
 
-	//halfs of the array used for easier calculations later
+	//halfs of the array
 	const half = numbers.length / 2;
 	const firstHalf = half / 2;
 	const secondHalf = firstHalf / 2;
 
 	const [nextArray, setNextArray] = useState(1);
-	const [solved, setSolved] = useState(false);
 
 	const [showNextElement, setShowNextElement] = useState(0);
 
-	const navigate = useNavigate();
-	const handleLevelChange = useCallback(
-		() => navigate("/Level5", {replace: true}),
-		[navigate]
-	);
-
 	return (
 		<div>
-			<NavbarComponent level="Level4" />
+			<NavbarComponent level="Level5" />
 			<Timer />
 			<DndProvider backend={HTML5Backend}>
-				<div className="z-10 fixed bottom-0 bg-red-600 py-6  left-0 right-0 flex gap-1 justify-center">
+				<div className="z-10 fixed bottom-0 bg-red-600 py-6  left-0 right-0 flex gap-0.5 justify-center">
+					{/*<div className="flex border-black border-b-4 justify-center">*/}
 					{boxes.map(({name, type}, index) => (
 						//loading the boxes onto the screen
 						<Box
@@ -96,55 +121,39 @@ const Level4 = () => {
 							key={index}
 						/>
 					))}
-					<Button
-						disabled={!solved}
-						variant="primary"
-						onClick={() => handleLevelChange()}
-					>
-						Next Level
-					</Button>
+					{/*</div>*/}
 				</div>
 			</DndProvider>
 
 			<img
 				onClick={() => {
 					setNextArray(nextArray + 1);
-					if (nextArray >= 11) setSolved(true);
 				}}
 				src={nextIcon}
 				className="z-10 fixed top-1/3 rotate-90 cursor-pointer left-16"
 			/>
 
-			{nextArray >= 12 && (
+			{nextArray >= 14 && (
 				<div className=" ">
 					{showNextElement > 1}
-					{showNextElement <= 20}
+					{showNextElement <= 10}
 				</div>
 			)}
 
-			{/* css for the first 5 text lines of the level */}
 			<div className="w-full mb-5 flex items-center flex-col">
-				<a href="/Level4">
+				<a href="/Level5">
 					<div className=" p-4 rounded-xl mt-2 bg-cyan-600 text-white">
 						Generate New Random Array
 					</div>
 				</a>
 
-				<p className=" w-max text-white p-2 rounded-xl bg-slate-500 m-2">
-					Read this first:
-				</p>
-				<p className="w-max flex items-center bg-blue-200 rounded-xl p-2 m-2">
-					{" "}
-					<img src={infoIcon} width="30px" height="10px" alt="" /> You can drag
-					elements from bottom black box of the screen
-				</p>
 				<p className=" w-max  p-2 rounded-xl bg-blue-200 m-2">Initial Array:</p>
 				<p className=" w-max  p-2 rounded-xl bg-blue-200 m-2">
-					Total elements = 20
+					Total elements = 50
 				</p>
 			</div>
 
-			<div className="flex justify-center mb-40">
+			<div className="flex justify-center mb-10">
 				{/* Displaying Initial Array */}
 				<div className="flex border-black border-b-4 justify-center">
 					{unsorted.map((number) => {
@@ -152,7 +161,7 @@ const Level4 = () => {
 							<div
 								key={number}
 								className="bg-slate-300 border-r-2 border-white"
-								style={{width: "50px", height: "50px"}}
+								style={{width: "25px", height: "25px"}}
 							>
 								{number}
 							</div>
@@ -161,54 +170,97 @@ const Level4 = () => {
 				</div>
 			</div>
 
-			<div className="w-full mb-10 flex items-center flex-col">
+			<div className="w-full flex flex-col justify-center">
 				{/* Middle Layer */}
-				{2 <= nextArray && ( //first array split
+				{2 <= nextArray && (
 					<DndProvider backend={HTML5Backend}>
-						<div className="flex flex-col justify-center mt-20">
-							{/* css for the text line immediately before the first array split */}
-							<div className="flex  justify-center">
-								<p className=" w-max p-2 rounded-xl bg-blue-200 m-2">
+						<div className="flex flex-col justify-center">
+							<div className="flex  justify-center mb-10">
+								<p className="w-max p-2 rounded-xl bg-blue-200 m-2">
 									Place the numbers in their respective boxes
 								</p>
 							</div>
 
-							{/* css for the container holding all of the boxes */}
 							<div
 								className="flex justify-center flex-col"
 								style={{
 									position: "relative",
-									width: "1000px",
-									height: "54px"
+									width: "full",
+									height: "25px"
 								}}
 							>
-								<div className="flex justify-center w-full gap-8">
-									{" "}
-									{/* determines the gap between arrays and centers them */}
+								<div className="flex w-full gap-4">
 									<div className="flex border-b-4 border-black">
-										{" "}
-										{/* css for the individual boxes */}
 										{unsorted.map((number, index) => {
-											//assign the target values to the boxes
-											return index < half ? ( //the first half of the array
-												<Container shouldAccept={number} /> //the box should only accept its corresponding value
+											return index < half ? (
+												<Container shouldAccept={number} />
 											) : (
 												""
 											);
 										})}
 									</div>
+
 									<div className="flex border-b-4 border-black">
-										{" "}
-										{/* css for the individual boxes */}
 										{unsorted.map((number, index) => {
-											//assign the target values to the boxes
-											return index >= half ? ( //the second half of the array
-												<Container shouldAccept={number} /> //the box should only accept its corresponding value
+											return index >= half ? (
+												<Container shouldAccept={number} />
 											) : (
 												""
 											);
 										})}
 									</div>
+								</div>
+							</div>
+						</div>
+					</DndProvider>
+				)}
+			</div>
+
+			<div className="w-full mt-5  flex items-center flex-col">
+				{/* Third Layer */}
+				{3 <= nextArray && (
+					<DndProvider backend={HTML5Backend}>
+						<div
+							className="flex justify-center flex-col"
+							style={{position: "relative", width: "1000px", height: "54px"}}
+						>
+							<div className="flex justify-center w-full gap-8">
+								<div className="flex border-b-4 border-black">
+									{unsorted.map((number, index) => {
+										return index < firstHalf ? (
+											<Container shouldAccept={number} />
+										) : (
+											""
+										);
+									})}
+								</div>
+
+								<div className="flex border-b-4 border-black">
+									{unsorted.map((number, index) => {
+										return index >= firstHalf && index < half ? (
+											<Container shouldAccept={number} />
+										) : (
+											""
+										);
+									})}
+								</div>
+								<div className="flex border-b-4 border-black">
+									{unsorted.map((number, index) => {
+										return index >= half && index <= 14 ? (
+											<Container shouldAccept={number} />
+										) : (
+											""
+										);
+									})}
+								</div>
+								<div className="flex border-b-4 border-black">
+									{unsorted.map((number, index) => {
+										return index >= 15 ? (
+											<Container shouldAccept={number} />
+										) : (
+											""
+										);
+									})}
 								</div>
 							</div>
 						</div>
@@ -217,174 +269,86 @@ const Level4 = () => {
 			</div>
 
 			<div className="w-full mt-5 mb-5 flex items-center flex-col">
-				{/* Third Layer */}
-				{3 <= nextArray && ( //second array split
-					<DndProvider backend={HTML5Backend}>
-						{/* css for the container holding all of the boxes */}
-						<div
-							className="flex justify-center flex-col"
-							style={{position: "relative", width: "1000px", height: "54px"}}
-						>
-							<div className="flex justify-center w-full gap-8">
-								{" "}
-								{/* determines the gap between arrays and centers them */}
-								<div className="flex border-b-4 border-black">
-									{" "}
-									{/* css for the individual boxes */}
-									{unsorted.map((number, index) => {
-										//assign the target values to the boxes
-										return index < firstHalf ? ( //first half of the first half of the array
-											<Container shouldAccept={number} /> //the box should only accept its corresponding value
-										) : (
-											""
-										);
-									})}
-								</div>
-								<div className="flex border-b-4 border-black">
-									{" "}
-									{/* css for the individual boxes */}
-									{unsorted.map((number, index) => {
-										//assign the target values to the boxes
-										return index >= firstHalf && index < half ? ( //second half of the first half
-											<Container shouldAccept={number} /> //the box should only accept its corresponding value
-										) : (
-											""
-										);
-									})}
-								</div>
-								<div className="flex border-b-4 border-black">
-									{" "}
-									{/* css for the individual boxes */}
-									{unsorted.map((number, index) => {
-										//assign the target values to the boxes
-										return index >= half && index <= 14 ? ( //first half of the second half
-											<Container shouldAccept={number} /> //the box should only accept its corresponding value
-										) : (
-											""
-										);
-									})}
-								</div>
-								<div className="flex border-b-4 border-black">
-									{" "}
-									{/* css for the individual boxes */}
-									{unsorted.map((number, index) => {
-										//assign the target values to the boxes
-										return index >= 15 ? ( //second half of the second half
-											<Container shouldAccept={number} /> //the box should only accept its corresponding value
-										) : (
-											""
-										);
-									})}
-								</div>
-							</div>
-						</div>
-					</DndProvider>
-				)}
-			</div>
-
-			<div className="w-full mb-5 flex items-center flex-col">
 				{/* Fourth Layer */}
-				{4 <= nextArray && ( //third array split
+				{4 <= nextArray && (
 					<DndProvider backend={HTML5Backend}>
-						{/* css for the container holding all of the boxes */}
 						<div
 							className="flex justify-center flex-col"
 							style={{position: "relative", width: "1000px", height: "54px"}}
 						>
 							<div className="flex justify-center w-full gap-6">
-								{" "}
-								{/* determines the gap between arrays and centers them */}
 								<div className="flex border-b-4 border-black">
-									{" "}
-									{/* css for the individual boxes */}
 									{unsorted.map((number, index) => {
-										//assign the target values to the boxes
-										return index < secondHalf ? ( //boxex 0,1,2
-											<Container shouldAccept={number} /> //the box should only accept its corresponding value
+										return index < secondHalf ? (
+											<Container shouldAccept={number} />
+										) : (
+											""
+										);
+									})}
+								</div>
+
+								<div className="flex border-b-4 border-black">
+									{unsorted.map((number, index) => {
+										return index >= secondHalf && index < firstHalf ? (
+											<Container shouldAccept={number} />
+										) : (
+											""
+										);
+									})}
+								</div>
+
+								<div className="flex border-b-4 border-black">
+									{unsorted.map((number, index) => {
+										return index >= firstHalf && index <= 7 ? (
+											<Container shouldAccept={number} />
 										) : (
 											""
 										);
 									})}
 								</div>
 								<div className="flex border-b-4 border-black">
-									{" "}
-									{/* css for the individual boxes */}
 									{unsorted.map((number, index) => {
-										//assign the target values to the boxes
-										return index >= secondHalf && index < firstHalf ? ( //boxes 3,4
-											<Container shouldAccept={number} /> //the box should only accept its corresponding value
+										return index >= 8 && index < half ? (
+											<Container shouldAccept={number} />
+										) : (
+											""
+										);
+									})}
+								</div>
+
+								<div className="flex border-b-4 border-black">
+									{unsorted.map((number, index) => {
+										return index >= half && index <= 12 ? (
+											<Container shouldAccept={number} />
+										) : (
+											""
+										);
+									})}
+								</div>
+
+								<div className="flex border-b-4 border-black">
+									{unsorted.map((number, index) => {
+										return index >= 13 && index <= 14 ? (
+											<Container shouldAccept={number} />
+										) : (
+											""
+										);
+									})}
+								</div>
+
+								<div className="flex border-b-4 border-black">
+									{unsorted.map((number, index) => {
+										return index >= 15 && index <= 17 ? (
+											<Container shouldAccept={number} />
 										) : (
 											""
 										);
 									})}
 								</div>
 								<div className="flex border-b-4 border-black">
-									{" "}
-									{/* css for the individual boxes */}
 									{unsorted.map((number, index) => {
-										//assign the target values to the boxes
-										return index >= firstHalf && index <= 7 ? ( //boxes 5,6,7
-											<Container shouldAccept={number} /> //the box should only accept its corresponding value
-										) : (
-											""
-										);
-									})}
-								</div>
-								<div className="flex border-b-4 border-black">
-									{" "}
-									{/* css for the individual boxes */}
-									{unsorted.map((number, index) => {
-										//assign the target values to the boxes
-										return index >= 8 && index < half ? ( //boxes 8,9
-											<Container shouldAccept={number} /> //the box should only accept its corresponding value
-										) : (
-											""
-										);
-									})}
-								</div>
-								<div className="flex border-b-4 border-black">
-									{" "}
-									{/* css for the individual boxes */}
-									{unsorted.map((number, index) => {
-										//assign the target values to the boxes
-										return index >= half && index <= 12 ? ( //boxes 10,11,12
-											<Container shouldAccept={number} /> //the box should only accept its corresponding value
-										) : (
-											""
-										);
-									})}
-								</div>
-								<div className="flex border-b-4 border-black">
-									{" "}
-									{/* css for the individual boxes */}
-									{unsorted.map((number, index) => {
-										//assign the target values to the boxes
-										return index >= 13 && index <= 14 ? ( //boxes 13,14
-											<Container shouldAccept={number} /> //the box should only accept its corresponding value
-										) : (
-											""
-										);
-									})}
-								</div>
-								<div className="flex border-b-4 border-black">
-									{" "}
-									{/* css for the individual boxes */}
-									{unsorted.map((number, index) => {
-										//assign the target values to the boxes
-										return index >= 15 && index <= 17 ? ( //boxes 15,16,17
-											<Container shouldAccept={number} /> //the box should only accept its corresponding value
-										) : (
-											""
-										);
-									})}
-								</div>
-								<div className="flex border-b-4 border-black">
-									{" "}
-									{/* css for the individual boxes */}
-									{unsorted.map((number, index) => {
-										//assign the target values to the boxes
-										return index >= 18 ? ( //boxes 18,19
-											<Container shouldAccept={number} /> //the box should only accept its corresponding value
+										return index >= 18 ? (
+											<Container shouldAccept={number} />
 										) : (
 											""
 										);
@@ -398,112 +362,73 @@ const Level4 = () => {
 
 			<div className="w-full flex items-center flex-col">
 				{/* Fifth Layer */}
-				{5 <= nextArray && ( //fourth and final array split
+				{5 <= nextArray && (
 					<DndProvider backend={HTML5Backend}>
 						<div className="flex gap-2.5 mb-5">
-							{" "}
-							{/* determines the gap between arrays*/}
 							<div className="flex items-center  gap-1 flex-col">
-								{" "}
-								{/* css for the individual boxes */}
 								<div className="flex gap-2.5">
-									<Container shouldAccept={unsorted[0]} />{" "}
-									{/* the box should only accept its corresponding value*/}
-									<Container shouldAccept={unsorted[1]} />{" "}
-									{/* the box should only accept its corresponding value*/}
+									<Container shouldAccept={unsorted[0]} />
+									<Container shouldAccept={unsorted[1]} />
 								</div>
 							</div>
+
 							<div className="flex items-center  gap-1 flex-col">
-								{" "}
-								{/* css for the individual boxes */}
 								<div className="flex gap-2.5">
-									<Container shouldAccept={unsorted[2]} />{" "}
-									{/* the box should only accept its corresponding value*/}
+									<Container shouldAccept={unsorted[2]} />
 									<div className="flex border-b-4 border-black">
-										{" "}
-										{/* css for the individual boxes */}
-										<Container shouldAccept={unsorted[3]} />{" "}
-										{/* the box should only accept its corresponding value*/}
-										<Container shouldAccept={unsorted[4]} />{" "}
-										{/* the box should only accept its corresponding value*/}
+										<Container shouldAccept={unsorted[3]} />
+										<Container shouldAccept={unsorted[4]} />
 									</div>
 								</div>
 							</div>
+
 							<div className="flex items-center  gap-1 flex-col">
-								{" "}
-								{/* css for the individual boxes */}
 								<div className="flex gap-2.5">
-									<Container shouldAccept={unsorted[5]} />{" "}
-									{/* the box should only accept its corresponding value*/}
-									<Container shouldAccept={unsorted[6]} />{" "}
-									{/* the box should only accept its corresponding value*/}
+									<Container shouldAccept={unsorted[5]} />
+									<Container shouldAccept={unsorted[6]} />
 								</div>
 							</div>
+
 							<div className="flex items-center  gap-1 flex-col">
-								{" "}
-								{/* css for the individual boxes */}
 								<div className="flex gap-2.5">
-									<Container shouldAccept={unsorted[7]} />{" "}
-									{/* the box should only accept its corresponding value*/}
+									<Container shouldAccept={unsorted[7]} />
 									<div className="flex border-b-4 border-black">
-										{" "}
-										{/* css for the individual boxes */}
-										<Container shouldAccept={unsorted[8]} />{" "}
-										{/* the box should only accept its corresponding value*/}
-										<Container shouldAccept={unsorted[9]} />{" "}
-										{/* the box should only accept its corresponding value*/}
+										<Container shouldAccept={unsorted[8]} />
+										<Container shouldAccept={unsorted[9]} />
 									</div>
 								</div>
 							</div>
+
 							<div className="flex items-center  gap-1 flex-col">
-								{" "}
-								{/* css for the individual boxes */}
 								<div className="flex gap-2.5">
-									<Container shouldAccept={unsorted[10]} />{" "}
-									{/* the box should only accept its corresponding value*/}
-									<Container shouldAccept={unsorted[11]} />{" "}
-									{/* the box should only accept its corresponding value*/}
+									<Container shouldAccept={unsorted[10]} />
+									<Container shouldAccept={unsorted[11]} />
 								</div>
 							</div>
+
 							<div className="flex items-center  gap-1 flex-col">
-								{" "}
-								{/* css for the individual boxes */}
 								<div className="flex gap-2.5">
-									<Container shouldAccept={unsorted[12]} />{" "}
-									{/* the box should only accept its corresponding value*/}
+									<Container shouldAccept={unsorted[12]} />
 									<div className="flex border-b-4 border-black">
-										{" "}
-										{/* css for the individual boxes */}
-										<Container shouldAccept={unsorted[13]} />{" "}
-										{/* the box should only accept its corresponding value*/}
-										<Container shouldAccept={unsorted[14]} />{" "}
-										{/* the box should only accept its corresponding value*/}
+										<Container shouldAccept={unsorted[13]} />
+										<Container shouldAccept={unsorted[14]} />
 									</div>
 								</div>
 							</div>
+
 							<div className="flex items-center  gap-1 flex-col">
-								{" "}
-								{/* css for the individual boxes */}
 								<div className="flex gap-2.5">
-									<Container shouldAccept={unsorted[15]} />{" "}
-									{/* the box should only accept its corresponding value*/}
-									<Container shouldAccept={unsorted[16]} />{" "}
-									{/* the box should only accept its corresponding value*/}
+									<Container shouldAccept={unsorted[15]} />
+									<Container shouldAccept={unsorted[16]} />
 								</div>
 							</div>
+
 							<div className="flex items-center  gap-1 flex-col">
-								{" "}
-								{/* css for the individual boxes */}
 								<div className="flex gap-2.5">
-									<Container shouldAccept={unsorted[17]} />{" "}
-									{/* the box should only accept its corresponding value*/}
+									<Container shouldAccept={unsorted[17]} />
 									<div className="flex border-b-4 border-black">
-										{" "}
-										{/* css for the individual boxes */}
-										<Container shouldAccept={unsorted[18]} />{" "}
-										{/* the box should only accept its corresponding value*/}
-										<Container shouldAccept={unsorted[19]} />{" "}
-										{/* the box should only accept its corresponding value*/}
+										<Container shouldAccept={unsorted[18]} />
+										<Container shouldAccept={unsorted[19]} />
 									</div>
 								</div>
 							</div>
@@ -532,12 +457,11 @@ const Level4 = () => {
 			<div className="w-full flex items-center flex-col">
 				{6 <= nextArray && (
 					<div className="flex justify-center items-center flex-col">
-						{" "}
-						{/* css for text following atomized array */}
 						<div className=" bg-blue-200 p-2 rounded-xl mb-4">
 							We have successfully made the array atomic i.e. seperated each
 							element out
 						</div>
+
 						<div className=" bg-blue-200 p-2 rounded-xl mb-2">
 							We'll start merging them now :)
 						</div>
@@ -1412,9 +1336,24 @@ const Level4 = () => {
 							</div>
 						</div>
 					)}
+					{12 <= nextArray && (
+						<div>
+							<div>
+								<h3>
+									!! You've Successfuly completed all merge sort levels !!
+								</h3>
+							</div>
+							<div className="col-md-12 text-center my-3">
+								<Button onClick={() => handleLevelChange()}>
+									Back To Home Screen
+								</Button>
+							</div>
+						</div>
+					)}
 				</div>
 			</DndProvider>
 		</div>
 	);
 };
-export default Level4;
+
+export default Level5;

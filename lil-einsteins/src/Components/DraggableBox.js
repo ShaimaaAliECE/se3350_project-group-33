@@ -29,7 +29,7 @@ export const Box = function Box({name}) {
 			className="flex justify-center items-center"
 			ref={drag}
 			role="Box"
-			style={{...style, opacity}}
+			style={{...style, textAlign: "center", width: '25px', height: '25px', opacity}}
 			data-testid={`box-${name}`}
 		>
 			{name}

@@ -28,6 +28,7 @@ export const Container = memo(function Container({shouldAccept}) {
 
 	const [droppedBoxNames, setDroppedBoxNames] = useState([]);
 	const [solved, setSolved] = useState(false);
+	const [test, setTest] = useState(0); 
 
 	const [mistakeCounter, setMistakeCounter] = useState(0);
 	const [tracker, setTracker] = useState(false);
@@ -54,6 +55,8 @@ export const Container = memo(function Container({shouldAccept}) {
 					setTracker(true); 
 				}
 				setSolved(false);
+				setTest(test++);
+				console.log(test);
 			}
 			
 			setDroppedBoxNames(
@@ -98,7 +101,7 @@ export const Container = memo(function Container({shouldAccept}) {
                 <p> You have made 3 mistakes!</p> 
                 <p>Would you like to return to the previous level?</p>
 					</Popup>
-			<div style={{overflow: "hidden", clear: "both"}} id={mistakeCounter}>
+			<div style={{overflow: "hidden", clear: "both"}} id={test}>
 				{dustbins.map(({accepts, lastDroppedItem}, index) => (
 					<div
 						key={index}
