@@ -25,6 +25,7 @@ export const Container = memo(function Container({shouldAccept}) {
 
 	const [droppedBoxNames, setDroppedBoxNames] = useState([]);
 	const [solved, setSolved] = useState(false);
+	const [test, setTest] = useState(0); 
 
 	function isDropped(boxName) {
 		return droppedBoxNames.indexOf(boxName) > -1;
@@ -38,6 +39,8 @@ export const Container = memo(function Container({shouldAccept}) {
 			} else if (item.name != `${shouldAccept}`) {
 				audio2.play();
 				setSolved(false);
+				setTest(test++);
+				console.log(test);
 			}
 			setDroppedBoxNames(
 				update(droppedBoxNames, name ? {$push: [name]} : {$push: []})
@@ -73,7 +76,7 @@ export const Container = memo(function Container({shouldAccept}) {
 	}
 	return (
 		<div>
-			<div style={{overflow: "hidden", clear: "both"}}>
+			<div style={{overflow: "hidden", clear: "both"}} id={test}>
 				{dustbins.map(({accepts, lastDroppedItem}, index) => (
 					<div
 						key={index}

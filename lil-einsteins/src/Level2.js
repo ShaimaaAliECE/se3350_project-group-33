@@ -356,7 +356,7 @@ const Level2 = () => {
               <div className="flex flex-col gap-2 justify-center items-center">
                 <div>
                   <div className=" w-56 bg-blue-200 rounded-xl p-2">
-                    As <span className=" font-bold"> {numbers[0]} </span>&gt;{" "}
+                    As <span className=" font-bold"> {numbers[0]} </span>&gt;{"= "}
                     <span className=" font-bold"> {numbers[1]} </span>therefore
                     they will interchange their positions{" "}
                   </div>
@@ -364,30 +364,10 @@ const Level2 = () => {
                 <div className="flex">
                   <div className="flex items-center flex-col">
                     <Container shouldAccept={numbers[1]} />
-                    <span
-                      className={
-                        showNextElement == 1 ||
-                        showNextElement == 2 ||
-                        showNextElement == 3
-                          ? " text-2xl opacity-100"
-                          : " text-2xl opacity-0"
-                      }
-                    >
-                      &uarr;
-                    </span>
                   </div>
 
                   <div className="flex items-center flex-col">
                     <Container shouldAccept={numbers[0]} />
-                    <span
-                      className={
-                        showNextElement == 3
-                          ? " text-2xl opacity-100"
-                          : " text-2xl opacity-0"
-                      }
-                    >
-                      &uarr;
-                    </span>
                   </div>
                 </div>
               </div>
@@ -395,7 +375,7 @@ const Level2 = () => {
               <div className="flex flex-col gap-2 justify-center items-center">
                 <div>
                   <div className=" w-56 bg-blue-200 rounded-xl p-2">
-                    As <span className=" font-bold"> {numbers[2]} </span>&gt;{" "}
+                    As <span className=" font-bold"> {numbers[2]} </span>&gt;{"= "}
                     <span className=" font-bold"> {numbers[3]} </span>therefore
                     they will interchange their positions{" "}
                   </div>
@@ -403,27 +383,9 @@ const Level2 = () => {
                 <div className="flex">
                   <div className="flex items-center flex-col">
                     <Container shouldAccept={numbers[3]} />
-                    <span
-                      className={
-                        showNextElement == 1
-                          ? " text-2xl opacity-100"
-                          : " text-2xl opacity-0"
-                      }
-                    >
-                      &uarr;
-                    </span>
                   </div>
                   <div className="flex items-center flex-col">
                     <Container shouldAccept={numbers[2]} />
-                    <span
-                      className={
-                        showNextElement == 2
-                          ? " text-2xl opacity-100"
-                          : " text-2xl opacity-0"
-                      }
-                    >
-                      &uarr;
-                    </span>
                   </div>
                 </div>
               </div>
@@ -431,7 +393,7 @@ const Level2 = () => {
               <div className="flex flex-col gap-2 justify-center items-center">
                 <div>
                   <div className=" w-56 bg-blue-200 rounded-xl p-2">
-                    As <span className=" font-bold"> {numbers[4]} </span>&gt;{" "}
+                    As <span className=" font-bold"> {numbers[4]} </span>&gt;{"= "}
                     <span className=" font-bold"> {numbers[5]} </span>therefore
                     they will interchange their positions{" "}
                   </div>
@@ -439,29 +401,9 @@ const Level2 = () => {
                 <div className="flex">
                   <div className="flex items-center flex-col">
                     <Container shouldAccept={numbers[5]} />
-                    <span
-                      className={
-                        showNextElement == 4 ||
-                        showNextElement == 5 ||
-                        showNextElement == 6
-                          ? " text-2xl opacity-100"
-                          : " text-2xl opacity-0"
-                      }
-                    >
-                      &uarr;
-                    </span>
                   </div>
                   <div className="flex items-center flex-col">
                     <Container shouldAccept={numbers[4]} />
-                    <span
-                      className={
-                        showNextElement == 6
-                          ? " text-2xl opacity-100"
-                          : " text-2xl opacity-0"
-                      }
-                    >
-                      &uarr;
-                    </span>
                   </div>
                 </div>
               </div>
@@ -469,7 +411,7 @@ const Level2 = () => {
               <div className="flex flex-col gap-2 justify-center items-center">
                 <div>
                   <div className=" w-56 bg-blue-200 rounded-xl p-2">
-                    As <span className=" font-bold"> {numbers[6]} </span>&gt;{" "}
+                    As <span className=" font-bold"> {numbers[6]} </span>&gt;{"= "}
                     <span className=" font-bold"> {numbers[7]} </span>therefore
                     they will interchange their positions{" "}
                   </div>
@@ -477,27 +419,9 @@ const Level2 = () => {
                 <div className="flex">
                   <div className="flex items-center flex-col">
                     <Container shouldAccept={numbers[7]} />
-                    <span
-                      className={
-                        showNextElement == 4
-                          ? " text-2xl opacity-100"
-                          : " text-2xl opacity-0"
-                      }
-                    >
-                      &uarr;
-                    </span>
                   </div>
                   <div className="flex items-center flex-col">
                     <Container shouldAccept={numbers[6]} />
-                    <span
-                      className={
-                        showNextElement == 5
-                          ? " text-2xl opacity-100"
-                          : " text-2xl opacity-0"
-                      }
-                    >
-                      &uarr;
-                    </span>
                   </div>
                 </div>
               </div>
@@ -505,7 +429,7 @@ const Level2 = () => {
               <div className="flex flex-col gap-2 justify-center items-center">
                 <div>
                   <div className=" w-56 bg-blue-200 rounded-xl p-2">
-                    As <span className=" font-bold"> {numbers[8]} </span>&gt;{" "}
+                    As <span className=" font-bold"> {numbers[8]} </span>&gt;{"= "}
                     <span className=" font-bold"> {numbers[9]} </span>therefore
                     they will interchange their positions{" "}
                   </div>
@@ -513,27 +437,9 @@ const Level2 = () => {
                 <div className="flex">
                   <div className="flex items-center flex-col">
                     <Container shouldAccept={numbers[9]} />
-                    <span
-                      className={
-                        showNextElement == 7
-                          ? " text-2xl opacity-100"
-                          : " text-2xl opacity-0"
-                      }
-                    >
-                      &uarr;
-                    </span>
                   </div>
                   <div className="flex items-center flex-col">
                     <Container shouldAccept={numbers[8]} />
-                    <span
-                      className={
-                        showNextElement == 7
-                          ? " text-2xl opacity-100"
-                          : " text-2xl opacity-0"
-                      }
-                    >
-                      &uarr;
-                    </span>
                   </div>
                 </div>
               </div>
@@ -655,126 +561,36 @@ const Level2 = () => {
               <div className="flex">
                 <div className="flex items-center flex-col">
                   <Container shouldAccept={numbers[7]} />
-                  <span
-                    className={
-                      showNextElement == 8 || showNextElement == 9
-                        ? " text-2xl opacity-100"
-                        : " text-2xl opacity-0"
-                    }
-                  >
-                    &uarr;
-                  </span>
                 </div>
                 <div className="flex items-center flex-col">
                   <Container shouldAccept={numbers[6]} />
-                  <span
-                    className={
-                      showNextElement == 10
-                        ? " text-2xl opacity-100"
-                        : " text-2xl opacity-0"
-                    }
-                  >
-                    &uarr;
-                  </span>
                 </div>
                 <div className="flex items-center flex-col">
                   <Container shouldAccept={numbers[5]} />
-                  <span
-                    className={
-                      showNextElement == 10
-                        ? " text-2xl opacity-100"
-                        : " text-2xl opacity-0"
-                    }
-                  >
-                    &uarr;
-                  </span>
                 </div>
                 <div className="flex items-center flex-col">
                   <Container shouldAccept={numbers[4]} />
-                  <span
-                    className={
-                      showNextElement == 10
-                        ? " text-2xl opacity-100"
-                        : " text-2xl opacity-0"
-                    }
-                  >
-                    &uarr;
-                  </span>
                 </div>
                 <div className="flex items-center flex-col">
                   <Container shouldAccept={numbers[3]} />
-                  <span
-                    className={
-                      showNextElement == 10
-                        ? " text-2xl opacity-100"
-                        : " text-2xl opacity-0"
-                    }
-                  >
-                    &uarr;
-                  </span>
                 </div>
                 <div className="flex items-center flex-col">
                   <Container shouldAccept={numbers[2]} />
-                  <span
-                    className={
-                      showNextElement == 10
-                        ? " text-2xl opacity-100"
-                        : " text-2xl opacity-0"
-                    }
-                  >
-                    &uarr;
-                  </span>
                 </div>
                 <div className="flex items-center flex-col">
                   <Container shouldAccept={numbers[1]} />
-                  <span
-                    className={
-                      showNextElement == 10
-                        ? " text-2xl opacity-100"
-                        : " text-2xl opacity-0"
-                    }
-                  >
-                    &uarr;
-                  </span>
                 </div>
                 <div className="flex items-center flex-col">
                   <Container shouldAccept={numbers[0]} />
-                  <span
-                    className={
-                      showNextElement == 10
-                        ? " text-2xl opacity-100"
-                        : " text-2xl opacity-0"
-                    }
-                  >
-                    &uarr;
-                  </span>
                 </div>
               </div>
 
               <div className="flex">
                 <div className="flex items-center flex-col">
                   <Container shouldAccept={numbers[9]} />
-                  <span
-                    className={
-                      showNextElement == 8
-                        ? " text-2xl opacity-100"
-                        : " text-2xl opacity-0"
-                    }
-                  >
-                    &uarr;
-                  </span>
                 </div>
                 <div className="flex items-center flex-col">
                   <Container shouldAccept={numbers[8]} />
-                  <span
-                    className={
-                      showNextElement == 9
-                        ? " text-2xl opacity-100"
-                        : " text-2xl opacity-0"
-                    }
-                  >
-                    &uarr;
-                  </span>
                 </div>
               </div>
             </div>

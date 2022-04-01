@@ -4,8 +4,8 @@
 }
 
 .color-foot {
-  background-color: rgb(255, 0, 0);
-  color: rgb(255, 0, 0);
+  /* background-color: rgb(255, 0, 0);
+  color: rgb(255, 0, 0); */
   position: fixed;
   bottom: 0;
 }

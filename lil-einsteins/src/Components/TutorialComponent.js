@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import {CSSTransition} from "react-transition-group";
 import {Button} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
+import {Container} from "react-bootstrap";
 
 import TutorialArray from "./TutorialArray";
 // import {Button} from "bootstrap";
@@ -538,7 +539,13 @@ function Tutorial() {
 				</CSSTransition>
 				<br></br>
 			</div>
-			<Button className="prevBtn" onClick={() => setStep(step - 1)}>
+
+
+
+
+            <Container fluid className="color-foot my-auto">
+			<div className="footer-child" style={{textAlign: "center"}}>
+            <Button className="prevBtn" onClick={() => setStep(step - 1)}>
 				Prev
 			</Button>
 			<Button
@@ -559,7 +566,11 @@ function Tutorial() {
 			>
 				Go To Level 2
 			</Button>
+			</div>
+		</Container>
 		</div>
+
+        
 	);
 }
 
